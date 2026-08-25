@@ -1,0 +1,13 @@
+:root {
+  --learnui-color-accent: #6750a4;
+}
+
+.learnui-consumer-smoke {
+  background: var(--learnui-color-canvas);
+  border: 1px solid var(--learnui-color-border);
+  border-radius: var(--learnui-radius-surface);
+  box-shadow: var(--learnui-shadow-surface);
+  color: var(--learnui-color-accent);
+  font-family: var(--learnui-font-sans);
+  padding: 24px;
+}
