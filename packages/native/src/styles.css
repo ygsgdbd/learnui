@@ -1,0 +1,39 @@
+@source ".";
+
+:root {
+  --learnui-color-canvas: #f5f5f7;
+  --learnui-color-surface: rgba(255, 255, 255, 0.82);
+  --learnui-color-elevated: #ffffff;
+  --learnui-color-foreground: #1d1d1f;
+  --learnui-color-muted: #6e6e73;
+  --learnui-color-border: rgba(0, 0, 0, 0.1);
+  --learnui-color-accent: #0071e3;
+  --learnui-color-accent-foreground: #ffffff;
+  --learnui-color-destructive: #d70015;
+  --learnui-color-success: #248a3d;
+  --learnui-color-warning: #a96500;
+  --learnui-color-focus-ring: rgba(8, 120, 249, 0.42);
+  --learnui-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --learnui-radius-control: 12px;
+  --learnui-radius-surface: 22px;
+  --learnui-shadow-surface: 0 8px 24px rgba(25, 31, 40, 0.08);
+}
+
+.dark {
+  --learnui-color-canvas: #000000;
+  --learnui-color-surface: rgba(28, 28, 30, 0.86);
+  --learnui-color-elevated: #1c1c1e;
+  --learnui-color-foreground: #f5f5f7;
+  --learnui-color-muted: #a1a1a6;
+  --learnui-color-border: rgba(255, 255, 255, 0.14);
+  --learnui-color-accent: #0a84ff;
+  --learnui-color-accent-foreground: #ffffff;
+  --learnui-color-destructive: #ff453a;
+  --learnui-color-success: #30d158;
+  --learnui-color-warning: #ffb340;
+  --learnui-color-focus-ring: rgba(10, 132, 255, 0.54);
+  --learnui-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --learnui-radius-control: 12px;
+  --learnui-radius-surface: 22px;
+  --learnui-shadow-surface: 0 10px 30px rgba(0, 0, 0, 0.32);
+}

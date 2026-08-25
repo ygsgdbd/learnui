@@ -1,0 +1,44 @@
+{
+  "name": "native-gallery",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start --dev-client",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "pnpm run typecheck",
+    "export": "pnpm run export:ios && pnpm run export:android",
+    "export:ios": "expo export --platform ios --output-dir dist/ios",
+    "export:android": "expo export --platform android --output-dir dist/android"
+  },
+  "dependencies": {
+    "@expo/metro-config": "~57.0.10",
+    "@expo/metro-runtime": "~57.0.13",
+    "@learnui/native": "workspace:*",
+    "expo": "~57.0.16",
+    "expo-constants": "~57.0.14",
+    "expo-dev-client": "~57.0.15",
+    "expo-linking": "~57.0.7",
+    "expo-router": "~57.0.16",
+    "metro": "^0.87.0",
+    "metro-cache": "^0.87.0",
+    "metro-transform-worker": "^0.87.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.2",
+    "react-native-gesture-handler": "~2.32.0",
+    "react-native-reanimated": "4.5.1",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "~4.26.0",
+    "react-native-web": "~0.21.0",
+    "react-native-worklets": "0.10.1",
+    "tailwindcss": "^4.3.3",
+    "uniwind": "^1.11.0"
+  },
+  "devDependencies": {
+    "@react-native/metro-config": "0.86.2",
+    "@types/react": "~19.2.2",
+    "typescript": "~6.0.3"
+  }
+}

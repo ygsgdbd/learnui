@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "LearnUI Native Gallery",
+    "slug": "learnui-native-gallery",
+    "scheme": "learnui-native-gallery",
+    "version": "0.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "dev.learnui.gallery"
+    },
+    "android": {
+      "package": "dev.learnui.gallery"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}

@@ -7,3 +7,5 @@ storybook-static/
 web-build/
 coverage/
 *.tsbuildinfo
+packages/*/lib/
+uniwind-types.d.ts
