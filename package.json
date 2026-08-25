@@ -11,10 +11,12 @@
   },
   "scripts": {
     "build": "pnpm -r --if-present build",
-    "typecheck": "pnpm -r typecheck",
-    "test": "pnpm -r test",
-    "storybook": "pnpm --filter @learnui/web storybook",
-    "storybook:build": "pnpm --filter @learnui/web build-storybook",
+    "typecheck": "pnpm --filter @learnui/web build && pnpm -r --if-present typecheck",
+    "test": "pnpm pack:web:check && pnpm smoke:web",
+    "storybook": "pnpm --filter @learnui/web build && pnpm --filter @learnui/web-storybook storybook",
+    "storybook:build": "pnpm --filter @learnui/web build && pnpm --filter @learnui/web-storybook build-storybook",
+    "pack:web:check": "pnpm --filter @learnui/web build && node scripts/check-web-pack.mjs && pnpm --filter @learnui/web exec publint",
+    "smoke:web": "pnpm --filter @learnui/web build && node scripts/smoke-web-consumer.mjs",
     "native": "pnpm --filter @learnui/native start"
   }
 }
