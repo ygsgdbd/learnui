@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "LearnUI Native Consumer",
+    "slug": "learnui-native-consumer",
+    "scheme": "learnui-native-consumer",
+    "version": "0.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "dev.learnui.consumer"
+    },
+    "android": {
+      "package": "dev.learnui.consumer"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}

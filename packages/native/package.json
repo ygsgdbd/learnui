@@ -1,0 +1,87 @@
+{
+  "name": "@learnui/native",
+  "version": "0.0.0",
+  "description": "Accessible React Native components for LearnUI.",
+  "license": "MIT",
+  "type": "module",
+  "source": "./src/index.ts",
+  "sideEffects": [
+    "./src/styles.css",
+    "./lib/module/styles.css"
+  ],
+  "main": "./lib/module/index.js",
+  "module": "./lib/module/index.js",
+  "types": "./lib/typescript/src/index.d.ts",
+  "react-native": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/typescript/src/index.d.ts",
+      "react-native": "./src/index.ts",
+      "import": "./lib/module/index.js",
+      "default": "./lib/module/index.js"
+    },
+    "./styles": {
+      "react-native": "./src/styles.css",
+      "style": "./src/styles.css",
+      "default": "./lib/module/styles.css"
+    }
+  },
+  "files": [
+    "src",
+    "lib",
+    "!src/**/__tests__/**",
+    "!src/**/__fixtures__/**",
+    "!src/**/__mocks__/**",
+    "!src/**/*.stories.*",
+    "!src/**/*.test.*",
+    "!src/**/*.spec.*",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "pnpm run clean && bob build && node scripts/copy-assets.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepack": "pnpm run build",
+    "pack:check": "pnpm run build && publint && node scripts/verify-pack-contract.mjs",
+    "test": "pnpm run pack:check"
+  },
+  "peerDependencies": {
+    "react": "^19.2.3",
+    "react-native": ">=0.83 <0.87",
+    "react-native-reanimated": "4.5.1",
+    "tailwindcss": "^4.0.0",
+    "uniwind": "^1.11.0"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "react": "19.2.3",
+    "react-native": "0.86.2",
+    "react-native-builder-bob": "^0.43.0",
+    "react-native-reanimated": "4.5.1",
+    "react-native-worklets": "0.10.1",
+    "publint": "^0.3.24",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.3",
+    "uniwind": "^1.11.0"
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      [
+        "module",
+        {
+          "esm": true,
+          "sourceMaps": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  }
+}

@@ -12,11 +12,14 @@
   "scripts": {
     "build": "pnpm -r --if-present build",
     "typecheck": "pnpm --filter @learnui/web build && pnpm -r --if-present typecheck",
-    "test": "pnpm pack:web:check && pnpm smoke:web",
+    "test": "pnpm pack:web:check && pnpm smoke:web && pnpm --filter @learnui/native test && pnpm --filter native-gallery test && node scripts/verify-native-public-imports.mjs",
     "storybook": "pnpm --filter @learnui/web build && pnpm --filter @learnui/web-storybook storybook",
     "storybook:build": "pnpm --filter @learnui/web build && pnpm --filter @learnui/web-storybook build-storybook",
     "pack:web:check": "pnpm --filter @learnui/web build && node scripts/check-web-pack.mjs && pnpm --filter @learnui/web exec publint",
     "smoke:web": "pnpm --filter @learnui/web build && node scripts/smoke-web-consumer.mjs",
-    "native": "pnpm --filter @learnui/native start"
+    "native": "pnpm --filter native-gallery start",
+    "native:export": "pnpm --filter native-gallery export",
+    "native:pack": "pnpm --filter @learnui/native pack",
+    "native:smoke": "node scripts/smoke-native-consumer.mjs"
   }
 }
