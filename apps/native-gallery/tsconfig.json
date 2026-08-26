@@ -11,6 +11,8 @@
   "include": [
     "app/**/*.ts",
     "app/**/*.tsx",
+    "lib/**/*.ts",
+    "lib/**/*.tsx",
     "global.css",
     "uniwind-env.d.ts"
   ]

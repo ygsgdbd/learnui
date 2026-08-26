@@ -12,6 +12,7 @@ function App() {
       data-learnui-export-count={Object.keys(LearnUI).length}
     >
       <span>LearnUI web consumer smoke</span>
+      <span className="learnui-consumer-control">Branded control</span>
     </main>
   );
 }

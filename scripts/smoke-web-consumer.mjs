@@ -194,7 +194,14 @@ try {
   );
   assert(
     builtCss.includes("#6750a4"),
-    "Consumer production build is missing the fixture token override"
+    "Consumer production build is missing the fixture color override"
+  );
+  assert(builtCss.includes("Avenir Next"), "Consumer production build is missing the fixture font override");
+  assert(builtCss.includes("18px"), "Consumer production build is missing the fixture control radius override");
+  assert(builtCss.includes("28px"), "Consumer production build is missing the fixture surface radius override");
+  assert(
+    builtCss.includes("0 12px 32px"),
+    "Consumer production build is missing the fixture surface shadow override"
   );
 
   console.log(`@learnui/web consumer smoke passed: ${relative(repoRoot, consumerDir)}`);

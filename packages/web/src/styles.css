@@ -17,6 +17,12 @@
     --learnui-radius-control: 12px;
     --learnui-radius-surface: 22px;
     --learnui-shadow-surface: 0 8px 24px rgba(25, 31, 40, .08);
+    --lui-motion-duration: 160ms;
+    --lui-motion-transform: scale(.98);
+    --lui-surface-backdrop-filter: blur(20px);
+    --lui-surface-background: var(--learnui-color-surface);
+    --lui-surface-border-width: .5px;
+    --lui-focus-ring-width: 2px;
   }
 
   :root[data-theme="light"] {
@@ -79,5 +85,27 @@
     --learnui-radius-control: 12px;
     --learnui-radius-surface: 22px;
     --learnui-shadow-surface: 0 10px 30px rgba(0, 0, 0, .32);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --lui-motion-duration: 80ms;
+      --lui-motion-transform: none;
+    }
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    :root {
+      --lui-surface-backdrop-filter: none;
+      --lui-surface-background: var(--learnui-color-elevated);
+      --lui-surface-border-width: 1px;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    :root {
+      --lui-surface-border-width: 2px;
+      --lui-focus-ring-width: 3px;
+    }
   }
 }

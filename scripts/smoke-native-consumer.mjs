@@ -89,6 +89,19 @@ function assertIncludes(contents, expected, label) {
   }
 }
 
+function assertMatches(contents, pattern, label) {
+  if (!pattern.test(contents)) {
+    throw new Error(`${label} must match ${pattern}`);
+  }
+}
+
+function readExportOutput(directory) {
+  return readdirSync(directory, { withFileTypes: true }).map((entry) => {
+    const path = join(directory, entry.name);
+    return entry.isDirectory() ? readExportOutput(path) : readFileSync(path).toString("utf8").replaceAll("\0", "");
+  }).join("\n");
+}
+
 try {
   run("pnpm", ["--filter", "@learnui/native", "run", "build"], root);
   mkdirSync(packDir, { recursive: true });
@@ -104,6 +117,11 @@ try {
 
   const consumerGlobalCss = readFileSync(join(consumerDir, "global.css"), "utf8");
   assertIncludes(consumerGlobalCss, '@import "@learnui/native/styles";', "consumer global CSS");
+  assertIncludes(consumerGlobalCss, "#6750a4", "consumer color override");
+  assertIncludes(consumerGlobalCss, '"Avenir Next"', "consumer font override");
+  assertIncludes(consumerGlobalCss, "--learnui-radius-control: 18px", "consumer control radius override");
+  assertIncludes(consumerGlobalCss, "--learnui-radius-surface: 28px", "consumer surface radius override");
+  assertIncludes(consumerGlobalCss, "--learnui-shadow-surface", "consumer surface shadow override");
 
   const installedStyles = readFileSync(
     join(consumerDir, "node_modules", "@learnui", "native", "src", "styles.css"),
@@ -115,10 +133,41 @@ try {
   const consumerScreen = readFileSync(join(consumerDir, "app", "index.tsx"), "utf8");
   assertIncludes(consumerScreen, "bg-[--learnui-color-canvas]", "consumer screen");
   assertIncludes(consumerScreen, "text-[--learnui-color-foreground]", "consumer screen");
+  assertIncludes(consumerScreen, "font-[--learnui-font-sans]", "consumer screen");
+  assertIncludes(consumerScreen, "rounded-[--learnui-radius-control]", "consumer screen");
+  assertIncludes(consumerScreen, "rounded-[--learnui-radius-surface]", "consumer screen");
+  assertIncludes(consumerScreen, "shadow-[--learnui-shadow-surface]", "consumer screen");
+  assertIncludes(consumerScreen, 'backgroundColor: "#123456"', "consumer style override");
 
   run("pnpm", ["run", "typecheck"], consumerDir);
-  run("pnpm", ["run", "export:ios"], consumerDir);
-  run("pnpm", ["run", "export:android"], consumerDir);
+  run(
+    "pnpm",
+    ["exec", "expo", "export", "--platform", "ios", "--output-dir", "dist/ios", "--no-bytecode", "--no-minify"],
+    consumerDir
+  );
+  run(
+    "pnpm",
+    ["exec", "expo", "export", "--platform", "android", "--output-dir", "dist/android", "--no-bytecode", "--no-minify"],
+    consumerDir
+  );
+
+  for (const platform of ["ios", "android"]) {
+    const exportOutput = readExportOutput(join(consumerDir, "dist", platform));
+    assertIncludes(exportOutput, "#6750a4", `${platform} export color override`);
+    assertIncludes(exportOutput, "Avenir Next", `${platform} export font override`);
+    assertMatches(
+      exportOutput,
+      /"--learnui-radius-control":\s*(?:\([^)]*\)\s*=>|vars\s*=>)\s*18/,
+      `${platform} export control radius override`
+    );
+    assertMatches(
+      exportOutput,
+      /"--learnui-radius-surface":\s*(?:\([^)]*\)\s*=>|vars\s*=>)\s*28/,
+      `${platform} export surface radius override`
+    );
+    assertIncludes(exportOutput, "#6750a43d", `${platform} export surface shadow override`);
+    assertIncludes(exportOutput, "#123456", `${platform} export consumer style override`);
+  }
 
   for (const runtime of ["react", "react-native"]) {
     const runtimeVersions = collectInstalledVersions(runtime);
