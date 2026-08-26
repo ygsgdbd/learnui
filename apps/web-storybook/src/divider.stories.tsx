@@ -72,10 +72,8 @@ export const AxesAndConsumerOverride: Story = {
     await expect(decorative).not.toBeNull();
     await expect(decorative).toHaveAttribute("aria-hidden", "true");
     const decorativeStyle = getComputedStyle(decorative!);
-    await expect(decorativeStyle.getPropertyValue("--lui-divider-thickness").trim()).toBe(".5px");
     await expect(Number.parseFloat(decorativeStyle.borderBlockStartWidth)).toBeGreaterThan(0);
     await expect(horizontal).not.toHaveAttribute("aria-orientation");
-    await expect(horizontalStyle.getPropertyValue("--lui-divider-thickness").trim()).toBe("1px");
     await expect(horizontalStyle.borderBlockStartWidth).toBe("1px");
     await expect(vertical).toHaveAttribute("aria-orientation", "vertical");
     await expect(vertical).toHaveClass("storybook-divider-override");

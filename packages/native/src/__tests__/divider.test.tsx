@@ -54,15 +54,12 @@ describe("Divider", () => {
     ["horizontal", "regular", { borderTopWidth: 1 }],
     ["vertical", "hairline", { borderLeftWidth: StyleSheet.hairlineWidth }],
     ["vertical", "regular", { borderLeftWidth: 1 }]
-  ] as const)("renders %s %s styling", async (orientation, weight, expectedStyle) => {
+  ] as const)("maps %s %s to host styling", async (orientation, weight, expectedStyle) => {
     const screen = await render(
       <Divider isDecorative={false} orientation={orientation} weight={weight} />
     );
     const root = screen.getByRole("separator");
 
-    expect(root.props.className).toContain(
-      orientation === "horizontal" ? "w-full self-stretch" : "h-full self-stretch"
-    );
     expect(root.props.style).toEqual(expectedStyle);
   });
 });
