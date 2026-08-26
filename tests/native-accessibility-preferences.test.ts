@@ -9,7 +9,7 @@ import {
   readAccessibilityPreferences,
   resolveAccessibilityPresentation,
   subscribeToAccessibilityPreferences
-} from "../packages/native/src/internal/accessibility-preferences";
+} from "../apps/native-gallery/lib/accessibility-preferences";
 
 function createAccessibilityInfo() {
   const listeners = new Map<string, (enabled: boolean) => void>();

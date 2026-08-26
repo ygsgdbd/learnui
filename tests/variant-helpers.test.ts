@@ -52,3 +52,13 @@ describe.each(helpers)("%s package styling helpers", (_platform, { cn, tv }) => 
     expect(slots.label()).toBe("text-sm text-red-700");
   });
 });
+
+test("native consumer style remains last, including animated style objects", () => {
+  const generatedStyle = { opacity: 0.72 };
+  const animatedConsumerStyle = { opacity: 1, transform: [{ scale: 1.02 }] };
+
+  expect(nativeStyles.mergeStylesWithConsumerOverride(generatedStyle, animatedConsumerStyle)).toEqual([
+    generatedStyle,
+    animatedConsumerStyle
+  ]);
+});

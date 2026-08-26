@@ -69,8 +69,14 @@ describe("public theme contract", () => {
     const web = readStyles("packages/web/src/styles.css");
     const native = readStyles("packages/native/src/styles.css");
 
+    for (const css of [web, native]) {
+      expect([...new Set(css.match(/--learnui-[\w-]+/g) ?? [])].sort()).toEqual(tokenNames);
+    }
+
     expectTheme(extractBlock(web, ":root {"), 0);
     expectTheme(extractBlock(web, ':root[data-theme="light"]'), 0);
+    const systemDarkStart = web.indexOf("@media (prefers-color-scheme: dark)");
+    expectTheme(extractBlock(web, ':root:not([data-theme="light"])', systemDarkStart), 1);
     expectTheme(extractBlock(web, ':root[data-theme="dark"]'), 1);
     expectTheme(extractBlock(native, ":root {"), 0);
     expectTheme(extractBlock(native, ".dark"), 1);

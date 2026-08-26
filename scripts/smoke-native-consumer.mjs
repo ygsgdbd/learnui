@@ -89,6 +89,13 @@ function assertIncludes(contents, expected, label) {
   }
 }
 
+function readExportOutput(directory) {
+  return readdirSync(directory, { withFileTypes: true }).map((entry) => {
+    const path = join(directory, entry.name);
+    return entry.isDirectory() ? readExportOutput(path) : readFileSync(path).toString("utf8").replaceAll("\0", "");
+  }).join("\n");
+}
+
 try {
   run("pnpm", ["--filter", "@learnui/native", "run", "build"], root);
   mkdirSync(packDir, { recursive: true });
@@ -124,10 +131,18 @@ try {
   assertIncludes(consumerScreen, "rounded-[--learnui-radius-control]", "consumer screen");
   assertIncludes(consumerScreen, "rounded-[--learnui-radius-surface]", "consumer screen");
   assertIncludes(consumerScreen, "shadow-[--learnui-shadow-surface]", "consumer screen");
+  assertIncludes(consumerScreen, 'backgroundColor: "#123456"', "consumer style override");
 
   run("pnpm", ["run", "typecheck"], consumerDir);
   run("pnpm", ["run", "export:ios"], consumerDir);
   run("pnpm", ["run", "export:android"], consumerDir);
+
+  for (const platform of ["ios", "android"]) {
+    const exportOutput = readExportOutput(join(consumerDir, "dist", platform));
+    assertIncludes(exportOutput, "#6750a4", `${platform} export color override`);
+    assertIncludes(exportOutput, "Avenir Next", `${platform} export font override`);
+    assertIncludes(exportOutput, "#123456", `${platform} export consumer style override`);
+  }
 
   for (const runtime of ["react", "react-native"]) {
     const runtimeVersions = collectInstalledVersions(runtime);

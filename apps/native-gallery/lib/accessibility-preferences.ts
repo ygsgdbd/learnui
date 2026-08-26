@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { AccessibilityInfo, Platform } from "react-native";
 
 type PlatformName = typeof Platform.OS;
@@ -22,6 +23,12 @@ export type AccessibilityPresentation = {
   motion: "full" | "reduced";
   surface: "translucent" | "opaque";
   surfaceBorder: "subtle" | "explicit";
+};
+
+const initialPreferences: AccessibilityPreferences = {
+  isHighContrastEnabled: null,
+  isReduceMotionEnabled: false,
+  isReduceTransparencyEnabled: null
 };
 
 export function resolveAccessibilityPresentation(
@@ -82,4 +89,27 @@ export function subscribeToAccessibilityPreferences(
   return () => {
     for (const subscription of subscriptions) subscription.remove();
   };
+}
+
+export function useAccessibilityPreferences(): AccessibilityPreferences {
+  const [preferences, setPreferences] = useState(initialPreferences);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    void readAccessibilityPreferences().then((nextPreferences) => {
+      if (isMounted) setPreferences(nextPreferences);
+    });
+
+    const unsubscribe = subscribeToAccessibilityPreferences(Platform.OS, AccessibilityInfo, (change) => {
+      setPreferences((current) => ({ ...current, ...change }));
+    });
+
+    return () => {
+      isMounted = false;
+      unsubscribe();
+    };
+  }, []);
+
+  return preferences;
 }
