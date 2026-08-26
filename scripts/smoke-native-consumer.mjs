@@ -89,6 +89,12 @@ function assertIncludes(contents, expected, label) {
   }
 }
 
+function assertMatches(contents, pattern, label) {
+  if (!pattern.test(contents)) {
+    throw new Error(`${label} must match ${pattern}`);
+  }
+}
+
 function readExportOutput(directory) {
   return readdirSync(directory, { withFileTypes: true }).map((entry) => {
     const path = join(directory, entry.name);
@@ -134,13 +140,32 @@ try {
   assertIncludes(consumerScreen, 'backgroundColor: "#123456"', "consumer style override");
 
   run("pnpm", ["run", "typecheck"], consumerDir);
-  run("pnpm", ["run", "export:ios"], consumerDir);
-  run("pnpm", ["run", "export:android"], consumerDir);
+  run(
+    "pnpm",
+    ["exec", "expo", "export", "--platform", "ios", "--output-dir", "dist/ios", "--no-bytecode", "--no-minify"],
+    consumerDir
+  );
+  run(
+    "pnpm",
+    ["exec", "expo", "export", "--platform", "android", "--output-dir", "dist/android", "--no-bytecode", "--no-minify"],
+    consumerDir
+  );
 
   for (const platform of ["ios", "android"]) {
     const exportOutput = readExportOutput(join(consumerDir, "dist", platform));
     assertIncludes(exportOutput, "#6750a4", `${platform} export color override`);
     assertIncludes(exportOutput, "Avenir Next", `${platform} export font override`);
+    assertMatches(
+      exportOutput,
+      /"--learnui-radius-control":\s*(?:\([^)]*\)\s*=>|vars\s*=>)\s*18/,
+      `${platform} export control radius override`
+    );
+    assertMatches(
+      exportOutput,
+      /"--learnui-radius-surface":\s*(?:\([^)]*\)\s*=>|vars\s*=>)\s*28/,
+      `${platform} export surface radius override`
+    );
+    assertIncludes(exportOutput, "#6750a43d", `${platform} export surface shadow override`);
     assertIncludes(exportOutput, "#123456", `${platform} export consumer style override`);
   }
 

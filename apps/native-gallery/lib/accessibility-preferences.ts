@@ -31,6 +31,13 @@ const initialPreferences: AccessibilityPreferences = {
   isReduceTransparencyEnabled: null
 };
 
+export function mergeInitialPreferencesWithLiveChanges(
+  initial: AccessibilityPreferences,
+  liveChanges: AccessibilityPreferenceChange
+): AccessibilityPreferences {
+  return { ...initial, ...liveChanges };
+}
+
 export function resolveAccessibilityPresentation(
   preferences: AccessibilityPreferences
 ): AccessibilityPresentation {
@@ -96,12 +103,14 @@ export function useAccessibilityPreferences(): AccessibilityPreferences {
 
   useEffect(() => {
     let isMounted = true;
+    const liveChanges: AccessibilityPreferenceChange = {};
 
     void readAccessibilityPreferences().then((nextPreferences) => {
-      if (isMounted) setPreferences(nextPreferences);
+      if (isMounted) setPreferences(mergeInitialPreferencesWithLiveChanges(nextPreferences, liveChanges));
     });
 
     const unsubscribe = subscribeToAccessibilityPreferences(Platform.OS, AccessibilityInfo, (change) => {
+      Object.assign(liveChanges, change);
       setPreferences((current) => ({ ...current, ...change }));
     });
 

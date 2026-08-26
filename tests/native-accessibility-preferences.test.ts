@@ -6,6 +6,7 @@ vi.mock("react-native", () => ({
 }));
 
 import {
+  mergeInitialPreferencesWithLiveChanges,
   readAccessibilityPreferences,
   resolveAccessibilityPresentation,
   subscribeToAccessibilityPreferences
@@ -94,6 +95,23 @@ describe("native accessibility preference mapping", () => {
       motion: "full",
       surface: "translucent",
       surfaceBorder: "explicit"
+    });
+  });
+
+  test("keeps live events that arrive before the initial read completes", () => {
+    expect(
+      mergeInitialPreferencesWithLiveChanges(
+        {
+          isHighContrastEnabled: true,
+          isReduceMotionEnabled: true,
+          isReduceTransparencyEnabled: null
+        },
+        { isReduceMotionEnabled: false }
+      )
+    ).toEqual({
+      isHighContrastEnabled: true,
+      isReduceMotionEnabled: false,
+      isReduceTransparencyEnabled: null
     });
   });
 });
