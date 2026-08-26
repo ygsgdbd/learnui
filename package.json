@@ -12,8 +12,8 @@
   "scripts": {
     "build": "pnpm -r --if-present build",
     "typecheck": "pnpm --filter @learnui/web build && pnpm -r --if-present typecheck",
-    "test": "pnpm test:foundation && pnpm pack:web:check && pnpm smoke:web && pnpm --filter @learnui/native test && pnpm --filter native-gallery test && node scripts/verify-native-public-imports.mjs",
-    "test:foundation": "vitest run tests",
+    "test": "pnpm test:foundation && pnpm pack:web:check && pnpm --filter @learnui/web-storybook test && pnpm smoke:web && pnpm --filter @learnui/native test && pnpm --filter native-gallery test && node scripts/verify-native-public-imports.mjs",
+    "test:foundation": "vitest run --dir tests",
     "storybook": "pnpm --filter @learnui/web build && pnpm --filter @learnui/web-storybook storybook",
     "storybook:build": "pnpm --filter @learnui/web build && pnpm --filter @learnui/web-storybook build-storybook",
     "pack:web:check": "pnpm --filter @learnui/web build && node scripts/check-web-pack.mjs && pnpm --filter @learnui/web exec publint",

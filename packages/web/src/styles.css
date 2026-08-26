@@ -108,4 +108,32 @@
       --lui-focus-ring-width: 3px;
     }
   }
+
+  .learnui-divider {
+    border: 0 solid var(--learnui-color-border);
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  .learnui-divider--horizontal {
+    border-block-start-width: var(--lui-divider-thickness);
+    height: 0;
+    width: 100%;
+  }
+
+  .learnui-divider--vertical {
+    align-self: stretch;
+    border-inline-start-width: var(--lui-divider-thickness);
+    height: auto;
+    min-height: 1em;
+    width: 0;
+  }
+
+  .learnui-divider--hairline {
+    --lui-divider-thickness: .5px;
+  }
+
+  .learnui-divider--regular {
+    --lui-divider-thickness: 1px;
+  }
 }

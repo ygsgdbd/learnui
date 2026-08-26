@@ -6,8 +6,10 @@
       "ES2022"
     ],
     "types": [
+      "jest",
       "react",
-      "react-native"
+      "react-native",
+      "uniwind/types"
     ]
   },
   "include": [

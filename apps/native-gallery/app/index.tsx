@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Uniwind, useCSSVariable, useUniwind } from "uniwind";
 
@@ -65,6 +66,17 @@ export default function HomeScreen() {
           );
         })}
       </View>
+      <Text className="mt-4 text-sm font-semibold uppercase tracking-wider text-[--learnui-color-muted]">
+        Components
+      </Text>
+      <Link asChild href="/components/divider">
+        <Pressable
+          className="min-h-11 justify-center rounded-[--learnui-radius-control] border border-[--learnui-color-border] bg-[--learnui-color-surface] px-4"
+          style={({ pressed }) => ({ opacity: pressed ? 0.82 : 1 })}
+        >
+          <Text className="text-base font-semibold text-[--learnui-color-foreground]">Divider</Text>
+        </Pressable>
+      </Link>
     </View>
   );
 }

@@ -1,8 +1,13 @@
+import { Divider } from "@learnui/native";
 import { Text, View } from "react-native";
 
 export default function FixtureHomeScreen() {
   const consumerStyle = {
     backgroundColor: "#123456"
+  } as const;
+  const consumerDividerStyle = {
+    borderTopColor: "#2468ac",
+    borderTopWidth: 4
   } as const;
 
   return (
@@ -17,6 +22,14 @@ export default function FixtureHomeScreen() {
         <Text className="mt-3 rounded-[--learnui-radius-control] bg-[--learnui-color-accent] px-3 py-2 text-[--learnui-color-accent-foreground]">
           Branded control
         </Text>
+        <View className="mt-5 gap-4">
+          <Divider />
+          <Divider
+            className="border-[--learnui-color-accent]"
+            style={consumerDividerStyle}
+            weight="regular"
+          />
+        </View>
       </View>
     </View>
   );

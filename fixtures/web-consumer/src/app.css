@@ -36,3 +36,14 @@
   margin-top: 16px;
   padding: 8px 12px;
 }
+
+.learnui-consumer-divider-stack {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.learnui-consumer-divider-override {
+  border-block-start-color: var(--learnui-color-accent);
+  border-block-start-width: 4px;
+}
