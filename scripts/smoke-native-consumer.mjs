@@ -104,6 +104,11 @@ try {
 
   const consumerGlobalCss = readFileSync(join(consumerDir, "global.css"), "utf8");
   assertIncludes(consumerGlobalCss, '@import "@learnui/native/styles";', "consumer global CSS");
+  assertIncludes(consumerGlobalCss, "#6750a4", "consumer color override");
+  assertIncludes(consumerGlobalCss, '"Avenir Next"', "consumer font override");
+  assertIncludes(consumerGlobalCss, "--learnui-radius-control: 18px", "consumer control radius override");
+  assertIncludes(consumerGlobalCss, "--learnui-radius-surface: 28px", "consumer surface radius override");
+  assertIncludes(consumerGlobalCss, "--learnui-shadow-surface", "consumer surface shadow override");
 
   const installedStyles = readFileSync(
     join(consumerDir, "node_modules", "@learnui", "native", "src", "styles.css"),
@@ -115,6 +120,10 @@ try {
   const consumerScreen = readFileSync(join(consumerDir, "app", "index.tsx"), "utf8");
   assertIncludes(consumerScreen, "bg-[--learnui-color-canvas]", "consumer screen");
   assertIncludes(consumerScreen, "text-[--learnui-color-foreground]", "consumer screen");
+  assertIncludes(consumerScreen, "font-[--learnui-font-sans]", "consumer screen");
+  assertIncludes(consumerScreen, "rounded-[--learnui-radius-control]", "consumer screen");
+  assertIncludes(consumerScreen, "rounded-[--learnui-radius-surface]", "consumer screen");
+  assertIncludes(consumerScreen, "shadow-[--learnui-shadow-surface]", "consumer screen");
 
   run("pnpm", ["run", "typecheck"], consumerDir);
   run("pnpm", ["run", "export:ios"], consumerDir);

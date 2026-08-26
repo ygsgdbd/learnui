@@ -6,17 +6,21 @@
   --learnui-color-elevated: #ffffff;
   --learnui-color-foreground: #1d1d1f;
   --learnui-color-muted: #6e6e73;
-  --learnui-color-border: rgba(0, 0, 0, 0.1);
+  --learnui-color-border: rgba(0, 0, 0, 0.10);
   --learnui-color-accent: #0071e3;
   --learnui-color-accent-foreground: #ffffff;
   --learnui-color-destructive: #d70015;
   --learnui-color-success: #248a3d;
   --learnui-color-warning: #a96500;
-  --learnui-color-focus-ring: rgba(8, 120, 249, 0.42);
+  --learnui-color-focus-ring: rgba(8, 120, 249, .42);
   --learnui-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --learnui-radius-control: 12px;
   --learnui-radius-surface: 22px;
-  --learnui-shadow-surface: 0 8px 24px rgba(25, 31, 40, 0.08);
+  --learnui-shadow-surface: 0 8px 24px rgba(25, 31, 40, .08);
+  --lui-motion-duration: 160ms;
+  --lui-motion-transform: scale(0.98);
+  --lui-surface-background: var(--learnui-color-surface);
+  --lui-surface-border-width: 0.5px;
 }
 
 .dark {
@@ -31,9 +35,9 @@
   --learnui-color-destructive: #ff453a;
   --learnui-color-success: #30d158;
   --learnui-color-warning: #ffb340;
-  --learnui-color-focus-ring: rgba(10, 132, 255, 0.54);
+  --learnui-color-focus-ring: rgba(10, 132, 255, .54);
   --learnui-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --learnui-radius-control: 12px;
   --learnui-radius-surface: 22px;
-  --learnui-shadow-surface: 0 10px 30px rgba(0, 0, 0, 0.32);
+  --learnui-shadow-surface: 0 10px 30px rgba(0, 0, 0, .32);
 }
