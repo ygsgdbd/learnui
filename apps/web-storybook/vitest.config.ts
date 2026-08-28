@@ -16,6 +16,9 @@ export default defineConfig({
   test: {
     projects: [
       {
+        optimizeDeps: {
+          include: ["storybook/test"]
+        },
         plugins: [storybookTest({ configDir })],
         test: {
           name: "storybook",

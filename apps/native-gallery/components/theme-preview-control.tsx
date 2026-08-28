@@ -1,4 +1,10 @@
-import { useState } from "react";
+import {
+  createContext,
+  useContext,
+  useMemo,
+  useState,
+  type ReactNode
+} from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Uniwind, useCSSVariable, useUniwind } from "uniwind";
 
@@ -10,19 +16,47 @@ import {
 const themeModes = ["system", "light", "dark"] as const;
 type ThemeMode = (typeof themeModes)[number];
 
-export function ThemePreviewControl() {
+interface ThemePreviewContextValue {
+  previewMode: ThemeMode;
+  selectTheme: (theme: ThemeMode) => void;
+}
+
+const ThemePreviewContext = createContext<ThemePreviewContextValue | null>(null);
+
+export function ThemePreviewProvider({ children }: { children: ReactNode }) {
   const [previewMode, setPreviewMode] = useState<ThemeMode>("system");
+  const value = useMemo(
+    () => ({
+      previewMode,
+      selectTheme(nextTheme: ThemeMode) {
+        setPreviewMode(nextTheme);
+        Uniwind.setTheme(nextTheme);
+      }
+    }),
+    [previewMode]
+  );
+
+  return <ThemePreviewContext value={value}>{children}</ThemePreviewContext>;
+}
+
+function useThemePreview() {
+  const value = useContext(ThemePreviewContext);
+
+  if (value === null) {
+    throw new Error("ThemePreviewControl must be rendered inside ThemePreviewProvider");
+  }
+
+  return value;
+}
+
+export function ThemePreviewControl() {
+  const { previewMode, selectTheme } = useThemePreview();
   const { theme } = useUniwind();
   const preferences = useAccessibilityPreferences();
   const presentation = resolveAccessibilityPresentation(preferences);
   const materialSurface = useCSSVariable(
     presentation.surface === "opaque" ? "--learnui-color-elevated" : "--learnui-color-surface"
   ) as string;
-
-  function selectTheme(nextTheme: ThemeMode) {
-    setPreviewMode(nextTheme);
-    Uniwind.setTheme(nextTheme);
-  }
 
   return (
     <View className="gap-4">

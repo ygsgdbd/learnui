@@ -11,11 +11,14 @@ LearnUI is a PNPM monorepo for learning how accessible component libraries are d
 
 ```bash
 pnpm install
+pnpm --filter @learnui/web-storybook test:install-browsers
 pnpm storybook
 pnpm native
 pnpm typecheck
 pnpm test
 pnpm build
 ```
+
+The Playwright browser installation is required once before running the browser-backed Storybook tests included in `pnpm test`.
 
 See `DESIGN.md` for the visual language and `CONTEXT-MAP.md` for platform boundaries.
