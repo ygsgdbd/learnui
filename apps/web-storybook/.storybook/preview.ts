@@ -1,10 +1,16 @@
 import "@learnui/web/styles";
+import "./preview.css";
 
 import type { Preview } from "@storybook/react-vite";
 
 type ThemeMode = "system" | "light" | "dark";
 
 const preview: Preview = {
+  parameters: {
+    a11y: {
+      test: "error"
+    }
+  },
   initialGlobals: {
     theme: "system"
   },

@@ -39,6 +39,19 @@ function assert(condition, message) {
   }
 }
 
+function getCssRule(css, selector) {
+  const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return css.match(new RegExp(`${escapedSelector}\\s*\\{([^}]*)\\}`))?.[1];
+}
+
+function assertCssRuleIncludes(css, selector, declarations, message) {
+  const rule = getCssRule(css, selector);
+  assert(
+    rule !== undefined && declarations.every((declaration) => rule.includes(declaration)),
+    message
+  );
+}
+
 function run(command, args, options = {}) {
   const result = spawnSync(command, args, {
     cwd: consumerDir,
@@ -202,6 +215,21 @@ try {
   assert(
     builtCss.includes("0 12px 32px"),
     "Consumer production build is missing the fixture surface shadow override"
+  );
+  assertCssRuleIncludes(
+    builtCss,
+    ".learnui-divider--horizontal",
+    ["border-block-start-width:var(--lui-divider-thickness)", "width:100%"],
+    "Consumer production build is missing default Divider styles"
+  );
+  assertCssRuleIncludes(
+    builtCss,
+    ".learnui-consumer-divider-override",
+    [
+      "border-block-start-color:var(--learnui-color-accent)",
+      "border-block-start-width:4px"
+    ],
+    "Consumer production build is missing the Divider consumer override"
   );
 
   console.log(`@learnui/web consumer smoke passed: ${relative(repoRoot, consumerDir)}`);

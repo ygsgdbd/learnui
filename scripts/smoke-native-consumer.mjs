@@ -138,6 +138,9 @@ try {
   assertIncludes(consumerScreen, "rounded-[--learnui-radius-surface]", "consumer screen");
   assertIncludes(consumerScreen, "shadow-[--learnui-shadow-surface]", "consumer screen");
   assertIncludes(consumerScreen, 'backgroundColor: "#123456"', "consumer style override");
+  assertIncludes(consumerScreen, 'import { Divider } from "@learnui/native";', "consumer Divider import");
+  assertIncludes(consumerScreen, "<Divider />", "consumer default Divider");
+  assertIncludes(consumerScreen, 'borderTopColor: "#2468ac"', "consumer Divider override");
 
   run("pnpm", ["run", "typecheck"], consumerDir);
   run(
@@ -167,6 +170,14 @@ try {
     );
     assertIncludes(exportOutput, "#6750a43d", `${platform} export surface shadow override`);
     assertIncludes(exportOutput, "#123456", `${platform} export consumer style override`);
+    assertIncludes(exportOutput, "border-[--learnui-color-border]", `${platform} default Divider styles`);
+    assertIncludes(exportOutput, "hairlineWidth", `${platform} Divider hairline weight`);
+    assertIncludes(exportOutput, "#2468ac", `${platform} Divider color override`);
+    assertMatches(
+      exportOutput,
+      /borderTopWidth:\s*4/,
+      `${platform} Divider thickness override`
+    );
   }
 
   for (const runtime of ["react", "react-native"]) {

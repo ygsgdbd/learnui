@@ -1,0 +1,4 @@
+.storybook-divider-override {
+  border-color: rgb(255, 0, 0);
+  border-inline-start-width: 4px;
+}
