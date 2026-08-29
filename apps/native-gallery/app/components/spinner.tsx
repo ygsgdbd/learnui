@@ -1,4 +1,4 @@
-import { ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View } from "react-native";
 import {
   Spinner,
   type SpinnerColor,
@@ -59,19 +59,19 @@ export default function SpinnerScreen() {
       </Specimen>
 
       <Specimen label="Embedded decorative · busy semantics stay on owner">
-        <View
+        <Pressable
           accessibilityLabel="Saving lesson"
           accessibilityRole="button"
           accessibilityState={{ busy: true }}
-          accessible
           className="min-h-11 flex-row items-center gap-3 rounded-[--learnui-radius-control] border border-[--learnui-color-border] bg-[--learnui-color-surface] px-4"
+          onPress={() => undefined}
           style={{ backgroundColor: surfaceColor, borderColor }}
         >
           <Spinner color="accent" isDecorative size="sm" />
           <Text className="font-semibold" style={{ color: foregroundColor }}>
             Save lesson
           </Text>
-        </View>
+        </Pressable>
       </Specimen>
 
       <Specimen label="Colors">

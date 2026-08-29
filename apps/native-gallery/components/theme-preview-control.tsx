@@ -87,7 +87,10 @@ export function ThemePreviewControl() {
                 backgroundColor: isSelected ? accentColor : materialSurface,
                 borderColor: isSelected ? accentColor : borderColor,
                 borderWidth: presentation.surfaceBorder === "explicit" ? 1 : StyleSheet.hairlineWidth,
-                opacity: pressed ? 0.82 : 1
+                opacity: pressed ? 0.82 : 1,
+                transform: [
+                  { scale: pressed && presentation.motion === "full" ? 0.98 : 1 }
+                ]
               })}
             >
               <Text

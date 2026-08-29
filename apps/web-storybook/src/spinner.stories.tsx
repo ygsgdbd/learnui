@@ -161,6 +161,21 @@ export const DarkTheme: Story = {
   }
 };
 
+export const SystemTheme: Story = {
+  globals: { theme: "system" },
+  render: () => <Spinner color="accent" label="System theme spinner" />,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const expectedColor = matchMedia("(prefers-color-scheme: dark)").matches
+      ? "rgb(10, 132, 255)"
+      : "rgb(0, 113, 227)";
+
+    await expect(getComputedStyle(canvas.getByRole("progressbar", {
+      name: "System theme spinner"
+    })).color).toBe(expectedColor);
+  }
+};
+
 export const MotionPreferences: Story = {
   render: () => <Spinner label="Motion spinner" />,
   play: async ({ canvasElement }) => {
