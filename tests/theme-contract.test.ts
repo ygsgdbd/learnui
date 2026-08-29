@@ -78,8 +78,10 @@ describe("public theme contract", () => {
     const systemDarkStart = web.indexOf("@media (prefers-color-scheme: dark)");
     expectTheme(extractBlock(web, ':root:not([data-theme="light"])', systemDarkStart), 1);
     expectTheme(extractBlock(web, ':root[data-theme="dark"]'), 1);
-    expectTheme(extractBlock(native, ":root {"), 0);
-    expectTheme(extractBlock(native, ".dark"), 1);
+    const nativeRoot = extractBlock(native, ":root {");
+    expectTheme(extractBlock(nativeRoot, "@variant light"), 0);
+    expectTheme(extractBlock(nativeRoot, "@variant dark"), 1);
+    expect(native).not.toContain("\n.dark {");
   });
 
   test("web maps supported accessibility preferences without coupling them to dark mode", () => {

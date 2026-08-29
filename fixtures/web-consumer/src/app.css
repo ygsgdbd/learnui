@@ -47,3 +47,16 @@
   border-block-start-color: var(--learnui-color-accent);
   border-block-start-width: 4px;
 }
+
+.learnui-consumer-spinner-stack {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.learnui-consumer-spinner-override {
+  color: var(--learnui-color-accent);
+  height: 32px;
+  width: 32px;
+}

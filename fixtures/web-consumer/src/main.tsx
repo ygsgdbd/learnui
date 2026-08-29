@@ -1,5 +1,5 @@
 import * as LearnUI from "@learnui/web";
-import { Divider } from "@learnui/web";
+import { Divider, Spinner } from "@learnui/web";
 import "@learnui/web/styles";
 import React from "react";
 import { createRoot } from "react-dom/client";
@@ -19,6 +19,12 @@ function App() {
         <Divider />
         <span>Consumer override</span>
         <Divider className="learnui-consumer-divider-override" />
+      </div>
+      <div aria-busy="true" className="learnui-consumer-spinner-stack">
+        <span>Standalone Spinner</span>
+        <Spinner label="Loading fixture" />
+        <span>Decorative consumer override</span>
+        <Spinner className="learnui-consumer-spinner-override" isDecorative />
       </div>
     </main>
   );

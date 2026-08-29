@@ -12,6 +12,13 @@ const targetScaleProvider = () => playwright({
   }
 });
 
+const reducedMotionProvider = () => playwright({
+  contextOptions: {
+    deviceScaleFactor: 2,
+    reducedMotion: "reduce"
+  }
+});
+
 export default defineConfig({
   test: {
     projects: [
@@ -26,9 +33,14 @@ export default defineConfig({
             enabled: true,
             headless: true,
             instances: [
-              { browser: "chromium", provider: targetScaleProvider() },
-              { browser: "firefox", provider: targetScaleProvider() },
-              { browser: "webkit", provider: targetScaleProvider() }
+              { browser: "chromium", name: "chromium", provider: targetScaleProvider() },
+              {
+                browser: "chromium",
+                name: "chromium-reduced-motion",
+                provider: reducedMotionProvider()
+              },
+              { browser: "firefox", name: "firefox", provider: targetScaleProvider() },
+              { browser: "webkit", name: "webkit", provider: targetScaleProvider() }
             ]
           }
         }

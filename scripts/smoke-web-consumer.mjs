@@ -231,6 +231,18 @@ try {
     ],
     "Consumer production build is missing the Divider consumer override"
   );
+  assertCssRuleIncludes(
+    builtCss,
+    ".learnui-spinner__indicator",
+    ["animation:", "learnui-spinner-rotate", "border-radius:9999px"],
+    "Consumer production build is missing default Spinner styles"
+  );
+  assertCssRuleIncludes(
+    builtCss,
+    ".learnui-consumer-spinner-override",
+    ["color:var(--learnui-color-accent)", "height:32px", "width:32px"],
+    "Consumer production build is missing the Spinner consumer override"
+  );
 
   console.log(`@learnui/web consumer smoke passed: ${relative(repoRoot, consumerDir)}`);
 } finally {

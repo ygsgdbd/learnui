@@ -57,10 +57,15 @@ export function ThemePreviewControl() {
   const materialSurface = useCSSVariable(
     presentation.surface === "opaque" ? "--learnui-color-elevated" : "--learnui-color-surface"
   ) as string;
+  const accentColor = useCSSVariable("--learnui-color-accent") as string;
+  const accentForegroundColor = useCSSVariable("--learnui-color-accent-foreground") as string;
+  const borderColor = useCSSVariable("--learnui-color-border") as string;
+  const foregroundColor = useCSSVariable("--learnui-color-foreground") as string;
+  const mutedColor = useCSSVariable("--learnui-color-muted") as string;
 
   return (
     <View className="gap-4">
-      <Text className="text-base text-[--learnui-color-muted]">
+      <Text className="text-base" style={{ color: mutedColor }}>
         Preview: {previewMode} · resolved: {theme}
       </Text>
       <View accessibilityRole="radiogroup" className="flex-row gap-2">
@@ -79,18 +84,22 @@ export function ThemePreviewControl() {
               key={mode}
               onPress={() => selectTheme(mode)}
               style={({ pressed }) => ({
-                backgroundColor: isSelected ? undefined : materialSurface,
+                backgroundColor: isSelected ? accentColor : materialSurface,
+                borderColor: isSelected ? accentColor : borderColor,
                 borderWidth: presentation.surfaceBorder === "explicit" ? 1 : StyleSheet.hairlineWidth,
                 opacity: pressed ? 0.82 : 1,
-                transform: pressed && presentation.motion === "full" ? [{ scale: 0.98 }] : undefined
+                transform: [
+                  { scale: pressed && presentation.motion === "full" ? 0.98 : 1 }
+                ]
               })}
             >
               <Text
                 className={
                   isSelected
                     ? "font-semibold capitalize text-[--learnui-color-accent-foreground]"
-                    : "font-semibold capitalize text-[--learnui-color-foreground]"
+                  : "font-semibold capitalize text-[--learnui-color-foreground]"
                 }
+                style={{ color: isSelected ? accentForegroundColor : foregroundColor }}
               >
                 {mode}
               </Text>

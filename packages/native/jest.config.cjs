@@ -1,6 +1,7 @@
 module.exports = {
   moduleNameMapper: {
-    "^@learnui/native$": "<rootDir>/src/index.ts"
+    "^@learnui/native$": "<rootDir>/src/index.ts",
+    "^uniwind$": "<rootDir>/src/__mocks__/uniwind.ts"
   },
   preset: "react-native",
   testMatch: ["<rootDir>/src/**/__tests__/**/*.test.ts?(x)"],
