@@ -1,4 +1,4 @@
-import { Divider } from "@learnui/native";
+import { Divider, Spinner } from "@learnui/native";
 import { Text, View } from "react-native";
 
 export default function FixtureHomeScreen() {
@@ -8,6 +8,11 @@ export default function FixtureHomeScreen() {
   const consumerDividerStyle = {
     borderTopColor: "#2468ac",
     borderTopWidth: 4
+  } as const;
+  const consumerSpinnerStyle = {
+    height: 32,
+    opacity: 0.8,
+    width: 32
   } as const;
 
   return (
@@ -29,6 +34,15 @@ export default function FixtureHomeScreen() {
             style={consumerDividerStyle}
             weight="regular"
           />
+          <Spinner label="Loading fixture" />
+          <View accessibilityState={{ busy: true }}>
+            <Spinner
+              className="h-8 w-8"
+              color="accent"
+              isDecorative
+              style={consumerSpinnerStyle}
+            />
+          </View>
         </View>
       </View>
     </View>

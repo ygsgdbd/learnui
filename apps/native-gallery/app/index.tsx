@@ -19,6 +19,14 @@ export default function HomeScreen() {
           <Text className="text-base font-semibold text-[--learnui-color-foreground]">Divider</Text>
         </Pressable>
       </Link>
+      <Link asChild href="/components/spinner">
+        <Pressable
+          className="min-h-11 justify-center rounded-[--learnui-radius-control] border border-[--learnui-color-border] bg-[--learnui-color-surface] px-4"
+          style={({ pressed }) => ({ opacity: pressed ? 0.82 : 1 })}
+        >
+          <Text className="text-base font-semibold text-[--learnui-color-foreground]">Spinner</Text>
+        </Pressable>
+      </Link>
     </View>
   );
 }

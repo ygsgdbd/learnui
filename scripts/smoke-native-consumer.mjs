@@ -138,9 +138,12 @@ try {
   assertIncludes(consumerScreen, "rounded-[--learnui-radius-surface]", "consumer screen");
   assertIncludes(consumerScreen, "shadow-[--learnui-shadow-surface]", "consumer screen");
   assertIncludes(consumerScreen, 'backgroundColor: "#123456"', "consumer style override");
-  assertIncludes(consumerScreen, 'import { Divider } from "@learnui/native";', "consumer Divider import");
+  assertIncludes(consumerScreen, 'import { Divider, Spinner } from "@learnui/native";', "consumer public import");
   assertIncludes(consumerScreen, "<Divider />", "consumer default Divider");
   assertIncludes(consumerScreen, 'borderTopColor: "#2468ac"', "consumer Divider override");
+  assertIncludes(consumerScreen, '<Spinner label="Loading fixture" />', "consumer standalone Spinner");
+  assertIncludes(consumerScreen, "isDecorative", "consumer decorative Spinner");
+  assertIncludes(consumerScreen, 'height: 32', "consumer Spinner size override");
 
   run("pnpm", ["run", "typecheck"], consumerDir);
   run(
@@ -178,6 +181,9 @@ try {
       /borderTopWidth:\s*4/,
       `${platform} Divider thickness override`
     );
+    assertIncludes(exportOutput, "border-r-[--learnui-color-accent]", `${platform} Spinner accent styles`);
+    assertIncludes(exportOutput, "Loading fixture", `${platform} Spinner accessible label`);
+    assertMatches(exportOutput, /height:\s*32/, `${platform} Spinner size override`);
   }
 
   for (const runtime of ["react", "react-native"]) {
