@@ -4,6 +4,7 @@ import {
   type SpinnerColor,
   type SpinnerSize
 } from "@learnui/native";
+import { useCSSVariable } from "uniwind";
 
 import { ThemePreviewControl } from "../../components/theme-preview-control";
 import { useAccessibilityPreferences } from "../../lib/accessibility-preferences";
@@ -18,9 +19,17 @@ const colors: SpinnerColor[] = [
 const sizes: SpinnerSize[] = ["sm", "md", "lg"];
 
 function Specimen({ children, label }: { children: React.ReactNode; label: string }) {
+  const mutedColor = useCSSVariable("--learnui-color-muted") as string;
+  const surfaceColor = useCSSVariable("--learnui-color-surface") as string;
+
   return (
-    <View className="gap-3 rounded-[--learnui-radius-surface] bg-[--learnui-color-surface] p-4">
-      <Text className="text-sm font-semibold text-[--learnui-color-muted]">{label}</Text>
+    <View
+      className="gap-3 rounded-[--learnui-radius-surface] bg-[--learnui-color-surface] p-4"
+      style={{ backgroundColor: surfaceColor }}
+    >
+      <Text className="text-sm font-semibold" style={{ color: mutedColor }}>
+        {label}
+      </Text>
       {children}
     </View>
   );
@@ -28,13 +37,21 @@ function Specimen({ children, label }: { children: React.ReactNode; label: strin
 
 export default function SpinnerScreen() {
   const { isReduceMotionEnabled } = useAccessibilityPreferences();
+  const borderColor = useCSSVariable("--learnui-color-border") as string;
+  const canvasColor = useCSSVariable("--learnui-color-canvas") as string;
+  const foregroundColor = useCSSVariable("--learnui-color-foreground") as string;
+  const mutedColor = useCSSVariable("--learnui-color-muted") as string;
+  const surfaceColor = useCSSVariable("--learnui-color-surface") as string;
 
   return (
     <ScrollView
       className="flex-1 bg-[--learnui-color-canvas]"
       contentContainerClassName="gap-4 px-6 py-8"
+      style={{ backgroundColor: canvasColor }}
     >
-      <Text className="text-3xl font-semibold text-[--learnui-color-foreground]">Spinner</Text>
+      <Text className="text-3xl font-semibold" style={{ color: foregroundColor }}>
+        Spinner
+      </Text>
       <ThemePreviewControl />
 
       <Specimen label="Standalone progress semantics">
@@ -48,9 +65,12 @@ export default function SpinnerScreen() {
           accessibilityState={{ busy: true }}
           accessible
           className="min-h-11 flex-row items-center gap-3 rounded-[--learnui-radius-control] border border-[--learnui-color-border] bg-[--learnui-color-surface] px-4"
+          style={{ backgroundColor: surfaceColor, borderColor }}
         >
           <Spinner color="accent" isDecorative size="sm" />
-          <Text className="font-semibold text-[--learnui-color-foreground]">Save lesson</Text>
+          <Text className="font-semibold" style={{ color: foregroundColor }}>
+            Save lesson
+          </Text>
         </View>
       </Specimen>
 
@@ -59,7 +79,9 @@ export default function SpinnerScreen() {
           {colors.map((color) => (
             <View className="items-center gap-2" key={color}>
               <Spinner color={color} label={`${color} loading`} />
-              <Text className="text-xs text-[--learnui-color-muted]">{color}</Text>
+              <Text className="text-xs" style={{ color: mutedColor }}>
+                {color}
+              </Text>
             </View>
           ))}
         </View>
@@ -70,7 +92,9 @@ export default function SpinnerScreen() {
           {sizes.map((size) => (
             <View className="items-center gap-2" key={size}>
               <Spinner color="accent" label={`${size} loading`} size={size} />
-              <Text className="text-xs text-[--learnui-color-muted]">{size}</Text>
+              <Text className="text-xs" style={{ color: mutedColor }}>
+                {size}
+              </Text>
             </View>
           ))}
         </View>
@@ -79,7 +103,7 @@ export default function SpinnerScreen() {
       <Specimen label="System reduced motion">
         <View className="flex-row items-center gap-3">
           <Spinner color="success" label="Checking accessibility preference" />
-          <Text className="flex-1 text-sm text-[--learnui-color-foreground]">
+          <Text className="flex-1 text-sm" style={{ color: foregroundColor }}>
             {isReduceMotionEnabled
               ? "Enabled · continuous rotation is replaced by a static indicator."
               : "Disabled · continuous rotation runs on the native animation driver."}

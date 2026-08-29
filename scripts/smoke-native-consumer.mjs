@@ -181,7 +181,9 @@ try {
       /borderTopWidth:\s*4/,
       `${platform} Divider thickness override`
     );
-    assertIncludes(exportOutput, "border-r-[--learnui-color-accent]", `${platform} Spinner accent styles`);
+    assertIncludes(exportOutput, "--learnui-color-accent", `${platform} Spinner accent token`);
+    assertIncludes(exportOutput, "useCSSVariable", `${platform} Spinner token resolution`);
+    assertIncludes(exportOutput, "borderRightColor", `${platform} Spinner native border color`);
     assertIncludes(exportOutput, "Loading fixture", `${platform} Spinner accessible label`);
     assertMatches(exportOutput, /height:\s*32/, `${platform} Spinner size override`);
   }

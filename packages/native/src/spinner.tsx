@@ -8,6 +8,7 @@ import {
   type ViewProps,
   type ViewStyle
 } from "react-native";
+import { useCSSVariable } from "uniwind";
 
 import { tv } from "./internal/styles";
 
@@ -26,24 +27,19 @@ const spinner = tv({
 });
 
 const indicator = tv({
-  base: "h-full w-full rounded-full border-2 border-transparent",
-  variants: {
-    color: {
-      neutral: "border-r-[--learnui-color-muted] border-t-[--learnui-color-muted]",
-      accent: "border-r-[--learnui-color-accent] border-t-[--learnui-color-accent]",
-      success: "border-r-[--learnui-color-success] border-t-[--learnui-color-success]",
-      warning: "border-r-[--learnui-color-warning] border-t-[--learnui-color-warning]",
-      destructive:
-        "border-r-[--learnui-color-destructive] border-t-[--learnui-color-destructive]"
-    }
-  },
-  defaultVariants: {
-    color: "neutral"
-  }
+  base: "h-full w-full rounded-full border-2 border-b-transparent border-l-transparent"
 });
 
 export type SpinnerColor = "neutral" | "accent" | "success" | "warning" | "destructive";
 export type SpinnerSize = "sm" | "md" | "lg";
+
+const spinnerColorVariables: Record<SpinnerColor, string> = {
+  neutral: "--learnui-color-muted",
+  accent: "--learnui-color-accent",
+  success: "--learnui-color-success",
+  warning: "--learnui-color-warning",
+  destructive: "--learnui-color-destructive"
+};
 
 interface SpinnerBaseProps
   extends Omit<
@@ -91,6 +87,9 @@ export const Spinner = forwardRef<View, SpinnerProps>(function Spinner(
 ) {
   const [isReduceMotionEnabled, setIsReduceMotionEnabled] = useState<boolean | null>(null);
   const rotation = useRef(new Animated.Value(0)).current;
+  const indicatorColor = useCSSVariable(
+    spinnerColorVariables[color]
+  ) as ViewStyle["borderTopColor"];
 
   useEffect(() => {
     let isMounted = true;
@@ -131,9 +130,10 @@ export const Spinner = forwardRef<View, SpinnerProps>(function Spinner(
     return () => animation.stop();
   }, [isReduceMotionEnabled, rotation]);
 
-  const indicatorStyle =
+  const indicatorStyle: ViewStyle =
     isReduceMotionEnabled === false
       ? {
+          height: "100%",
           transform: [
             {
               rotate: rotation.interpolate({
@@ -141,9 +141,10 @@ export const Spinner = forwardRef<View, SpinnerProps>(function Spinner(
                 outputRange: ["0deg", "360deg"]
               })
             }
-          ]
+          ],
+          width: "100%"
         }
-      : { opacity: 0.72 };
+      : { height: "100%", opacity: 0.72, width: "100%" };
   const {
     accessibilityElementsHidden: _accessibilityElementsHidden,
     accessibilityLabel: _accessibilityLabel,
@@ -179,10 +180,19 @@ export const Spinner = forwardRef<View, SpinnerProps>(function Spinner(
       <Animated.View
         accessibilityElementsHidden
         accessible={false}
-        className={indicator({ color })}
         importantForAccessibility="no-hide-descendants"
         style={indicatorStyle}
-      />
+      >
+        <View
+          className={indicator()}
+          style={{
+            borderBottomColor: "transparent",
+            borderLeftColor: "transparent",
+            borderRightColor: indicatorColor,
+            borderTopColor: indicatorColor
+          }}
+        />
+      </Animated.View>
     </View>
   );
 });

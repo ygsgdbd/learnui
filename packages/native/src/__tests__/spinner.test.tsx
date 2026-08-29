@@ -7,8 +7,11 @@ import {
   type ViewProps
 } from "react-native";
 import { act, render, waitFor } from "@testing-library/react-native";
+import { useCSSVariable } from "uniwind";
 
 import { Spinner } from "@learnui/native";
+
+const mockUseCSSVariable = jest.mocked(useCSSVariable);
 
 describe("Spinner", () => {
   afterEach(() => {
@@ -63,6 +66,23 @@ describe("Spinner", () => {
     expect(visual.props.importantForAccessibility).toBe("no-hide-descendants");
   });
 
+  test("keeps Uniwind layout classes on a native View inside the animated wrapper", async () => {
+    const screen = await render(<Spinner color="accent" label="Loading lessons" />);
+    const animatedWrapper = screen.getByRole("progressbar").children[0] as {
+      children: Array<{ props: Record<string, unknown> }>;
+      props: Record<string, unknown>;
+    };
+    const visual = animatedWrapper.children[0];
+
+    expect(animatedWrapper.props.className).toBeUndefined();
+    expect(animatedWrapper.props.style).toEqual(
+      expect.objectContaining({ height: "100%", width: "100%" })
+    );
+    expect(visual.props.className).toContain("border-b-transparent");
+    expect(visual.props.className).toContain("border-l-transparent");
+    expect(visual.props.className).not.toContain("border-transparent");
+  });
+
   test.each([
     ["sm", "h-4 w-4"],
     ["md", "h-5 w-5"],
@@ -74,18 +94,25 @@ describe("Spinner", () => {
   });
 
   test.each([
-    ["neutral", "border-t-[--learnui-color-muted]"],
-    ["accent", "border-t-[--learnui-color-accent]"],
-    ["success", "border-t-[--learnui-color-success]"],
-    ["warning", "border-t-[--learnui-color-warning]"],
-    ["destructive", "border-t-[--learnui-color-destructive]"]
-  ] as const)("maps the %s color", async (color, expectedClassName) => {
+    ["neutral", "--learnui-color-muted"],
+    ["accent", "--learnui-color-accent"],
+    ["success", "--learnui-color-success"],
+    ["warning", "--learnui-color-warning"],
+    ["destructive", "--learnui-color-destructive"]
+  ] as const)("resolves the %s color token for native border styles", async (color, token) => {
     const screen = await render(<Spinner color={color} label="Loading lessons" />);
-    const visual = screen.getByRole("progressbar").children[0] as {
-      props: Record<string, unknown>;
+    const animatedWrapper = screen.getByRole("progressbar").children[0] as {
+      children: Array<{ props: Record<string, unknown> }>;
     };
+    const visual = animatedWrapper.children[0];
 
-    expect(visual.props.className).toContain(expectedClassName);
+    expect(mockUseCSSVariable).toHaveBeenLastCalledWith(token);
+    expect(visual.props.style).toEqual({
+      borderBottomColor: "transparent",
+      borderLeftColor: "transparent",
+      borderRightColor: `resolved:${token}`,
+      borderTopColor: `resolved:${token}`
+    });
   });
 
   test("merges consumer className last and preserves consumer style precedence", async () => {
@@ -127,7 +154,7 @@ describe("Spinner", () => {
     const visual = screen.getByRole("progressbar").children[0] as {
       props: Record<string, unknown>;
     };
-    expect(visual.props.style).toEqual({ opacity: 0.72 });
+    expect(visual.props.style).toEqual({ height: "100%", opacity: 0.72, width: "100%" });
 
     await screen.unmount();
     expect(remove).toHaveBeenCalledTimes(1);
