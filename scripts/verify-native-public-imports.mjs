@@ -12,6 +12,7 @@ const extensions = new Set([".css", ".ts", ".tsx"]);
 
 function collectFiles(relativeDir, files = []) {
   for (const entry of readdirSync(join(root, relativeDir))) {
+    if (["node_modules", "ios", "android", "dist", ".expo"].includes(entry)) continue;
     const relativePath = join(relativeDir, entry);
     const absolutePath = join(root, relativePath);
     const stat = statSync(absolutePath);

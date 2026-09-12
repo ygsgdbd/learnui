@@ -12,6 +12,7 @@
     "app/**/*.ts",
     "app/**/*.tsx",
     "global.css",
-    "uniwind-env.d.ts"
+    "uniwind-env.d.ts",
+    "button-types.tsx"
   ]
 }

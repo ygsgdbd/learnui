@@ -1,0 +1,18 @@
+Page: dev.learnui.gallery
+App: dev.learnui.gallery
+Snapshot: 15 nodes
+@e1 [application] "LearnUI Native Gallery"
+@e2 [other] "gearshape.fill"
+@e3 [image] "gearshape.fill" [covered]
+@e4 [other] "LearnUI"
+@e5 [navigation-bar] "LearnUI"
+@e6 [text] "Preview: system · resolved: light"
+@e7 [other] "System"
+@e8 [other] "Light"
+@e9 [other] "Dark"
+@e10 [text] "COMPONENTS"
+@e11 [link] "Button"
+@e12 [link] "Badge"
+@e13 [link] "Divider"
+@e14 [link] "Card"
+@e15 [link] "Spinner"

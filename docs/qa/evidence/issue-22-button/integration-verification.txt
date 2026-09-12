@@ -1,0 +1,15 @@
+/tmp/learnui-button-integration-native.log
+Test Suites: 3 passed, 3 total
+Tests:       38 passed, 38 total
+All good!
+
+/tmp/learnui-button-integration-typecheck.log
+packages/native typecheck: Done
+packages/web typecheck: Done
+apps/native-gallery typecheck: Done
+apps/web-storybook typecheck: Done
+
+/tmp/learnui-button-font-tarball.log
+Exported: dist/ios
+Exported: dist/android
+Native consumer smoke passed with learnui-native-0.0.0.tgz

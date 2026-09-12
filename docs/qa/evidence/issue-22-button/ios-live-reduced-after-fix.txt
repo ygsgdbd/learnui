@@ -1,0 +1,23 @@
+Page: dev.learnui.gallery
+App: dev.learnui.gallery
+Snapshot: 19 visible nodes (21 total)
+@e1 [application] "LearnUI Native Gallery"
+@e2 [other] "gearshape.fill"
+@e3 [image] "gearshape.fill" [covered]
+@e4 [navigation-bar] "LearnUI"
+@e5 [button] "LearnUI"
+@e6 [text] "LearnUI"
+@e7 [scroll-area] "Button" [scrollable]
+  [content above scroll-area hidden]
+@e8 [other] "Button"
+@e11 [button] "Pending action"
+@e12 [button] "Disabled pending action" [disabled]
+@e13 [text] "Named icon-only action"
+@e14 [button] "Add lesson"
+@e15 [text] "Consumer classes and press-dependent styles"
+@e16 [button] "Consumer override"
+@e17 [text] "Consumer dimensions, color, radius and transform compose with press feedback."
+@e18 [text] "Maximum font size and label reflow"
+@e19 [button] "Save this long lesson title and continue to the next exercise"
+@e20 [text] "Check maximum Dynamic Type / font and display size, VoiceOver / TalkBack, and light, dark, system themes."
+@e21 [image] "AdditionalDimmingOverlay"

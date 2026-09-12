@@ -244,6 +244,19 @@ try {
     "Consumer production build is missing the Spinner consumer override"
   );
 
+  assertCssRuleIncludes(
+    builtCss,
+    ".learnui-button",
+    ["min-height:44px", "min-width:44px", "display:inline-flex", "transform .15s"],
+    "Consumer production build is missing default Button geometry and motion"
+  );
+  assertCssRuleIncludes(
+    builtCss,
+    ".learnui-consumer-button-override",
+    ["border-radius:22px", "padding-inline:30px"],
+    "Consumer production build is missing the Button consumer override"
+  );
+
   assertCssRuleIncludes(builtCss, ".learnui-badge", ["display:inline-block"],
     "Consumer production build is missing default Badge styles");
   assertCssRuleIncludes(builtCss, ".learnui-badge--solid", ["background-color:var(--lui-badge-color)"],
@@ -256,7 +269,8 @@ try {
   assertCssRuleIncludes(builtCss, ".learnui-consumer-card-override", ["padding:28px"], "Missing Card override");
   console.log(`@learnui/web consumer smoke passed: ${relative(repoRoot, consumerDir)}`);
 } finally {
-  rmSync(workRoot, {
+  if (process.env.LEARNUI_KEEP_CONSUMER === "1") console.log(`Retained consumer: ${consumerDir}`);
+  else rmSync(workRoot, {
     recursive: true,
     force: true
   });

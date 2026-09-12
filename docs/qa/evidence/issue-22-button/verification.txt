@@ -1,0 +1,48 @@
+/tmp/learnui-button-typecheck.log
+packages/native typecheck: Done
+packages/web typecheck: Done
+apps/native-gallery typecheck: Done
+apps/web-storybook typecheck: Done
+
+/tmp/learnui-button-final-typecheck.log
+packages/native typecheck: Done
+packages/web typecheck: Done
+apps/native-gallery typecheck: Done
+apps/web-storybook typecheck: Done
+
+/tmp/learnui-button-gallery-inset-typecheck.log
+
+
+/tmp/learnui-button-storybook-build.log
+└  Storybook build completed successfully
+
+/tmp/learnui-button-web-full-tests.log
+ Test Files  4 passed (4)
+      Tests  15 passed (15)
+ Test Files  4 passed (4)
+      Tests  15 passed (15)
+ Test Files  4 passed (4)
+      Tests  15 passed (15)
+ Test Files  4 passed (4)
+      Tests  15 passed (15)
+
+/tmp/learnui-button-native-final-tests.log
+Test Suites: 3 passed, 3 total
+Tests:       37 passed, 37 total
+All good!
+
+/tmp/learnui-button-final-tarball.log
+Exported: dist/ios
+Exported: dist/android
+Native consumer smoke passed with learnui-native-0.0.0.tgz
+
+/tmp/learnui-button-native-final-export.log
+Exported: dist/ios
+Exported: dist/android
+
+/tmp/learnui-button-ios-build.log
+› Build Succeeded
+› 0 error(s), and 2 warning(s)
+
+/tmp/learnui-button-android-build-jdk21.log
+BUILD SUCCESSFUL in 27m 11s

@@ -1,18 +1,28 @@
 import * as LearnUI from "@learnui/web";
-import { Badge, Card, Divider, Spinner } from "@learnui/web";
+import { Badge, Button, Card, Divider, Spinner } from "@learnui/web";
 import "@learnui/web/styles";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 
 import "./app.css";
 
 function App() {
+  const [count, setCount] = useState(0);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   return (
     <main
       className="learnui-consumer-smoke"
       data-learnui-export-count={Object.keys(LearnUI).length}
     >
       <span>LearnUI web consumer smoke</span>
+      <section aria-label="Button consumer">
+        <Button ref={buttonRef} onPress={() => setCount(count + 1)}>Save fixture</Button>
+        <output aria-label="Press count">{count}</output>
+        <Button isPending>Pending fixture</Button>
+        <Button isDisabled>Disabled fixture</Button>
+        <Button aria-label="Add fixture">+</Button>
+        <Button className="learnui-consumer-button-override" variant="outline" size="lg">Override fixture</Button>
+      </section>
       <Badge>Pending review</Badge>
       <Badge color="success" variant="solid" size="sm">Approved</Badge>
       <Badge className="learnui-consumer-badge-override" color="warning" variant="outline">Requires review</Badge>

@@ -165,10 +165,11 @@ try {
   assertIncludes(consumerScreen, "rounded-[--learnui-radius-surface]", "consumer screen");
   assertIncludes(consumerScreen, "shadow-[--learnui-shadow-surface]", "consumer screen");
   assertIncludes(consumerScreen, 'backgroundColor: "#123456"', "consumer style override");
-  assertIncludes(consumerScreen, 'import { Badge, Card, Divider, Spinner } from "@learnui/native";', "consumer public import");
+  assertIncludes(consumerScreen, 'import { Badge, Button, Card, Divider, Spinner } from "@learnui/native";', "consumer public import");
   assertIncludes(consumerScreen, "<Badge>Pending review</Badge>", "consumer default Badge");
   assertIncludes(consumerScreen, 'variant="solid"', "consumer solid Badge");
   assertIncludes(consumerScreen, 'className="px-5"', "consumer Badge class override");
+  assertIncludes(consumerScreen, "<Button", "consumer public Button");
   assertIncludes(consumerScreen, "<Divider />", "consumer default Divider");
   assertIncludes(consumerScreen, 'borderTopColor: "#2468ac"', "consumer Divider override");
   assertIncludes(consumerScreen, '<Spinner label="Loading fixture" />', "consumer standalone Spinner");
@@ -190,6 +191,15 @@ try {
 
   for (const platform of ["ios", "android"]) {
     const exportOutput = readExportOutput(join(consumerDir, "dist", platform));
+    assertCompiledClass(exportOutput, "min-h-11", ['"minHeight"', '* 11'], `${platform} Button compiled style`);
+    assertCompiledClass(exportOutput, "rounded-[22px]", ['"borderRadius"', 'return 22;'], `${platform} Button compiled style`);
+    assertCompiledClass(exportOutput, "px-[30px]", ['"paddingLeft"', '"paddingRight"', 'return 30;'], `${platform} Button compiled style`);
+    assertCompiledClass(exportOutput, "bg-[var(--lui-button-primary-background)]", ['"backgroundColor"', 'vars["--lui-button-primary-background"]'], `${platform} Button compiled style`);
+    assertCompiledClass(exportOutput, "text-[color:var(--learnui-color-accent-foreground)]", ['"color"', 'vars["--learnui-color-accent-foreground"]'], `${platform} Button compiled style`);
+    assertCompiledClass(exportOutput, "font-[family-name:var(--learnui-font-sans)]", ['"fontFamily"', 'vars["--learnui-font-sans"]'], `${platform} Button compiled style`);
+    assertIncludes(exportOutput, "Save fixture", `${platform} Button public import`);
+    assertIncludes(exportOutput, "#13579b", `${platform} Button style override`);
+    assertIncludes(exportOutput, "rounded-[22px]", `${platform} Button consumer class`);
     assertCompiledClass(exportOutput, "text-[var(--lui-badge-solid-foreground)]",
       ["color", 'vars["--lui-badge-solid-foreground"]'], `${platform} Badge solid foreground`);
     assertCompiledClass(exportOutput, "bg-[var(--learnui-color-success)]",
@@ -270,5 +280,6 @@ try {
 
   console.log(`Native consumer smoke passed with ${basename(tarball)}`);
 } finally {
-  rmSync(smokeRoot, { force: true, recursive: true });
+  if (process.env.LEARNUI_KEEP_CONSUMER === "1") console.log(`Retained consumer: ${consumerDir}`);
+  else rmSync(smokeRoot, { force: true, recursive: true });
 }

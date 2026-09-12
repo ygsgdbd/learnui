@@ -1,0 +1,4 @@
+Tapped role=radiobutton label="Dark" (865, 594)
+settled after 5207ms: +1 -1 (~26 unchanged)
+- @e5 [text] "Preview: system · resolved: light"
++ @e5~s180576 [text] "Preview: dark · resolved: dark"

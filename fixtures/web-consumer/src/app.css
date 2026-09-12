@@ -61,6 +61,10 @@
   width: 32px;
 }
 
+.learnui-consumer-button-override {
+  border-radius: 22px;
+  padding-inline: 30px;
+}
 .learnui-consumer-badge-override {
   border-radius: 6px;
   padding-inline: 12px;

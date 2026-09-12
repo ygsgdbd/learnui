@@ -1,0 +1,58 @@
+/tmp/learnui-button-merged-native.log
+Test Suites: 5 passed, 5 total
+Tests:       59 passed, 59 total
+All good!
+
+/tmp/learnui-button-merged-native-tarball.log
+Done in 6.6s using pnpm v11.9.0
+Exported: dist/ios
+Exported: dist/android
+Native consumer smoke passed with learnui-native-0.0.0.tgz
+
+/tmp/learnui-button-merged-gallery-export.log
+Exported: dist/ios
+Exported: dist/android
+
+/tmp/learnui-button-merged-foundation.log
+ Test Files  3 passed (3)
+      Tests  12 passed (12)
+
+/tmp/learnui-button-merged-public-imports.log
+
+/tmp/learnui-button-merged-typecheck.log
+packages/native typecheck: Done
+packages/web typecheck: Done
+apps/native-gallery typecheck: Done
+apps/web-storybook typecheck: Done
+
+/tmp/learnui-button-merged-card-browser.log
+chromium: Card light/dark contrast, supported forced colors, 200% text passed
+firefox: Card light/dark contrast, supported forced colors, 200% text passed
+webkit: Card light/dark contrast, supported forced colors, 200% text passed
+
+/tmp/learnui-button-merged-web-pack.log
+@learnui/web pack check passed: ../../../../../../var/folders/9b/wsf5f1js65b6s1bf8jz0p3380000gn/T/learnui-web-pack-48336/learnui-web-0.0.0.tgz
+All good!
+
+/tmp/learnui-button-merged-web-chromium.log
+ Test Files  6 passed (6)
+      Tests  24 passed (24)
+
+/tmp/learnui-button-merged-web-chromium-reduced-motion.log
+ Test Files  6 passed (6)
+      Tests  24 passed (24)
+
+/tmp/learnui-button-merged-web-firefox.log
+ Test Files  6 passed (6)
+      Tests  24 passed (24)
+
+/tmp/learnui-button-merged-web-webkit.log
+ Test Files  6 passed (6)
+      Tests  24 passed (24)
+
+/tmp/learnui-button-merged-web-badge-forced-colors.log
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+
+/tmp/learnui-button-merged-web-storybook-build.log
+└  Storybook build completed successfully

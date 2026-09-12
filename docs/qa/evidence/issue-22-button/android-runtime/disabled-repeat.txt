@@ -1,0 +1,24 @@
+Tapped role=button label="Disabled action" (540, 1244)
+settled after 1470ms: +0 -0 (~25 unchanged)
+unchanged interactive (20):
+= @e1~s180587 [scroll-area]
+= @e2~s180587 [button] "Navigate up"
+= @e3~s180587 [scroll-area]
+= @e4~s180587 [button] "destructive"
+= @e5~s180587 [text] "destructive"
+= @e6~s180587 [text] "All sizes · minimum 44-point target"
+= @e7~s180587 [button] "sm"
+= @e8~s180587 [text] "sm"
+= @e9~s180587 [button] "md"
+= @e10~s180587 [text] "md"
+= @e11~s180587 [button] "lg"
+= @e12~s180587 [text] "lg"
+= @e13~s180587 [text] "Disabled and pending"
+= @e14~s180587 [button] "Disabled action"
+= @e15~s180587 [text] "Disabled action"
+= @e16~s180587 [button] "busy"
+= @e17~s180587 [text] "Pending action"
+= @e18~s180587 [button] "busy"
+= @e19~s180587 [text] "Disabled pending action"
+= @e20~s180587 [text] "Named icon-only action"
+… more interactive elements not shown, use snapshot -i

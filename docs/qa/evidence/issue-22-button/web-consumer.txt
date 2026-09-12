@@ -1,0 +1,26 @@
+firefox - main:
+  - text: LearnUI web consumer smoke
+  - region "Button consumer":
+    - button "Save fixture"
+    - status "Press count": "0"
+    - button "Pending fixture" [disabled]
+    - button "Disabled fixture" [disabled]
+    - button "Add fixture": +
+    - button "Override fixture"
+  - text: Branded control Default Divider Consumer override Standalone Spinner
+  - progressbar "Loading fixture"
+  - text: Decorative consumer override
+{"browser":"firefox","motion":{"scale":"matrix(0.98, 0, 0, 0.98, 0, 0)","opacity":"0.88"},"busy":{"busy":"true","disabled":false,"focused":true},"reduced":{"scale":"none","opacity":"0.88"},"result":"PASS"}
+webkit - main:
+  - text: LearnUI web consumer smoke
+  - region "Button consumer":
+    - button "Save fixture"
+    - status "Press count": "0"
+    - button "Pending fixture" [disabled]
+    - button "Disabled fixture" [disabled]
+    - button "Add fixture": +
+    - button "Override fixture"
+  - text: Branded control Default Divider Consumer override Standalone Spinner
+  - progressbar "Loading fixture"
+  - text: Decorative consumer override
+{"browser":"webkit","motion":{"scale":"matrix(0.98, 0, 0, 0.98, 0, 0)","opacity":"0.88"},"busy":{"busy":"true","disabled":false,"focused":true},"reduced":{"scale":"none","opacity":"0.88"},"result":"PASS"}
