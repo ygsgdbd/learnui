@@ -60,3 +60,5 @@
   height: 32px;
   width: 32px;
 }
+
+.learnui-consumer-card-override { padding: 28px; border-color: var(--learnui-color-accent); }

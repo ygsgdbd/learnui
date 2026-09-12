@@ -138,13 +138,14 @@ try {
   assertIncludes(consumerScreen, "rounded-[--learnui-radius-surface]", "consumer screen");
   assertIncludes(consumerScreen, "shadow-[--learnui-shadow-surface]", "consumer screen");
   assertIncludes(consumerScreen, 'backgroundColor: "#123456"', "consumer style override");
-  assertIncludes(consumerScreen, 'import { Divider, Spinner } from "@learnui/native";', "consumer public import");
+  assertIncludes(consumerScreen, 'import { Card, Divider, Spinner } from "@learnui/native";', "consumer public import");
   assertIncludes(consumerScreen, "<Divider />", "consumer default Divider");
   assertIncludes(consumerScreen, 'borderTopColor: "#2468ac"', "consumer Divider override");
   assertIncludes(consumerScreen, '<Spinner label="Loading fixture" />', "consumer standalone Spinner");
   assertIncludes(consumerScreen, "isDecorative", "consumer decorative Spinner");
   assertIncludes(consumerScreen, 'height: 32', "consumer Spinner size override");
 
+  assertIncludes(consumerScreen, "<Card.Root", "consumer Card composition");
   run("pnpm", ["run", "typecheck"], consumerDir);
   run(
     "pnpm",
@@ -159,6 +160,8 @@ try {
 
   for (const platform of ["ios", "android"]) {
     const exportOutput = readExportOutput(join(consumerDir, "dist", platform));
+    assertIncludes(exportOutput, "Consumer Card", `${platform} Card composition`);
+    assertMatches(exportOutput, /["']p-7["']\s*:/, `${platform} Card consumer utility compiled`);
     assertIncludes(exportOutput, "#6750a4", `${platform} export color override`);
     assertIncludes(exportOutput, "Avenir Next", `${platform} export font override`);
     assertMatches(

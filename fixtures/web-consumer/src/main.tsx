@@ -1,5 +1,5 @@
 import * as LearnUI from "@learnui/web";
-import { Divider, Spinner } from "@learnui/web";
+import { Card, Divider, Spinner } from "@learnui/web";
 import "@learnui/web/styles";
 import React from "react";
 import { createRoot } from "react-dom/client";
@@ -13,6 +13,10 @@ function App() {
       data-learnui-export-count={Object.keys(LearnUI).length}
     >
       <span>LearnUI web consumer smoke</span>
+      <Card.Root variant="elevated" className="learnui-consumer-card-override">
+        <Card.Header><Card.Title>Consumer Card</Card.Title><Card.Description>Tarball composition</Card.Description></Card.Header>
+        <Card.Body><p>Consumer body</p></Card.Body><Card.Footer><p>Consumer footer</p></Card.Footer>
+      </Card.Root>
       <span className="learnui-consumer-control">Branded control</span>
       <div className="learnui-consumer-divider-stack">
         <span>Default Divider</span>
