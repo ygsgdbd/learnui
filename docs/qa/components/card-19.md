@@ -1,7 +1,7 @@
 # Card #19 acceptance
 
 - Issue: https://github.com/ygsgdbd/learnui/issues/19
-- Draft PR: https://github.com/ygsgdbd/learnui/pull/33
+- PR: https://github.com/ygsgdbd/learnui/pull/33
 - Date: 2026-09-12. Reviewer: Codex automated inspection; no human sign-off.
 - Baseline: `ceb0d830de258b90e3f56d9bee0b828c7af0d411`; fetched again after runtime acceptance, unchanged. Divider dependency #15 is closed.
 - Component source: `1e96746`. Final runtime follow-up adds only `contentInsetAdjustmentBehavior="automatic"` to the Gallery Card ScrollView; served through the same development client's Metro connection.
@@ -78,4 +78,11 @@ Large text wrapped within Card width and the final example remained reachable. A
 - Native external installation initially used stale pnpm Metro metadata. `pnpm cache delete "metro-*"` refreshed it; no dependency/version replacement bypassed the real installation.
 - Android cold boot showed Process system/System UI ANR dialogs; choosing Wait eventually allowed actual page acceptance. This environment does **not** establish smooth startup or frame pacing.
 - **Unverified gates:** physical iPhone/Android behavior, VoiceOver/TalkBack speech and focus sequence, browser NVDA/VoiceOver manual use, human visual-baseline approval, and release/profile physical-device performance. Native reduced-transparency behavior has unit coverage; live iOS setting/assistive speech was not manually verified.
-- Simulator screenshots, AX trees, axe and development builds do not constitute full WCAG or production performance approval. PR remains Draft; no automatic merge or issue closure.
+- Simulator screenshots, AX trees, axe and development builds do not constitute full WCAG or production performance approval.
+
+## Component merge review
+
+- Standards and Spec independently reviewed the final `origin/main...6a66910` diff and found no blocking component requirement or documented-standard violation. The last implementation change is the runtime-verified Gallery inset fix.
+- ADR-0009 and the acceptance matrix separate every-PR automated/development-build gates from every-RC human gates. Physical-device assistive technology, manual visual baseline approval and production-like performance remain **unverified** and are carried by [RC acceptance #27](https://github.com/ygsgdbd/learnui/issues/27); merging Card does not sign off that ticket or V1 release readiness.
+- GitHub currently reports no check runs, branch protection or applicable rules for this branch. [CI implementation #26](https://github.com/ygsgdbd/learnui/issues/26) remains open. The passing evidence above is local execution, not a claim of hosted CI success.
+- Final `6a66910` Gallery production export recheck passed on iOS and Android after the inset fix (bundle hashes `5b601f1285b4490279021cab60c4ab45` / `f3eedcd8b6eadd3556a14f8a7a778a20`). The subsequent change only records this review. Component gates are satisfied; the PR may leave Draft and merge. This supersedes the initial conservative Draft hold without waiving any Card requirement.
