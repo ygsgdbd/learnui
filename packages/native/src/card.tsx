@@ -42,10 +42,10 @@ const Header = forwardRef<View, CardViewProps>(function CardHeader({ className, 
   return <View {...props} ref={ref} className={cn("min-w-0 gap-1", className)} />;
 });
 const Title = forwardRef<Text, CardTextProps>(function CardTitle({ className, ...props }, ref) {
-  return <Text accessibilityRole="header" {...props} ref={ref} className={cn("text-xl font-semibold text-[--learnui-color-foreground]", className)} />;
+  return <Text accessibilityRole="header" {...props} ref={ref} className={cn("font-[family-name:var(--learnui-font-sans)] text-xl font-semibold text-[--learnui-color-foreground]", className)} />;
 });
 const Description = forwardRef<Text, CardTextProps>(function CardDescription({ className, ...props }, ref) {
-  return <Text {...props} ref={ref} className={cn("text-sm text-[--learnui-color-muted]", className)} />;
+  return <Text {...props} ref={ref} className={cn("font-[family-name:var(--learnui-font-sans)] text-sm text-[--learnui-color-muted]", className)} />;
 });
 const Body = forwardRef<View, CardViewProps>(function CardBody({ className, ...props }, ref) {
   return <View {...props} ref={ref} className={cn("min-w-0 gap-3", className)} />;

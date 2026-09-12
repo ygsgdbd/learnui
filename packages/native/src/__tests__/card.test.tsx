@@ -32,6 +32,7 @@ test.each(["Root", "Header", "Title", "Description", "Body", "Footer"] as const)
     expect(host.props.className).not.toMatch(/\bgap-[134]\b/);
     if (part === "Title" || part === "Description") {
       expect(host.props.className).toContain("text-2xl");
+      expect(host.props.className).toContain("font-[family-name:var(--learnui-font-sans)]");
       expect(host.props.className).not.toMatch(/\btext-(xl|sm)\b/);
       expect(host.props.numberOfLines).toBeUndefined();
       expect(host.props.allowFontScaling).not.toBe(false);
