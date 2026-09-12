@@ -1,5 +1,5 @@
 16deec6b0da49831ed22af7b5351f1ed3b081af4bb87606939b6580fed2229ef  packages/web/src/button.tsx
 f821e7830d74aadea95a77f1764307f45795e9af0b1e0c7444ced945aa86f9e9  packages/web/src/styles.css
-2982dabd8454d85add5ea4cb78f1dbebd0f366023392a3d72c36f1b7536530e6  packages/native/src/button.tsx
+f6d007b567cc3186750cd2ff7419825060764516ea1f7e092b8e5d39129f7148  packages/native/src/button.tsx
 1de5ddec41a30742e10e5771b81af808f9b01279dd5ac49c89a172bc540a200c  packages/native/src/styles.css
 3ee0ec23592014440f1c2ec19e69798b8deb720772a0c414b05cafbb983d95c9  apps/native-gallery/app/components/button.tsx

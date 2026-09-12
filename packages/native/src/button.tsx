@@ -32,7 +32,7 @@ const button = tv({
 });
 
 const label = tv({
-  base: "shrink text-center font-semibold",
+  base: "shrink text-center font-[family-name:var(--learnui-font-sans)] font-semibold",
   variants: {
     variant: {
       primary: "text-[color:var(--learnui-color-accent-foreground)]",

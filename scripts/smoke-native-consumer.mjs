@@ -176,6 +176,7 @@ try {
     assertGeneratedRule(exportOutput, "px-[30px]", ['"paddingLeft"', '"paddingRight"', 'return 30;']);
     assertGeneratedRule(exportOutput, "bg-[var(--lui-button-primary-background)]", ['"backgroundColor"', 'vars["--lui-button-primary-background"]']);
     assertGeneratedRule(exportOutput, "text-[color:var(--learnui-color-accent-foreground)]", ['"color"', 'vars["--learnui-color-accent-foreground"]']);
+    assertGeneratedRule(exportOutput, "font-[family-name:var(--learnui-font-sans)]", ['"fontFamily"', 'vars["--learnui-font-sans"]']);
     assertIncludes(exportOutput, "Save fixture", `${platform} Button public import`);
     assertIncludes(exportOutput, "#13579b", `${platform} Button style override`);
     assertIncludes(exportOutput, "rounded-[22px]", `${platform} Button consumer class`);

@@ -7,6 +7,14 @@ import { Button } from "@learnui/native";
 describe("Button", () => {
   afterEach(() => jest.restoreAllMocks());
 
+  test("applies the public font-family token to its plain-text action label", async () => {
+    const screen = await render(<Button>Save lesson</Button>);
+    expect(screen.getByText("Save lesson").props.className).toContain(
+      "font-[family-name:var(--learnui-font-sans)]"
+    );
+    expect(screen.getByText("Save lesson").props.className).toContain("font-semibold");
+  });
+
   test("guards platform accessibility activation callbacks while pending and resumes them when ready", async () => {
     const onAccessibilityTap = jest.fn();
     const onMagicTap = jest.fn();

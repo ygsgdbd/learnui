@@ -28,6 +28,12 @@ press down 立即开始反馈，目标 scale 0.98，150ms；reduced motion 不�
 
 发现 Native 辅助功能回调可绕过 pending，以及浅色 pressed 对比度不足。分别加 unavailable 守卫/公共测试和私有派生色；复核关闭。真实读屏、真机和性能证据仍独立未验证。
 
+## 最终集成复审
+
+以 `ceb0d83...HEAD` 分别执行 Standards / Spec 复审。两轴均发现 Native 内部 Text 未消费公共 `--learnui-font-sans`，已显式应用字体变量 utility 并保留字重，公共入口测试 RED → GREEN。实际 tarball consumer 双平台 registry 已验证生成 `fontFamily` 对该 token 的引用，fixture 的 Avenir Next 覆盖保留；两轴复核关闭该 finding。
+
+字体修复后 Native 全量 **38/38**、Button **16/16**、pack/Publint、全仓 typecheck、真实 Native tarball 外部安装与双平台 export 通过。对应日志 `/tmp/learnui-button-integration-native.log`、`/tmp/learnui-button-integration-typecheck.log`、`/tmp/learnui-button-font-tarball.log`。[最终自动化摘录](evidence/issue-22-button/integration-verification.txt)。iOS 原 development build 重新加载字体修复后的 JS，Button 正常显示且无字体报错，见[截图](evidence/issue-22-button/ios-font-final.png)和[AX](evidence/issue-22-button/ios-font-final.txt)；此次增量复查不重复签署真人读屏或性能。初次运行源码标识保留为 [source-initial-sha256.txt](evidence/issue-22-button/source-initial-sha256.txt)，当前字体修复源码使用 `source-sha256.txt`。
+
 ## 自动化与 package/bundle
 
 最终复验结果如下；完整本地日志在本节列出，关键截图/AX结果保存在 `evidence/issue-22-button/`。执行环境沿用锁文件；`pnpm_config_verify_deps_before_run=false` 仅用于已安装依赖后的检查，避免 PNPM 并发自动安装重建输出。
@@ -80,11 +86,11 @@ press down 立即开始反馈，目标 scale 0.98，150ms；reduced motion 不�
 - 本地Metro8089与iOS验收session已关闭；iOS系统外观和Reduce Motion恢复到最初浅色/关闭。
 - 生成的本地原生工程移入 `/tmp/learnui-button-native-projects/` 保留，不进入git提交。
 
-## 仍为 unverified 的门槛
+## 留待 #27 的 RC 门槛（unverified）
 
 - 支持范围内的物理iPhone/Android phone、iPad/Android tablet验收。
 - VoiceOver/Safari、NVDA/Chrome、真实iOS VoiceOver/Android TalkBack口播、焦点顺序及无重复焦点的人类确认。
 - 最大字体/显示大小的完整验收，真实键盘/触摸体验、人类批准的视觉baseline diff。
 - production-like release/profile的帧节奏和流畅度；开发模式、高负载模拟器、Jest动画目标与截图都不能证明性能。
 
-以上缺失保持release gate未完成，不降低 `docs/qa/V1_ACCEPTANCE.md`。Issue保持OPEN；未发布npm、未合并、未声明V1可发布。
+以上真人读屏、人工视觉基线批准、真机及 production-like 性能验收依 ADR-0009 和矩阵 Gate cadence 留待 [#27](https://github.com/ygsgdbd/learnui/issues/27)，不是自动阻塞组件 PR 的理由。Android development build 的 compile/install/launch 属于每个相关 PR 的独立门槛，不能转移到 RC；安装、启动未验证期间组件合入门槛仍未满足。未发布 npm、未声明 V1 可发布。
