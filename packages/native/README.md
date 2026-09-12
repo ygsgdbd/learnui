@@ -45,3 +45,18 @@ function StatusExamples() {
 ```
 
 The ref points to the platform `Text`. Consumer `className` merges last, and native `style` takes precedence over generated presentation. Badge has no fixed height or default line limit, so text can scale and wrap. Text must convey the meaning without relying on color. Verify contrast after overriding semantic theme tokens or styles; VoiceOver, TalkBack, and maximum font scaling still require device acceptance.
+
+## Card
+
+`Card.Root`, `Card.Header`, `Card.Title`, `Card.Description`, `Card.Body`, and
+`Card.Footer` compose a passive container. Root defaults to `variant="surface"`;
+`elevated` and `outline` are also available. Every part accepts `className` and
+forwards its host ref. Parts may be omitted and children retain their order.
+Card does not add press, selection, disabled state or automatic grouping.
+
+Native Title and Description render Text; other parts render View. Put body text
+inside Text. Native styles pass through after classes. Title defaults to the
+header accessibility role; font scaling is enabled with no line limit. Surface
+responds to iOS reduced transparency; Android keeps an explicit border and the
+baseline token contrast. No screen-reader or physical-device guarantee is implied
+by component tests.

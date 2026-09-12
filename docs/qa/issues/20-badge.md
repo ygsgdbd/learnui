@@ -78,3 +78,11 @@ ADR-0009 and the Gate cadence section of `docs/qa/V1_ACCEPTANCE.md` separate rel
 ### Final independent review
 
 Standards: no actionable violations. Spec: one missing browser forced-colors gate was found and closed by the dedicated Chromium project, which checks all 15 variant/color combinations for readable text, visible borders and no tab stop. It runs through the default Storybook test command. Real-OS high contrast remains under #27.
+
+### Integration after Card #33
+
+Merged `origin/main` at `18c4ffebf98d23102ae340de0f4b810a9810da58` into the Badge branch. Shared roots, Gallery navigation, README sections, fixture composition and style assertions preserve both components. Card registry checks now use the complete-array parser while retaining the same native property/token checks. Independent review found no lost contract or weakened assertion.
+
+Post-integration validation: Web browser stories 68/68 (17 per configuration), Badge forced-colors 1/1, Card three-engine contrast/forced-colors/text checks, Native 43/43, Foundation 12/12; Web/Native package checks, relevant typechecks, Storybook static build, public Native imports, external Web/Native tarballs, and both Gallery production exports passed. Logs: `20-badge/integration-*.log`.
+
+The installed development-build observations above remain the runtime evidence for each component; integration changed shared JS exports/hosts/fixtures, with no native dependency, native configuration, or component implementation changes. The final integrated JS was production-exported for both platforms; no new physical-device or assistive-technology claim is made. Component gates are ready for merge; #27 retains the RC-only outstanding evidence.

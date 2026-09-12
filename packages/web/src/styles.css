@@ -265,3 +265,31 @@
     }
   }
 }
+
+@layer learnui {
+  .learnui-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+    padding: 20px;
+    border: max(1px, var(--lui-surface-border-width)) solid var(--learnui-color-border);
+    border-radius: var(--learnui-radius-surface);
+    color: var(--learnui-color-foreground);
+    font-family: var(--learnui-font-sans);
+    overflow-wrap: anywhere;
+  }
+  .learnui-card--surface { background: var(--lui-surface-background); }
+  .learnui-card--elevated { background: var(--learnui-color-elevated); box-shadow: var(--learnui-shadow-surface); }
+  .learnui-card--outline { background: transparent; }
+  .learnui-card__header { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .learnui-card__title { margin: 0; font-size: 1.25rem; line-height: 1.4; font-weight: 600; }
+  .learnui-card__description { margin: 0; color: var(--learnui-color-muted); font-size: .875rem; line-height: 1.5; }
+  .learnui-card__body, .learnui-card__footer { min-width: 0; }
+  @media (prefers-contrast: more) {
+    .learnui-card { border-color: var(--learnui-color-foreground); }
+  }
+  @media (forced-colors: active) {
+    .learnui-card { border-color: CanvasText; }
+  }
+}

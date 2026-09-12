@@ -165,7 +165,7 @@ try {
   assertIncludes(consumerScreen, "rounded-[--learnui-radius-surface]", "consumer screen");
   assertIncludes(consumerScreen, "shadow-[--learnui-shadow-surface]", "consumer screen");
   assertIncludes(consumerScreen, 'backgroundColor: "#123456"', "consumer style override");
-  assertIncludes(consumerScreen, 'import { Badge, Divider, Spinner } from "@learnui/native";', "consumer public import");
+  assertIncludes(consumerScreen, 'import { Badge, Card, Divider, Spinner } from "@learnui/native";', "consumer public import");
   assertIncludes(consumerScreen, "<Badge>Pending review</Badge>", "consumer default Badge");
   assertIncludes(consumerScreen, 'variant="solid"', "consumer solid Badge");
   assertIncludes(consumerScreen, 'className="px-5"', "consumer Badge class override");
@@ -175,6 +175,7 @@ try {
   assertIncludes(consumerScreen, "isDecorative", "consumer decorative Spinner");
   assertIncludes(consumerScreen, 'height: 32', "consumer Spinner size override");
 
+  assertIncludes(consumerScreen, "<Card.Root", "consumer Card composition");
   run("pnpm", ["run", "typecheck"], consumerDir);
   run(
     "pnpm",
@@ -204,6 +205,19 @@ try {
     assertIncludes(exportOutput, "Pending review", `${platform} Badge text`);
     assertMatches(exportOutput, /borderRadius:\s*6/, `${platform} Badge style override`);
     assertIncludes(exportOutput, "px-5", `${platform} Badge class override`);
+
+    for (const [className, property, variable] of [
+      ["bg-[var(--learnui-color-surface)]", "backgroundColor", "--learnui-color-surface"],
+      ["bg-[var(--learnui-color-elevated)]", "backgroundColor", "--learnui-color-elevated"],
+      ["rounded-[var(--learnui-radius-surface)]", "borderRadius", "--learnui-radius-surface"],
+      ["border-[var(--learnui-color-border)]", "borderColor", "--learnui-color-border"],
+      ["font-[family-name:var(--learnui-font-sans)]", "fontFamily", "--learnui-font-sans"],
+      ["text-[var(--learnui-color-foreground)]", "color", "--learnui-color-foreground"],
+      ["text-[var(--learnui-color-muted)]", "color", "--learnui-color-muted"],
+      ["p-7", "padding", "--spacing"]
+    ]) assertCompiledClass(exportOutput, className, [JSON.stringify(property), `vars[${JSON.stringify(variable)}]`], `${platform} Card compiled style`);
+    assertIncludes(exportOutput, "Consumer Card", `${platform} Card composition`);
+    assertMatches(exportOutput, /["']p-7["']\s*:/, `${platform} Card consumer utility compiled`);
     assertIncludes(exportOutput, "#6750a4", `${platform} export color override`);
     assertIncludes(exportOutput, "Avenir Next", `${platform} export font override`);
     assertMatches(

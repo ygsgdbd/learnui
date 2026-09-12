@@ -27,6 +27,11 @@ export default function HomeScreen() {
           <Text className="text-base font-semibold text-[--learnui-color-foreground]">Divider</Text>
         </Pressable>
       </Link>
+      <Link asChild href="/components/card">
+        <Pressable className="min-h-11 justify-center rounded-[--learnui-radius-control] border border-[--learnui-color-border] bg-[--learnui-color-surface] px-4">
+          <Text className="text-base font-semibold text-[--learnui-color-foreground]">Card</Text>
+        </Pressable>
+      </Link>
       <Link asChild href="/components/spinner">
         <Pressable
           className="min-h-11 justify-center rounded-[--learnui-radius-control] border border-[--learnui-color-border] bg-[--learnui-color-surface] px-4"
