@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, within } from "storybook/test";
 
 function CardContract() {
-  return <div style={{ maxWidth: 520, display: "grid", gap: 24 }}>
+  return <div style={{ background: "var(--learnui-color-canvas)", color: "var(--learnui-color-foreground)", padding: 24, maxWidth: 520, display: "grid", gap: 24 }}>
     {(["surface", "elevated", "outline"] as const).map(variant =>
       <Card.Root key={variant} variant={variant} data-variant={variant}>
         <Card.Header><Card.Title>{variant} account</Card.Title><Card.Description>Personal details</Card.Description></Card.Header>
@@ -30,7 +30,7 @@ export const Composition: Story = {
 
 function RefsAndReflow() {
   const forwarded = (node: HTMLElement | null) => { node?.setAttribute("data-ref-forwarded", "true"); };
-  return <div style={{ width: 280 }}>
+  return <div style={{ background: "var(--learnui-color-canvas)", color: "var(--learnui-color-foreground)", padding: 24, width: 280 }}>
     <Card.Root ref={forwarded} className="card-override">
       <Card.Header ref={forwarded} className="header-override">
         <Card.Title ref={forwarded} className="title-override">Long account title wraps naturally</Card.Title>

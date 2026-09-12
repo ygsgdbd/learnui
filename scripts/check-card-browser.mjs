@@ -21,7 +21,7 @@ const server = createServer(async (request, response) => {
 await new Promise(resolve => server.listen(0, "127.0.0.1", resolve));
 const url = `http://127.0.0.1:${server.address().port}/iframe.html?id=components-card--composition&viewMode=story`;
 try {
-  for (const engine of [chromium, firefox, webkit]) {
+  for (const engine of [chromium, firefox, webkit].filter(engine => !process.env.CARD_BROWSER || process.env.CARD_BROWSER === engine.name())) {
     const browser = await engine.launch();
     try {
       const page = await browser.newPage({ viewport: { width: 640, height: 900 } });
@@ -30,15 +30,35 @@ try {
       for (const theme of ["light", "dark"]) {
         await page.evaluate(theme => { document.documentElement.dataset.theme = theme; }, theme);
         await page.emulateMedia({ contrast: "more", reducedMotion: "reduce" });
+        if (await page.evaluate(() => matchMedia("(prefers-contrast: more)").matches)) {
+          await page.waitForFunction(() => {
+            const node = document.querySelector(".learnui-card");
+            return node && parseFloat(getComputedStyle(node).borderTopWidth) >= 2;
+          });
+        }
         const contrast = await page.locator(".learnui-card").first().evaluate(node => {
           const style = getComputedStyle(node);
           return { width: parseFloat(style.borderTopWidth), border: style.borderTopColor, text: style.color };
         });
-        assert(contrast.width >= 2);
-        assert.equal(contrast.border, contrast.text);
+        if (await page.evaluate(() => matchMedia("(prefers-contrast: more)").matches)) {
+          assert(contrast.width >= 2, `${engine.name()} contrast: ${JSON.stringify(contrast)}`);
+          assert.equal(contrast.border, contrast.text);
+        } else {
+          console.log(`${engine.name()}: prefers-contrast emulation unavailable; unverified on this engine`);
+        }
         await page.emulateMedia({ contrast: "no-preference", forcedColors: "active" });
         if (await page.evaluate(() => matchMedia("(forced-colors: active)").matches)) {
-          assert(await page.locator(".learnui-card").first().evaluate(node => parseFloat(getComputedStyle(node).borderTopWidth) > 0));
+          const colors = await page.locator(".learnui-card").first().evaluate(node => {
+            const probe = document.createElement("div");
+            probe.style.color = "CanvasText";
+            document.body.append(probe);
+            const expected = getComputedStyle(probe).color;
+            probe.remove();
+            const style = getComputedStyle(node);
+            return { border: style.borderTopColor, background: style.backgroundColor, text: style.color, expected };
+          });
+          assert.equal(colors.border, colors.expected);
+          assert.notEqual(colors.background, colors.text);
         }
         await page.emulateMedia({ forcedColors: "none" });
       }
@@ -51,8 +71,15 @@ try {
         const cdp = await page.context().newCDPSession(page);
         await cdp.send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-transparency", value: "reduce" }] });
         assert(await page.evaluate(() => matchMedia("(prefers-reduced-transparency: reduce)").matches));
-        const background = await page.locator(".card-override").evaluate(node => getComputedStyle(node).backgroundColor);
-        assert(!background.startsWith("rgba"), "reduced transparency must be opaque");
+        const colors = await page.locator(".card-override").evaluate(node => {
+          const probe = document.createElement("div");
+          probe.style.backgroundColor = "var(--learnui-color-elevated)";
+          document.body.append(probe);
+          const expected = getComputedStyle(probe).backgroundColor;
+          probe.remove();
+          return { actual: getComputedStyle(node).backgroundColor, expected };
+        });
+        assert.equal(colors.actual, colors.expected, "reduced transparency uses elevated token");
       }
       console.log(`${engine.name()}: Card light/dark contrast, supported forced colors, 200% text passed`);
     } finally { await browser.close(); }

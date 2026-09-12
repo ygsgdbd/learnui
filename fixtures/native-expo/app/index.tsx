@@ -28,7 +28,7 @@ export default function FixtureHomeScreen() {
           Branded control
         </Text>
         <View className="mt-5 gap-4">
-      <Card.Root variant="elevated" className="p-7 border-[--learnui-color-accent]">
+      <Card.Root variant="elevated" className="p-7 border-[var(--learnui-color-accent)]">
         <Card.Header><Card.Title>Consumer Card</Card.Title><Card.Description>Tarball composition</Card.Description></Card.Header>
         <Card.Body><Text>Consumer body</Text></Card.Body><Card.Footer><Text>Consumer footer</Text></Card.Footer>
       </Card.Root>

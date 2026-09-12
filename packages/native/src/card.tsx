@@ -11,10 +11,10 @@ export interface CardViewProps extends ViewProps { className?: string }
 export interface CardTextProps extends TextProps { className?: string }
 
 const root = tv({
-  base: "min-w-0 gap-4 rounded-[--learnui-radius-surface] border border-[--learnui-color-border] p-5",
+  base: "min-w-0 gap-4 rounded-[var(--learnui-radius-surface)] border border-[var(--learnui-color-border)] p-5",
   variants: { variant: {
-    surface: "bg-[--learnui-color-surface]",
-    elevated: "bg-[--learnui-color-elevated] shadow-[--learnui-shadow-surface]",
+    surface: "bg-[var(--learnui-color-surface)]",
+    elevated: "bg-[var(--learnui-color-elevated)] shadow-[var(--learnui-shadow-surface)]",
     outline: "bg-transparent"
   } },
   defaultVariants: { variant: "surface" }
@@ -35,17 +35,17 @@ const Root = forwardRef<View, CardRootProps>(function CardRoot({ className, vari
     return () => { active = false; subscription.remove(); };
   }, []);
   return <View accessible={false} {...props} ref={ref} className={root({ variant,
-    class: cn(variant === "surface" && reduceTransparency && "bg-[--learnui-color-elevated]", className)
+    class: cn(variant === "surface" && reduceTransparency && "bg-[var(--learnui-color-elevated)]", className)
   })} />;
 });
 const Header = forwardRef<View, CardViewProps>(function CardHeader({ className, ...props }, ref) {
   return <View {...props} ref={ref} className={cn("min-w-0 gap-1", className)} />;
 });
 const Title = forwardRef<Text, CardTextProps>(function CardTitle({ className, ...props }, ref) {
-  return <Text accessibilityRole="header" {...props} ref={ref} className={cn("font-[family-name:var(--learnui-font-sans)] text-xl font-semibold text-[--learnui-color-foreground]", className)} />;
+  return <Text accessibilityRole="header" {...props} ref={ref} className={cn("font-[family-name:var(--learnui-font-sans)] text-xl font-semibold text-[var(--learnui-color-foreground)]", className)} />;
 });
 const Description = forwardRef<Text, CardTextProps>(function CardDescription({ className, ...props }, ref) {
-  return <Text {...props} ref={ref} className={cn("font-[family-name:var(--learnui-font-sans)] text-sm text-[--learnui-color-muted]", className)} />;
+  return <Text {...props} ref={ref} className={cn("font-[family-name:var(--learnui-font-sans)] text-sm text-[var(--learnui-color-muted)]", className)} />;
 });
 const Body = forwardRef<View, CardViewProps>(function CardBody({ className, ...props }, ref) {
   return <View {...props} ref={ref} className={cn("min-w-0 gap-3", className)} />;

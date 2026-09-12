@@ -34,6 +34,7 @@ test.each(["Root", "Header", "Title", "Description", "Body", "Footer"] as const)
       expect(host.props.className).toContain("text-2xl");
       expect(host.props.className).toContain("font-[family-name:var(--learnui-font-sans)]");
       expect(host.props.className).not.toMatch(/\btext-(xl|sm)\b/);
+      if (part === "Title") expect(host.props.className).toContain("font-semibold");
       expect(host.props.numberOfLines).toBeUndefined();
       expect(host.props.allowFontScaling).not.toBe(false);
     }
@@ -46,7 +47,7 @@ test.each(["surface", "elevated", "outline"] as const)("%s remains a passive con
   expect(host.props.onPress).toBeUndefined();
   expect(host.props.accessibilityState).toBeUndefined();
   expect(host.props.accessibilityRole).toBeUndefined();
-  expect(host.props.className).toContain("border-[--learnui-color-border]");
+  expect(host.props.className).toContain("border-[var(--learnui-color-border)]");
 });
 
 test("surface follows live reduced transparency and keeps consumer classes last", async () => {
@@ -58,13 +59,13 @@ test("surface follows live reduced transparency and keeps consumer classes last"
     return { remove };
   });
   const screen = await render(<Card.Root testID="card" />);
-  expect(screen.getByTestId("card").props.className).toContain("bg-[--learnui-color-surface]");
+  expect(screen.getByTestId("card").props.className).toContain("bg-[var(--learnui-color-surface)]");
   await act(() => onChange(true));
-  expect(screen.getByTestId("card").props.className).toContain("bg-[--learnui-color-elevated]");
-  expect(screen.getByTestId("card").props.className).not.toContain("bg-[--learnui-color-surface]");
-  await screen.rerender(<Card.Root testID="card" className="bg-[--learnui-color-accent]" />);
-  expect(screen.getByTestId("card").props.className).toContain("bg-[--learnui-color-accent]");
-  expect(screen.getByTestId("card").props.className).not.toContain("bg-[--learnui-color-elevated]");
+  expect(screen.getByTestId("card").props.className).toContain("bg-[var(--learnui-color-elevated)]");
+  expect(screen.getByTestId("card").props.className).not.toContain("bg-[var(--learnui-color-surface)]");
+  await screen.rerender(<Card.Root testID="card" className="bg-[var(--learnui-color-accent)]" />);
+  expect(screen.getByTestId("card").props.className).toContain("bg-[var(--learnui-color-accent)]");
+  expect(screen.getByTestId("card").props.className).not.toContain("bg-[var(--learnui-color-elevated)]");
   await screen.unmount();
   expect(remove).toHaveBeenCalled();
   query.mockRestore();
