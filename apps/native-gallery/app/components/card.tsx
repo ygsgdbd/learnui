@@ -3,7 +3,7 @@ import { Card } from "@learnui/native";
 import { ThemePreviewControl } from "../../components/theme-preview-control";
 
 export default function CardScreen() {
-  return <ScrollView className="flex-1 bg-[var(--learnui-color-canvas)]" contentContainerClassName="gap-4 px-6 py-8">
+  return <ScrollView contentInsetAdjustmentBehavior="automatic" className="flex-1 bg-[var(--learnui-color-canvas)]" contentContainerClassName="gap-4 px-6 py-8">
     <Text accessibilityRole="header" className="text-3xl font-semibold text-[var(--learnui-color-foreground)]">Card</Text>
     <ThemePreviewControl />
     {(["surface", "elevated", "outline"] as const).map(variant =>
