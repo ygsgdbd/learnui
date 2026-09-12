@@ -11,6 +11,9 @@
       --learnui-color-border: rgba(0, 0, 0, 0.10);
       --learnui-color-accent: #0071e3;
       --learnui-color-accent-foreground: #ffffff;
+      --lui-button-primary-background: color-mix(in srgb, var(--learnui-color-accent) 80%, black);
+      --lui-button-destructive-background: color-mix(in srgb, var(--learnui-color-destructive) 80%, black);
+      --lui-button-ghost-foreground: color-mix(in srgb, var(--learnui-color-accent) 80%, var(--learnui-color-foreground));
       --learnui-color-destructive: #d70015;
       --learnui-color-success: #248a3d;
       --learnui-color-warning: #a96500;
@@ -34,6 +37,9 @@
       --learnui-color-border: rgba(255, 255, 255, 0.14);
       --learnui-color-accent: #0a84ff;
       --learnui-color-accent-foreground: #ffffff;
+      --lui-button-primary-background: color-mix(in srgb, var(--learnui-color-accent) 78%, black);
+      --lui-button-destructive-background: color-mix(in srgb, var(--learnui-color-destructive) 78%, black);
+      --lui-button-ghost-foreground: color-mix(in srgb, var(--learnui-color-accent) 80%, var(--learnui-color-foreground));
       --learnui-color-destructive: #ff453a;
       --learnui-color-success: #30d158;
       --learnui-color-warning: #ffb340;

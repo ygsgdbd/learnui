@@ -10,3 +10,5 @@ export {
   type SpinnerProps,
   type SpinnerSize
 } from "./spinner";
+
+export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from "./button";

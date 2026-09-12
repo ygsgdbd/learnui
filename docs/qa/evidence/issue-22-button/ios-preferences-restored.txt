@@ -1,0 +1,25 @@
+Page: dev.learnui.gallery
+App: dev.learnui.gallery
+Snapshot: 21 visible nodes
+@e1 [application] "LearnUI Native Gallery"
+@e2 [other] "gearshape.fill"
+@e3 [image] "gearshape.fill" [covered]
+@e4 [navigation-bar] "LearnUI"
+@e5 [button] "LearnUI"
+@e6 [text] "LearnUI"
+@e7 [scroll-area] "Button" [scrollable]
+  [content below scroll-area hidden]
+@e8 [other] "Button"
+@e9 [text] "Preview: system · resolved: light"
+@e10 [other] "System"
+@e11 [other] "Light"
+@e12 [other] "Dark"
+@e13 [text] "Pending · stable action name and one focus target"
+@e14 [button] "Save lesson"
+@e15 [button] "Finish saving"
+@e16 [text] "Save activations: 0 · ready"
+@e17 [text] "Rapid press and system reduced motion"
+@e18 [button] "Rapid press"
+@e19 [text] "Presses: 0"
+@e20 [button] "Reset count"
+@e21 [text] "Press twenty times and interrupt press/release. Check immediate feedback and final count. Reduce Motion is disabled: 0.98 scale, 150ms response. Toggle the OS setting while this page remains open."

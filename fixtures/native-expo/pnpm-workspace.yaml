@@ -1,0 +1,10 @@
+# RN's ^0.84.3 ranges currently select a partially published 0.84.6 Metro family.
+# Keep its runtime/source-map on the same 0.84.5 versions as the repo lockfile;
+# Expo/Uniwind continue to consume their direct Metro 0.87 dependencies.
+overrides:
+  'react-native>metro-runtime': 0.84.5
+  'react-native>metro-source-map': 0.84.5
+  '@react-native/community-cli-plugin>metro': 0.84.5
+  '@react-native/community-cli-plugin>metro-config': 0.84.5
+  '@react-native/metro-config>metro-config': 0.84.5
+  '@react-native/metro-config>metro-runtime': 0.84.5

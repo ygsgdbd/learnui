@@ -1,7 +1,10 @@
-import { Divider, Spinner } from "@learnui/native";
+import { Button, Divider, Spinner } from "@learnui/native";
+import { useRef, useState } from "react";
 import { Text, View } from "react-native";
 
 export default function FixtureHomeScreen() {
+  const [count, setCount] = useState(0);
+  const buttonRef = useRef<View>(null);
   const consumerStyle = {
     backgroundColor: "#123456"
   } as const;
@@ -28,6 +31,12 @@ export default function FixtureHomeScreen() {
           Branded control
         </Text>
         <View className="mt-5 gap-4">
+          <Button ref={buttonRef} onPress={() => setCount(count + 1)}>Save fixture</Button>
+          <Text>Press count: {count}</Text>
+          <Button isPending>Pending fixture</Button>
+          <Button isDisabled>Disabled fixture</Button>
+          <Button accessibilityLabel="Add fixture">+</Button>
+          <Button variant="outline" size="lg" className="rounded-[22px] px-[30px]" style={{ borderColor: "#13579b" }}>Override fixture</Button>
           <Divider />
           <Divider
             className="border-[--learnui-color-accent]"

@@ -1,0 +1,90 @@
+# Issue #22 — 双端 Button 验收记录
+
+- Issue: https://github.com/ygsgdbd/learnui/issues/22 （本记录不是 release sign-off）
+- 日期：2026-09-12，Asia/Shanghai；执行者：Codex。
+- 基线：`ceb0d830de258b90e3f56d9bee0b828c7af0d411`，已包含 #17 Spinner；开始时与最新 `origin/main` 一致，无开放 PR，#22 无评论/实现认领。分支：`codex/issue-22-button`。
+- 代码标识：最终提交见 Git 历史；本记录与 Button 实现一同提交，关键运行源码 SHA-256 见 [source-sha256.txt](evidence/issue-22-button/source-sha256.txt)。Native Debug binary 通过本 worktree Metro `8089` 加载 JS，不能仅用 binary 时间代表 JS 版本。
+- 用户原有 `.codegraph/`、`.codex/` 未纳入改动。自动生成的 iOS/Android 工程只用于本地构建，不是发布源码。
+
+## 契约与实现
+
+两个 public roots 均导出 `Button`、`ButtonProps`、`ButtonVariant`、`ButtonSize`。五 variants、三 sizes；`onPress`、`isDisabled`、`isPending`；平台 ref 与 consumer class/style。文本 children 自动提供动作名称，复杂 children 的类型需要显式平台名称；开发期空名称有反馈。Pending 保留根与动作名称，Spinner 为装饰，busy 属于根。Native 的辅助功能激活回调也被 unavailable 状态守卫。
+
+press down 立即开始反馈，目标 scale 0.98，150ms；reduced motion 不缩放，保留 opacity。Native consumer transform 与内部 scale 组合。背景/前景使用语义 token 派生色保证默认按压态对比度；消费者自行覆盖的颜色仍需自行验收。
+
+## TDD 与 review
+
+公开 consumer seam 已由父规格 #11 和本任务确定。
+
+- Web：未导出 Button 时 TS2305；缺按压样式和 `aria-busy` 的真实浏览器 RED；实现后 GREEN。RAC 会过滤 `aria-busy`，内部 render 将它放回同一个 DOM root。
+- Native：public pending/name/ref 测试 RED → GREEN；轴/样式/动画偏好逐片验证；辅助功能激活绕过 pending 的新增公共回归测试 RED → GREEN。
+- 真实 iOS 曾出现透明黑字、无圆角。外部 registry 缺样式证明旧 `bg-[--var]` 语法未生成规则。修复为明确 `var(...)` 语法，再检查实际生成 registry；这也是为何 bundle 成功不代表视觉通过。
+
+### Standards
+
+发现外部 fixture 只搜源码字符串不足以证明样式生成。已补 Web 默认44px/inline-flex/150ms、consumer22px/30px CSS规则，以及 Native registry 中实际 backgroundColor/color/minHeight/borderRadius/paddingLeft/Right 规则。复核关闭；不把静态产物校验当作运行时证据。
+
+### Spec
+
+发现 Native 辅助功能回调可绕过 pending，以及浅色 pressed 对比度不足。分别加 unavailable 守卫/公共测试和私有派生色；复核关闭。真实读屏、真机和性能证据仍独立未验证。
+
+## 自动化与 package/bundle
+
+最终复验结果如下；完整本地日志在本节列出，关键截图/AX结果保存在 `evidence/issue-22-button/`。执行环境沿用锁文件；`pnpm_config_verify_deps_before_run=false` 仅用于已安装依赖后的检查，避免 PNPM 并发自动安装重建输出。
+
+- Web Storybook：全量15稳定stories × Chromium/Firefox/WebKit/Chromium reduced-motion = **60/60通过**（其中Button28项）。串行复跑未改配置/断言/超时；WebKit15份完整axe报告均0 violations、0 incomplete。
+- Web 外部真实 tarball：安装、类型负例/正例、生产构建、默认及覆盖 CSS、单 React/ReactDOM runtime 检查通过。Chrome/Firefox/WebKit 实际 pointer、Enter/Space、pending focus/busy 和 override 通过；Firefox/WebKit 动态 reduced motion 通过。仅 favicon 404，无应用异常。
+- Native 外部 fixture：RN 0.86.2 的传递 Metro ^0.84.3 当天会解析到不完整的0.84.6发布，fixture 将相关依赖限定到仓库锁文件已验证0.84.5；Expo/Uniwind直接Metro0.87保持不变。此限制只在外部fixture，未修改公共package peer契约。
+- Foundation 12 tests通过；Native完整37 tests通过，最后transform改动后的受影响Button15 tests再次通过。
+- 最终全仓typecheck、Storybook静态build、Web/Native package build、Publint/pack manifest通过。构建均多次从clean输出执行，Native prepack也再次执行clean Bob。
+- 最后transform修复的真实Native tarball已重新安装：类型正/负例、双平台export、实际生成registry、runtime去重通过。外部安装解析Uniwind1.12.0；Gallery锁文件使用1.11.0，两个consumer环境分别验证。
+- Gallery iOS/Android production export及public-import扫描通过；自动生成native/依赖目录排除在host源码import扫描之外。
+- 顶层`pnpm test`曾因高负载导致Firefox握手超时、未执行断言。随后将Web全suite按4引擎串行、Native链串行完成；不是把失败的顶层命令写成成功。
+- 日志：`/tmp/learnui-button-web-full-tests.log`、`/tmp/learnui-button-native-final-tests.log`、`/tmp/learnui-button-final-typecheck.log`、`/tmp/learnui-button-storybook-build.log`、`/tmp/learnui-button-final-tarball.log`、`/tmp/learnui-button-native-final-export.log`。
+- Export 仅证明打包，不证明安装、流畅度、读屏或真机。
+
+## 实际 Native development builds
+
+### iOS Simulator
+
+- Xcode 26.5 (17F42)，iPhone 17 Simulator / iOS 26.5，UDID `1A01053A-461C-4524-8DFB-2C8CD2E6EBF4`。
+- Expo57 / RN0.86.2，Debug development client `dev.learnui.gallery`。
+- `expo prebuild --no-install`；`expo run:ios --device <UDID> --no-bundler` 实际编译成功、安装和启动，0 errors/2构建脚本警告。
+- Expo自动启动地址198.18.0.1:8081触发ATS错误；随后显式development URL连接127.0.0.1:8089，正常进入本worktree Gallery/Button页。旧错误不算组件错误或验收通过。
+- pending触发1次后再点击5次，保存计数仍1；快速点击20次，计数20。AX快照保留 `Save lesson` Button，没有第二个Spinner节点。此为AX结构证据，不是VoiceOver口播或真实读屏焦点证据。
+- disabled/pending固定样本各点击3次，共享计数仍为0，见[计数AX记录](evidence/issue-22-button/ios-disabled-count.txt)。
+- token语法修复后实际显示蓝色填充、圆角及白色文字。
+- 实际系统Reduce Motion开启后修复版正常渲染，页面确认偏好为enabled；20次快速点击计数20，pending连续5次保存计数1。默认截图中名称/Spinner结构正确。
+- 显式dark、显式light、system跟随OS dark实际通过；[深色](evidence/issue-22-button/ios-dark.png)、[跟随系统深色](evidence/issue-22-button/ios-system-dark.png)、[系统浅色](evidence/issue-22-button/ios-system-light.png)。
+- 五种variants、sm/md/lg、disabled/pending/disabled+pending、命名图标和consumer override/长文本重排已在实际页面查看，[variants/sizes截图](evidence/issue-22-button/ios-variants-sizes.png)与[状态AX](evidence/issue-22-button/ios-sizes-states.txt)。无额外Spinner AX节点；真人读屏焦点仍未签署。
+- 最后transform修复后同一Gallery实例从OS reduce off切on，页面收到enabled且无原崩溃，[AX证据](evidence/issue-22-button/ios-live-reduced-after-fix.txt)。
+- iOS原生大标题遮挡了Button页主题控制，按RN文档加入ScrollView `contentInsetAdjustmentBehavior="automatic"`，实际页面复核可见可点，Gallery typecheck再次通过。
+- 实际验证受高负载影响，部分短tap/合成scroll没有效果；使用200ms触摸/坐标拖动并检查实际状态后才记通过。
+
+### Android Emulator
+
+- AVD `Medium_Phone_API_36.0`，serial `emulator-5554`。
+- JBR25因Prefab子进程native-access warning失败；所谓JDK23路径实际指向26，不能当作兼容版本。临时下载官方Temurin21.0.12.1+1后真实Gradle build成功（455tasks，约27分钟）。不是Expo Go。
+- **安装/启动/全部Android页面操作 UNVERIFIED**：模拟器因内存不足离线，多轮默认/低资源/快照恢复后系统包管理服务仍未就绪，`Service package: not found`。详见 [Android记录](evidence/issue-22-button/android-acceptance.md)。不以编译成功代替运行。
+
+## 运行中发现并修复的缺陷
+
+1. Native旧token class不生成背景/文字/圆角：显式var语法修复，实际registry + iOS渲染复核。
+2. 真实iOS Reduce Motion从false切true时，Animated transform由数组移除为空值触发RN `processTransform`异常：改为合法静态`[{scale:1}]`，实时切换公共回归RED→GREEN；运行复验单列。
+3. Gallery disabled/pending样本绑定同一个真实计数回调，避免无回调样本无法证明阻断。
+
+## 证据与环境清理
+
+- [自动化结果摘录](evidence/issue-22-button/verification.txt)、[Web axe完整结果摘要](evidence/issue-22-button/web-axe-summary.json)、[关键源码SHA-256](evidence/issue-22-button/source-sha256.txt)。
+- Android APK保留 `/tmp/learnui-button-android-evidence/app-debug.apk`，SHA-256见 [binary记录](evidence/issue-22-button/android-binary-sha256.txt)；只关闭本任务emulator-5554及其独立daemon，未wipe数据、未触碰其他模拟器/物理设备。
+- 本地Metro8089与iOS验收session已关闭；iOS系统外观和Reduce Motion恢复到最初浅色/关闭。
+- 生成的本地原生工程移入 `/tmp/learnui-button-native-projects/` 保留，不进入git提交。
+
+## 仍为 unverified 的门槛
+
+- 支持范围内的物理iPhone/Android phone、iPad/Android tablet验收。
+- VoiceOver/Safari、NVDA/Chrome、真实iOS VoiceOver/Android TalkBack口播、焦点顺序及无重复焦点的人类确认。
+- 最大字体/显示大小的完整验收，真实键盘/触摸体验、人类批准的视觉baseline diff。
+- production-like release/profile的帧节奏和流畅度；开发模式、高负载模拟器、Jest动画目标与截图都不能证明性能。
+
+以上缺失保持release gate未完成，不降低 `docs/qa/V1_ACCEPTANCE.md`。Issue保持OPEN；未发布npm、未合并、未声明V1可发布。

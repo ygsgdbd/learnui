@@ -95,6 +95,17 @@ function assertMatches(contents, pattern, label) {
   }
 }
 
+// Inspect compiled Uniwind registry entries, not JSX class strings left in a bundle.
+function assertGeneratedRule(output, className, declarations) {
+  const marker = `${JSON.stringify(className)}: [{`;
+  const start = output.indexOf(marker);
+  const end = output.indexOf("\n      }]", start);
+  const rule = start < 0 || end < 0 ? "" : output.slice(start, end);
+  for (const declaration of declarations) {
+    assertIncludes(rule, declaration, `generated Uniwind rule ${className}`);
+  }
+}
+
 function readExportOutput(directory) {
   return readdirSync(directory, { withFileTypes: true }).map((entry) => {
     const path = join(directory, entry.name);
@@ -138,7 +149,8 @@ try {
   assertIncludes(consumerScreen, "rounded-[--learnui-radius-surface]", "consumer screen");
   assertIncludes(consumerScreen, "shadow-[--learnui-shadow-surface]", "consumer screen");
   assertIncludes(consumerScreen, 'backgroundColor: "#123456"', "consumer style override");
-  assertIncludes(consumerScreen, 'import { Divider, Spinner } from "@learnui/native";', "consumer public import");
+  assertIncludes(consumerScreen, 'import { Button, Divider, Spinner } from "@learnui/native";', "consumer public import");
+  assertIncludes(consumerScreen, "<Button", "consumer public Button");
   assertIncludes(consumerScreen, "<Divider />", "consumer default Divider");
   assertIncludes(consumerScreen, 'borderTopColor: "#2468ac"', "consumer Divider override");
   assertIncludes(consumerScreen, '<Spinner label="Loading fixture" />', "consumer standalone Spinner");
@@ -159,6 +171,14 @@ try {
 
   for (const platform of ["ios", "android"]) {
     const exportOutput = readExportOutput(join(consumerDir, "dist", platform));
+    assertGeneratedRule(exportOutput, "min-h-11", ['"minHeight"', '* 11']);
+    assertGeneratedRule(exportOutput, "rounded-[22px]", ['"borderRadius"', 'return 22;']);
+    assertGeneratedRule(exportOutput, "px-[30px]", ['"paddingLeft"', '"paddingRight"', 'return 30;']);
+    assertGeneratedRule(exportOutput, "bg-[var(--lui-button-primary-background)]", ['"backgroundColor"', 'vars["--lui-button-primary-background"]']);
+    assertGeneratedRule(exportOutput, "text-[color:var(--learnui-color-accent-foreground)]", ['"color"', 'vars["--learnui-color-accent-foreground"]']);
+    assertIncludes(exportOutput, "Save fixture", `${platform} Button public import`);
+    assertIncludes(exportOutput, "#13579b", `${platform} Button style override`);
+    assertIncludes(exportOutput, "rounded-[22px]", `${platform} Button consumer class`);
     assertIncludes(exportOutput, "#6750a4", `${platform} export color override`);
     assertIncludes(exportOutput, "Avenir Next", `${platform} export font override`);
     assertMatches(
@@ -211,5 +231,6 @@ try {
 
   console.log(`Native consumer smoke passed with ${basename(tarball)}`);
 } finally {
-  rmSync(smokeRoot, { force: true, recursive: true });
+  if (process.env.LEARNUI_KEEP_CONSUMER === "1") console.log(`Retained consumer: ${consumerDir}`);
+  else rmSync(smokeRoot, { force: true, recursive: true });
 }

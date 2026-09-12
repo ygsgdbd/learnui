@@ -1,0 +1,25 @@
+Page: dev.learnui.gallery
+App: dev.learnui.gallery
+Snapshot: 20 visible nodes (22 total)
+@e1 [application] "LearnUI Native Gallery"
+@e2 [other] "gearshape.fill"
+@e3 [image] "gearshape.fill" [covered]
+@e4 [navigation-bar] "LearnUI"
+@e5 [button] "LearnUI"
+@e6 [text] "LearnUI"
+@e7 [scroll-area] "Button" [scrollable]
+  [content above scroll-area hidden]
+  [content below scroll-area hidden]
+@e8 [other] "Button"
+@e11 [button] "sm"
+@e12 [button] "md"
+@e13 [button] "lg"
+@e14 [text] "Disabled and pending"
+@e15 [button] "Disabled action" [disabled]
+@e16 [button] "Pending action"
+@e17 [button] "Disabled pending action" [disabled]
+@e18 [text] "Named icon-only action"
+@e19 [button] "Add lesson"
+@e20 [text] "Consumer classes and press-dependent styles"
+@e21 [button] "Consumer override"
+@e22 [image] "AdditionalDimmingOverlay"
