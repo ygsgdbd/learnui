@@ -138,7 +138,10 @@ try {
   assertIncludes(consumerScreen, "rounded-[--learnui-radius-surface]", "consumer screen");
   assertIncludes(consumerScreen, "shadow-[--learnui-shadow-surface]", "consumer screen");
   assertIncludes(consumerScreen, 'backgroundColor: "#123456"', "consumer style override");
-  assertIncludes(consumerScreen, 'import { Divider, Spinner } from "@learnui/native";', "consumer public import");
+  assertIncludes(consumerScreen, 'import { Badge, Divider, Spinner } from "@learnui/native";', "consumer public import");
+  assertIncludes(consumerScreen, "<Badge>Pending review</Badge>", "consumer default Badge");
+  assertIncludes(consumerScreen, 'variant="solid"', "consumer solid Badge");
+  assertIncludes(consumerScreen, 'className="px-5"', "consumer Badge class override");
   assertIncludes(consumerScreen, "<Divider />", "consumer default Divider");
   assertIncludes(consumerScreen, 'borderTopColor: "#2468ac"', "consumer Divider override");
   assertIncludes(consumerScreen, '<Spinner label="Loading fixture" />', "consumer standalone Spinner");
@@ -159,6 +162,11 @@ try {
 
   for (const platform of ["ios", "android"]) {
     const exportOutput = readExportOutput(join(consumerDir, "dist", platform));
+    assertIncludes(exportOutput, "text-[--lui-badge-solid-foreground]", `${platform} Badge solid styles`);
+    assertIncludes(exportOutput, "bg-[--learnui-color-foreground]/10", `${platform} Badge default styles`);
+    assertIncludes(exportOutput, "Pending review", `${platform} Badge text`);
+    assertMatches(exportOutput, /borderRadius:\s*6/, `${platform} Badge style override`);
+    assertIncludes(exportOutput, "px-5", `${platform} Badge class override`);
     assertIncludes(exportOutput, "#6750a4", `${platform} export color override`);
     assertIncludes(exportOutput, "Avenir Next", `${platform} export font override`);
     assertMatches(

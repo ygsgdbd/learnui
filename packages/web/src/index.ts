@@ -1,4 +1,11 @@
 export {
+  Badge,
+  type BadgeColor,
+  type BadgeProps,
+  type BadgeSize,
+  type BadgeVariant
+} from "./badge";
+export {
   Divider,
   type DividerOrientation,
   type DividerProps,

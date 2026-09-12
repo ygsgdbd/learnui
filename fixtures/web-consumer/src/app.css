@@ -60,3 +60,8 @@
   height: 32px;
   width: 32px;
 }
+
+.learnui-consumer-badge-override {
+  border-radius: 6px;
+  padding-inline: 12px;
+}

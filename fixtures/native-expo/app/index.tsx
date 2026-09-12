@@ -1,4 +1,4 @@
-import { Divider, Spinner } from "@learnui/native";
+import { Badge, Divider, Spinner } from "@learnui/native";
 import { Text, View } from "react-native";
 
 export default function FixtureHomeScreen() {
@@ -28,6 +28,12 @@ export default function FixtureHomeScreen() {
           Branded control
         </Text>
         <View className="mt-5 gap-4">
+          <Badge>Pending review</Badge>
+          <Badge color="success" variant="solid" size="sm">Approved</Badge>
+          <Badge color="warning" variant="outline" className="px-5" style={{ borderRadius: 6 }}>Requires review</Badge>
+          <View accessible accessibilityLabel="Inbox, 3 unread messages">
+            <Badge isDecorative>3 unread</Badge>
+          </View>
           <Divider />
           <Divider
             className="border-[--learnui-color-accent]"

@@ -24,7 +24,7 @@ export default defineConfig({
     projects: [
       {
         optimizeDeps: {
-          include: ["storybook/test"]
+          include: ["storybook/test", "react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"]
         },
         plugins: [storybookTest({ configDir })],
         test: {

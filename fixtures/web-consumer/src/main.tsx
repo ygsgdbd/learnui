@@ -1,5 +1,5 @@
 import * as LearnUI from "@learnui/web";
-import { Divider, Spinner } from "@learnui/web";
+import { Badge, Divider, Spinner } from "@learnui/web";
 import "@learnui/web/styles";
 import React from "react";
 import { createRoot } from "react-dom/client";
@@ -13,6 +13,10 @@ function App() {
       data-learnui-export-count={Object.keys(LearnUI).length}
     >
       <span>LearnUI web consumer smoke</span>
+      <Badge>Pending review</Badge>
+      <Badge color="success" variant="solid" size="sm">Approved</Badge>
+      <Badge className="learnui-consumer-badge-override" color="warning" variant="outline">Requires review</Badge>
+      <button aria-label="Inbox, 3 unread messages"><Badge isDecorative>3 unread</Badge> Inbox</button>
       <span className="learnui-consumer-control">Branded control</span>
       <div className="learnui-consumer-divider-stack">
         <span>Default Divider</span>
