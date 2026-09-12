@@ -11,6 +11,14 @@ export default function HomeScreen() {
       <Text className="mt-4 text-sm font-semibold uppercase tracking-wider text-[--learnui-color-muted]">
         Components
       </Text>
+      <Link asChild href="/components/badge">
+        <Pressable
+          className="min-h-11 justify-center rounded-[var(--learnui-radius-control)] border border-[var(--learnui-color-border)] bg-[var(--learnui-color-surface)] px-4"
+          style={({ pressed }) => ({ opacity: pressed ? 0.82 : 1 })}
+        >
+          <Text className="text-base font-semibold text-[var(--learnui-color-foreground)]">Badge</Text>
+        </Pressable>
+      </Link>
       <Link asChild href="/components/divider">
         <Pressable
           className="min-h-11 justify-center rounded-[--learnui-radius-control] border border-[--learnui-color-border] bg-[--learnui-color-surface] px-4"

@@ -1,0 +1,9 @@
+$ vitest run --project chromium-reduced-motion
+
+ RUN  v4.1.11 <worktree>/apps/web-storybook
+
+
+ Test Files  4 passed (4)
+      Tests  13 passed (13)
+   Start at  12:59:11
+   Duration  46.44s (transform 0ms, setup 52.21s, import 21.29s, tests 7.61s, environment 0ms)

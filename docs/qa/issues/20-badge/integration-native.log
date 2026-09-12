@@ -1,0 +1,39 @@
+$ pnpm run test:components && pnpm run pack:check
+$ jest --runInBand
+PASS src/__tests__/card.test.tsx
+PASS src/__tests__/badge.test.tsx
+PASS src/__tests__/spinner.test.tsx
+PASS src/__tests__/divider.test.tsx
+
+Test Suites: 4 passed, 4 total
+Tests:       43 passed, 43 total
+Snapshots:   0 total
+Time:        1.383 s, estimated 12 s
+Ran all test suites.
+$ pnpm run build && publint && node scripts/verify-pack-contract.mjs
+$ pnpm run clean && bob build && node scripts/copy-assets.mjs
+$ node scripts/clean.mjs
+ℹ [typescript] Cleaning up previous build at lib/typescript
+ℹ [typescript] Generating type definitions with tsc
+ℹ [module] Cleaning up previous build at lib/module
+ℹ [module] Compiling 7 files in src with babel
+✔ [module] Wrote files to lib/module
+✔ [typescript] Wrote definition files to lib/typescript
+Running publint v0.3.24 for @learnui/native...
+Packing files with `pnpm pack`...
+Linting...
+All good!
+$ pnpm run build
+$ pnpm run clean && bob build && node scripts/copy-assets.mjs
+$ node scripts/clean.mjs
+$ tsc -p tsconfig.json --noEmit
+$ tsc -p tsconfig.json --noEmit
+$ vitest run --dir tests
+
+ RUN  v4.1.11 <worktree>
+
+
+ Test Files  3 passed (3)
+      Tests  12 passed (12)
+   Start at  14:18:07
+   Duration  202ms (transform 103ms, setup 0ms, import 152ms, tests 24ms, environment 0ms)

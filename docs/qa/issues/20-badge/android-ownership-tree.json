@@ -1,0 +1,676 @@
+{
+  "success": true,
+  "data": {
+    "nodes": [
+      {
+        "index": 0,
+        "type": "android.widget.FrameLayout",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2400
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 0,
+        "ref": "e1"
+      },
+      {
+        "index": 1,
+        "type": "android.widget.LinearLayout",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2400
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 1,
+        "parentIndex": 0,
+        "ref": "e2"
+      },
+      {
+        "index": 2,
+        "type": "android.widget.FrameLayout",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2400
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 2,
+        "parentIndex": 1,
+        "ref": "e3"
+      },
+      {
+        "index": 3,
+        "type": "android.widget.LinearLayout",
+        "identifier": "dev.learnui.gallery:id/action_bar_root",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2400
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 3,
+        "parentIndex": 2,
+        "ref": "e4"
+      },
+      {
+        "index": 4,
+        "type": "android.widget.FrameLayout",
+        "identifier": "android:id/content",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2400
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 4,
+        "parentIndex": 3,
+        "ref": "e5"
+      },
+      {
+        "index": 5,
+        "type": "android.widget.FrameLayout",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2400
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 5,
+        "parentIndex": 4,
+        "ref": "e6"
+      },
+      {
+        "index": 6,
+        "type": "androidx.compose.ui.platform.ComposeView",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2400
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 6,
+        "parentIndex": 5,
+        "ref": "e7"
+      },
+      {
+        "index": 7,
+        "type": "android.widget.ImageView",
+        "label": "Tools",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 937,
+          "y": 140,
+          "width": 68,
+          "height": 68
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 7,
+        "parentIndex": 6,
+        "ref": "e8"
+      },
+      {
+        "index": 8,
+        "type": "android.widget.FrameLayout",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2400
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 6,
+        "parentIndex": 5,
+        "ref": "e9"
+      },
+      {
+        "index": 9,
+        "type": "android.view.ViewGroup",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2400
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 7,
+        "parentIndex": 8,
+        "ref": "e10"
+      },
+      {
+        "index": 10,
+        "type": "android.view.ViewGroup",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2400
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 8,
+        "parentIndex": 9,
+        "ref": "e11"
+      },
+      {
+        "index": 11,
+        "type": "android.widget.ScrollView",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2400
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 9,
+        "parentIndex": 10,
+        "ref": "e12"
+      },
+      {
+        "index": 12,
+        "type": "android.widget.LinearLayout",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 210
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 10,
+        "parentIndex": 11,
+        "ref": "e13"
+      },
+      {
+        "index": 13,
+        "type": "android.view.ViewGroup",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 210
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 11,
+        "parentIndex": 12,
+        "ref": "e14"
+      },
+      {
+        "index": 14,
+        "type": "android.widget.ImageButton",
+        "label": "Navigate up",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 63,
+          "width": 147,
+          "height": 147
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 12,
+        "parentIndex": 13,
+        "ref": "e15"
+      },
+      {
+        "index": 15,
+        "type": "android.widget.TextView",
+        "label": "LearnUI",
+        "value": "LearnUI",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 189,
+          "y": 101,
+          "width": 185,
+          "height": 71
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 12,
+        "parentIndex": 13,
+        "ref": "e16"
+      },
+      {
+        "index": 16,
+        "type": "android.view.ViewGroup",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 210,
+          "width": 1080,
+          "height": 2190
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 10,
+        "parentIndex": 11,
+        "ref": "e17"
+      },
+      {
+        "index": 17,
+        "type": "android.view.ViewGroup",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 210,
+          "width": 1080,
+          "height": 2190
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 11,
+        "parentIndex": 16,
+        "ref": "e18"
+      },
+      {
+        "index": 18,
+        "type": "android.widget.ScrollView",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 210,
+          "width": 1080,
+          "height": 2190
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 12,
+        "parentIndex": 17,
+        "hiddenContentAbove": true,
+        "ref": "e19"
+      },
+      {
+        "index": 19,
+        "type": "android.view.ViewGroup",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 210,
+          "width": 1080,
+          "height": 2190
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 13,
+        "parentIndex": 18,
+        "ref": "e20"
+      },
+      {
+        "index": 20,
+        "type": "android.widget.TextView",
+        "label": "outline",
+        "value": "outline",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 105,
+          "y": 309,
+          "width": 870,
+          "height": 90
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e21"
+      },
+      {
+        "index": 21,
+        "type": "android.widget.TextView",
+        "label": "Draft",
+        "value": "Draft",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 105,
+          "y": 431,
+          "width": 210,
+          "height": 118
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e22"
+      },
+      {
+        "index": 22,
+        "type": "android.widget.TextView",
+        "label": "In review",
+        "value": "In review",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 335,
+          "y": 431,
+          "width": 331,
+          "height": 118
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e23"
+      },
+      {
+        "index": 23,
+        "type": "android.widget.TextView",
+        "label": "Approved",
+        "value": "Approved",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 105,
+          "y": 568,
+          "width": 351,
+          "height": 117
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e24"
+      },
+      {
+        "index": 24,
+        "type": "android.widget.TextView",
+        "label": "Needs attention",
+        "value": "Needs attention",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 105,
+          "y": 705,
+          "width": 547,
+          "height": 117
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e25"
+      },
+      {
+        "index": 25,
+        "type": "android.widget.TextView",
+        "label": "Failed",
+        "value": "Failed",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 672,
+          "y": 705,
+          "width": 243,
+          "height": 117
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e26"
+      },
+      {
+        "index": 26,
+        "type": "android.widget.TextView",
+        "label": "Sizes · small and medium",
+        "value": "Sizes · small and medium",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 906,
+          "width": 954,
+          "height": 90
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e27"
+      },
+      {
+        "index": 27,
+        "type": "android.widget.TextView",
+        "label": "Draft · small",
+        "value": "Draft · small",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 1027,
+          "width": 381,
+          "height": 85
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e28"
+      },
+      {
+        "index": 28,
+        "type": "android.widget.TextView",
+        "label": "Draft · medium",
+        "value": "Draft · medium",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 1143,
+          "width": 508,
+          "height": 111
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e29"
+      },
+      {
+        "index": 29,
+        "type": "android.widget.TextView",
+        "label": "Needs attention before the next scheduled release",
+        "value": "Needs attention before the next scheduled release",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 1286,
+          "width": 954,
+          "height": 201
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e30"
+      },
+      {
+        "index": 30,
+        "type": "android.widget.TextView",
+        "label": "Decorative embedding · owner provides the meaning",
+        "value": "Decorative embedding · owner provides the meaning",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 1529,
+          "width": 954,
+          "height": 180
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e31"
+      },
+      {
+        "index": 31,
+        "type": "android.widget.Button",
+        "label": "Inbox, 3 unread messages",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 1741,
+          "width": 954,
+          "height": 179
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e32"
+      },
+      {
+        "index": 32,
+        "type": "android.widget.TextView",
+        "label": "Inbox",
+        "value": "Inbox",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 97,
+          "y": 1783,
+          "width": 182,
+          "height": 95
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 15,
+        "parentIndex": 31,
+        "ref": "e33"
+      },
+      {
+        "index": 33,
+        "type": "android.widget.TextView",
+        "label": "3 unread",
+        "value": "3 unread",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 310,
+          "y": 1775,
+          "width": 322,
+          "height": 111
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 15,
+        "parentIndex": 31,
+        "ref": "e34"
+      },
+      {
+        "index": 34,
+        "type": "android.widget.TextView",
+        "label": "Consumer className + style override",
+        "value": "Consumer className + style override",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 1962,
+          "width": 954,
+          "height": 180
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e35"
+      },
+      {
+        "index": 35,
+        "type": "android.widget.TextView",
+        "label": "Custom status",
+        "value": "Custom status",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 2173,
+          "width": 566,
+          "height": 143
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 14,
+        "parentIndex": 19,
+        "ref": "e36"
+      }
+    ],
+    "truncated": false,
+    "appName": "dev.learnui.gallery",
+    "appBundleId": "dev.learnui.gallery",
+    "visibility": {
+      "partial": true,
+      "visibleNodeCount": 36,
+      "totalNodeCount": 36,
+      "reasons": [
+        "scroll-hidden-above"
+      ]
+    },
+    "androidSnapshot": {
+      "backend": "android-helper",
+      "helperVersion": "0.20.10",
+      "helperApiVersion": "2",
+      "helperTransport": "instrumentation",
+      "installReason": "current",
+      "waitForIdleTimeoutMs": 500,
+      "waitForIdleQuietMs": 100,
+      "timeoutMs": 5000,
+      "maxDepth": 128,
+      "maxNodes": 5000,
+      "rootPresent": true,
+      "captureMode": "interactive-windows",
+      "windowCount": 1,
+      "nodeCount": 69,
+      "helperTruncated": false,
+      "elapsedMs": 1889
+    },
+    "snapshotDiagnostics": {
+      "stats": {
+        "count": 30,
+        "p50Ms": 455,
+        "p95Ms": 6556,
+        "maxMs": 17343,
+        "slowThresholdMs": 1500,
+        "platform": "android",
+        "backends": {
+          "android": 30
+        }
+      },
+      "warning": "Warning: android snapshots are slow in this run: p95 3211ms over 29 captures. Possible causes: device load, app or dev server stuck, helper fallback, or stale daemon."
+    },
+    "refsGeneration": 301764
+  }
+}

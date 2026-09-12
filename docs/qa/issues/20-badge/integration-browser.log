@@ -1,0 +1,48 @@
+
+ RUN  v4.1.11 <worktree>/apps/web-storybook
+
+
+ Test Files  5 passed (5)
+      Tests  17 passed (17)
+   Start at  14:18:38
+   Duration  6.57s (transform 0ms, setup 9.37s, import 4.50s, tests 4.44s, environment 0ms)
+
+
+ RUN  v4.1.11 <worktree>/apps/web-storybook
+
+
+ Test Files  5 passed (5)
+      Tests  17 passed (17)
+   Start at  14:18:46
+   Duration  4.18s (transform 0ms, setup 5.15s, import 2.42s, tests 3.44s, environment 0ms)
+
+
+ RUN  v4.1.11 <worktree>/apps/web-storybook
+
+
+ Test Files  5 passed (5)
+      Tests  17 passed (17)
+   Start at  14:18:53
+   Duration  12.87s (transform 0ms, setup 6.97s, import 7.80s, tests 5.17s, environment 0ms)
+
+
+ RUN  v4.1.11 <worktree>/apps/web-storybook
+
+
+ Test Files  5 passed (5)
+      Tests  17 passed (17)
+   Start at  14:19:10
+   Duration  8.24s (transform 0ms, setup 6.10s, import 3.16s, tests 3.67s, environment 0ms)
+
+
+ RUN  v4.1.11 <worktree>/apps/web-storybook
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  14:19:21
+   Duration  1.81s (transform 0ms, setup 0ms, import 271ms, tests 14ms, environment 0ms)
+
+chromium: Card light/dark contrast, supported forced colors, 200% text passed
+firefox: Card light/dark contrast, supported forced colors, 200% text passed
+webkit: Card light/dark contrast, supported forced colors, 200% text passed

@@ -95,14 +95,30 @@ function assertMatches(contents, pattern, label) {
   }
 }
 
-function assertCardCompiledStyle(output, className, property, variable) {
-  const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const rule = output.match(new RegExp(
-    `${escape(JSON.stringify(className))}\\s*:\\s*\\[\\s*\\{\\s*` +
-    `"entries"\\s*:\\s*([\\s\\S]*?)\\s*,\\s*"minWidth"`
-  ))?.[1];
-  if (!rule || !rule.includes(JSON.stringify(property)) || !rule.includes(`vars[${JSON.stringify(variable)}]`)) {
-    throw new Error(`Card compiled style ${className}.${property} must resolve ${variable}`);
+// Require a compiled Uniwind registry entry, not a class literal in component source.
+function assertCompiledClass(contents, className, expected, label) {
+  const quoted = JSON.stringify(className).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const start = contents.match(new RegExp(`${quoted}\\s*:\\s*\\[`));
+  let rule = "";
+  if (start) {
+    const offset = start.index + start[0].length - 1;
+    let depth = 0;
+    let quote = "";
+    for (let index = offset; index < contents.length; index += 1) {
+      const char = contents[index];
+      if (quote) {
+        if (char === "\\") index += 1;
+        else if (char === quote) quote = "";
+      } else if (char === '"' || char === "'" || char === "`") quote = char;
+      else if (char === "[") depth += 1;
+      else if (char === "]" && --depth === 0) {
+        rule = contents.slice(offset, index + 1);
+        break;
+      }
+    }
+  }
+  if (!rule || !expected.every((part) => rule.includes(part))) {
+    throw new Error(`${label} is missing a compiled ${className} rule with ${expected.join(", ")}`);
   }
 }
 
@@ -149,7 +165,10 @@ try {
   assertIncludes(consumerScreen, "rounded-[--learnui-radius-surface]", "consumer screen");
   assertIncludes(consumerScreen, "shadow-[--learnui-shadow-surface]", "consumer screen");
   assertIncludes(consumerScreen, 'backgroundColor: "#123456"', "consumer style override");
-  assertIncludes(consumerScreen, 'import { Card, Divider, Spinner } from "@learnui/native";', "consumer public import");
+  assertIncludes(consumerScreen, 'import { Badge, Card, Divider, Spinner } from "@learnui/native";', "consumer public import");
+  assertIncludes(consumerScreen, "<Badge>Pending review</Badge>", "consumer default Badge");
+  assertIncludes(consumerScreen, 'variant="solid"', "consumer solid Badge");
+  assertIncludes(consumerScreen, 'className="px-5"', "consumer Badge class override");
   assertIncludes(consumerScreen, "<Divider />", "consumer default Divider");
   assertIncludes(consumerScreen, 'borderTopColor: "#2468ac"', "consumer Divider override");
   assertIncludes(consumerScreen, '<Spinner label="Loading fixture" />', "consumer standalone Spinner");
@@ -171,6 +190,22 @@ try {
 
   for (const platform of ["ios", "android"]) {
     const exportOutput = readExportOutput(join(consumerDir, "dist", platform));
+    assertCompiledClass(exportOutput, "text-[var(--lui-badge-solid-foreground)]",
+      ["color", 'vars["--lui-badge-solid-foreground"]'], `${platform} Badge solid foreground`);
+    assertCompiledClass(exportOutput, "bg-[var(--learnui-color-success)]",
+      ["backgroundColor", 'vars["--learnui-color-success"]'], `${platform} Badge solid background`);
+    assertCompiledClass(exportOutput, "font-[family-name:var(--learnui-font-sans)]",
+      ["fontFamily", 'vars["--learnui-font-sans"]'], `${platform} Badge font token`);
+    assertCompiledClass(exportOutput, "px-5",
+      ["paddingHorizontal", "* 5"], `${platform} Badge consumer class override`);
+    assertCompiledClass(exportOutput, "text-sm",
+      ["fontSize", 'vars["--text-sm"]'], `${platform} Badge default size`);
+    assertCompiledClass(exportOutput, "bg-[var(--learnui-color-foreground)]/10",
+      ["backgroundColor", 'vars["--learnui-color-foreground"]', "10%"], `${platform} Badge default background`);
+    assertIncludes(exportOutput, "Pending review", `${platform} Badge text`);
+    assertMatches(exportOutput, /borderRadius:\s*6/, `${platform} Badge style override`);
+    assertIncludes(exportOutput, "px-5", `${platform} Badge class override`);
+
     for (const [className, property, variable] of [
       ["bg-[var(--learnui-color-surface)]", "backgroundColor", "--learnui-color-surface"],
       ["bg-[var(--learnui-color-elevated)]", "backgroundColor", "--learnui-color-elevated"],
@@ -180,7 +215,7 @@ try {
       ["text-[var(--learnui-color-foreground)]", "color", "--learnui-color-foreground"],
       ["text-[var(--learnui-color-muted)]", "color", "--learnui-color-muted"],
       ["p-7", "padding", "--spacing"]
-    ]) assertCardCompiledStyle(exportOutput, className, property, variable);
+    ]) assertCompiledClass(exportOutput, className, [JSON.stringify(property), `vars[${JSON.stringify(variable)}]`], `${platform} Card compiled style`);
     assertIncludes(exportOutput, "Consumer Card", `${platform} Card composition`);
     assertMatches(exportOutput, /["']p-7["']\s*:/, `${platform} Card consumer utility compiled`);
     assertIncludes(exportOutput, "#6750a4", `${platform} export color override`);

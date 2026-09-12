@@ -61,4 +61,9 @@
   width: 32px;
 }
 
+.learnui-consumer-badge-override {
+  border-radius: 6px;
+  padding-inline: 12px;
+}
+
 .learnui-consumer-card-override { padding: 28px; border-color: var(--learnui-color-accent); }

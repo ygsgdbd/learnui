@@ -17,6 +17,8 @@
     --learnui-radius-control: 12px;
     --learnui-radius-surface: 22px;
     --learnui-shadow-surface: 0 8px 24px rgba(25, 31, 40, .08);
+    --lui-badge-solid-foreground: var(--learnui-color-elevated);
+    --lui-badge-success-solid-foreground: #000000;
     --lui-motion-duration: 160ms;
     --lui-motion-transform: scale(.98);
     --lui-surface-backdrop-filter: blur(20px);
@@ -27,6 +29,7 @@
 
   :root[data-theme="light"] {
     color-scheme: light;
+    --lui-badge-solid-foreground: var(--learnui-color-elevated);
     --learnui-color-canvas: #f5f5f7;
     --learnui-color-surface: rgba(255, 255, 255, 0.82);
     --learnui-color-elevated: #ffffff;
@@ -48,6 +51,7 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       color-scheme: dark;
+      --lui-badge-solid-foreground: var(--learnui-color-canvas);
       --learnui-color-canvas: #000000;
       --learnui-color-surface: rgba(28, 28, 30, 0.86);
       --learnui-color-elevated: #1c1c1e;
@@ -69,6 +73,7 @@
 
   :root[data-theme="dark"] {
     color-scheme: dark;
+    --lui-badge-solid-foreground: var(--learnui-color-canvas);
     --learnui-color-canvas: #000000;
     --learnui-color-surface: rgba(28, 28, 30, 0.86);
     --learnui-color-elevated: #1c1c1e;
@@ -107,6 +112,64 @@
       --lui-surface-border-width: 2px;
       --lui-focus-ring-width: 3px;
     }
+  }
+
+  .learnui-badge {
+    border: 1px solid transparent;
+    border-radius: var(--learnui-radius-control);
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: var(--learnui-font-sans);
+    font-weight: 500;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    vertical-align: baseline;
+  }
+
+  .learnui-badge--neutral { --lui-badge-color: var(--learnui-color-foreground); }
+  .learnui-badge--accent { --lui-badge-color: var(--learnui-color-accent); }
+  .learnui-badge--success { --lui-badge-color: var(--learnui-color-success); }
+  .learnui-badge--warning { --lui-badge-color: var(--learnui-color-warning); }
+  .learnui-badge--destructive { --lui-badge-color: var(--learnui-color-destructive); }
+
+  .learnui-badge--solid {
+    background-color: var(--lui-badge-color);
+    color: var(--lui-badge-solid-foreground);
+  }
+
+  .learnui-badge--solid.learnui-badge--success {
+    color: var(--lui-badge-success-solid-foreground);
+  }
+
+  .learnui-badge--solid.learnui-badge--neutral {
+    color: var(--learnui-color-canvas);
+  }
+
+  .learnui-badge--soft {
+    background-color: color-mix(in srgb, var(--lui-badge-color) 12%, var(--learnui-color-elevated));
+    color: var(--learnui-color-foreground);
+  }
+
+  .learnui-badge--outline {
+    background-color: transparent;
+    border-color: var(--lui-badge-color);
+    color: var(--learnui-color-foreground);
+  }
+
+  .learnui-badge--sm {
+    font-size: .75rem;
+    line-height: 1.125rem;
+    padding: 2px 8px;
+  }
+
+  .learnui-badge--md {
+    font-size: .875rem;
+    line-height: 1.25rem;
+    padding: 4px 10px;
+  }
+
+  @media (forced-colors: active) {
+    .learnui-badge { border-color: CanvasText; }
   }
 
   .learnui-divider {

@@ -1,0 +1,685 @@
+{
+  "success": true,
+  "data": {
+    "nodes": [
+      {
+        "enabled": true,
+        "depth": 0,
+        "hittable": true,
+        "rect": {
+          "width": 402,
+          "height": 874,
+          "x": 0,
+          "y": 0
+        },
+        "index": 0,
+        "type": "Application",
+        "label": "LearnUI Native Gallery",
+        "ref": "e1"
+      },
+      {
+        "enabled": true,
+        "depth": 1,
+        "hittable": true,
+        "rect": {
+          "width": 402,
+          "height": 874,
+          "x": 0,
+          "y": 0
+        },
+        "index": 1,
+        "type": "Other",
+        "label": "gearshape.fill",
+        "parentIndex": 0,
+        "ref": "e2"
+      },
+      {
+        "enabled": true,
+        "identifier": "gearshape.fill",
+        "depth": 2,
+        "hittable": false,
+        "rect": {
+          "width": 26,
+          "height": 26,
+          "x": 348,
+          "y": 96
+        },
+        "index": 2,
+        "type": "Image",
+        "label": "gearshape.fill",
+        "parentIndex": 1,
+        "interactionBlocked": "covered",
+        "presentationHints": [
+          "covered"
+        ],
+        "ref": "e3"
+      },
+      {
+        "enabled": true,
+        "depth": 1,
+        "hittable": false,
+        "rect": {
+          "width": 402,
+          "height": 874,
+          "x": 0,
+          "y": 0
+        },
+        "index": 3,
+        "type": "Other",
+        "label": "LearnUI",
+        "parentIndex": 0,
+        "ref": "e4"
+      },
+      {
+        "enabled": true,
+        "identifier": "LearnUI",
+        "depth": 2,
+        "hittable": false,
+        "rect": {
+          "width": 402,
+          "height": 54,
+          "x": 0,
+          "y": 62.000000000000014
+        },
+        "index": 4,
+        "type": "NavigationBar",
+        "label": "LearnUI",
+        "parentIndex": 3,
+        "ref": "e5"
+      },
+      {
+        "enabled": true,
+        "identifier": "BackButton",
+        "depth": 3,
+        "hittable": false,
+        "rect": {
+          "width": 111.66666666666667,
+          "height": 44,
+          "x": 16.000000000000014,
+          "y": 62.000000000000014
+        },
+        "index": 5,
+        "type": "Button",
+        "label": "LearnUI",
+        "parentIndex": 4,
+        "ref": "e6"
+      },
+      {
+        "enabled": true,
+        "depth": 3,
+        "hittable": false,
+        "rect": {
+          "width": 61.66666666666666,
+          "height": 20.66666666666667,
+          "x": 170,
+          "y": 73.66666666666669
+        },
+        "index": 6,
+        "type": "StaticText",
+        "label": "LearnUI",
+        "parentIndex": 4,
+        "ref": "e7"
+      },
+      {
+        "enabled": true,
+        "depth": 2,
+        "hittable": false,
+        "rect": {
+          "width": 402,
+          "height": 874,
+          "x": 0,
+          "y": 0
+        },
+        "index": 7,
+        "type": "Other",
+        "label": "Vertical scroll bar, 2 pages",
+        "parentIndex": 3,
+        "ref": "e8"
+      },
+      {
+        "enabled": true,
+        "depth": 3,
+        "hittable": false,
+        "rect": {
+          "y": 0,
+          "width": 402,
+          "x": 0,
+          "height": 874
+        },
+        "type": "Other",
+        "label": "Badge",
+        "index": 8,
+        "parentIndex": 7,
+        "ref": "e9"
+      },
+      {
+        "enabled": true,
+        "depth": 4,
+        "rect": {
+          "y": 0,
+          "width": 402,
+          "x": 0,
+          "height": 874
+        },
+        "hittable": false,
+        "parentIndex": 8,
+        "hiddenContentAbove": true,
+        "index": 9,
+        "type": "ScrollView",
+        "label": "Badge",
+        "ref": "e10"
+      },
+      {
+        "enabled": true,
+        "depth": 5,
+        "rect": {
+          "y": -238,
+          "width": 402,
+          "x": 0,
+          "height": 1078
+        },
+        "hittable": false,
+        "parentIndex": 9,
+        "index": 10,
+        "type": "Other",
+        "label": "Badge",
+        "ref": "e11"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 26,
+          "width": 322,
+          "x": 40,
+          "height": 20
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 11,
+        "type": "StaticText",
+        "label": "solid",
+        "ref": "e12"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 58,
+          "width": 54.666664123535156,
+          "x": 40,
+          "height": 28
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 12,
+        "type": "StaticText",
+        "label": "Draft",
+        "ref": "e13"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 58,
+          "width": 80.33333587646484,
+          "x": 102.66666793823242,
+          "height": 28
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 13,
+        "type": "StaticText",
+        "label": "In review",
+        "ref": "e14"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 58,
+          "width": 85.33334350585938,
+          "x": 191,
+          "height": 28
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 14,
+        "type": "StaticText",
+        "label": "Approved",
+        "ref": "e15"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 94,
+          "width": 127.66667175292969,
+          "x": 40,
+          "height": 28
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 15,
+        "type": "StaticText",
+        "label": "Needs attention",
+        "ref": "e16"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 94,
+          "width": 60,
+          "x": 175.6666717529297,
+          "height": 28
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 16,
+        "type": "StaticText",
+        "label": "Failed",
+        "ref": "e17"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 170,
+          "width": 322,
+          "x": 40,
+          "height": 20
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 17,
+        "type": "StaticText",
+        "label": "soft",
+        "ref": "e18"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 202,
+          "width": 54.666664123535156,
+          "x": 40,
+          "height": 28
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 18,
+        "type": "StaticText",
+        "label": "Draft",
+        "ref": "e19"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 202,
+          "width": 80.33333587646484,
+          "x": 102.66666793823242,
+          "height": 28
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 19,
+        "type": "StaticText",
+        "label": "In review",
+        "ref": "e20"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 202,
+          "width": 85.33334350585938,
+          "x": 191,
+          "height": 28
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 20,
+        "type": "StaticText",
+        "label": "Approved",
+        "ref": "e21"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 238,
+          "width": 127.66667175292969,
+          "x": 40,
+          "height": 28
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 21,
+        "type": "StaticText",
+        "label": "Needs attention",
+        "ref": "e22"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 238,
+          "width": 60,
+          "x": 175.6666717529297,
+          "height": 28
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 22,
+        "type": "StaticText",
+        "label": "Failed",
+        "ref": "e23"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 314,
+          "width": 322,
+          "x": 40,
+          "height": 20
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 23,
+        "type": "StaticText",
+        "label": "outline",
+        "ref": "e24"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 346,
+          "width": 56.666664123535156,
+          "x": 40,
+          "height": 30
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 24,
+        "type": "StaticText",
+        "label": "Draft",
+        "ref": "e25"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 346,
+          "width": 82.33333587646484,
+          "x": 104.66666412353516,
+          "height": 30
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 25,
+        "type": "StaticText",
+        "label": "In review",
+        "ref": "e26"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 346,
+          "width": 87.33334350585938,
+          "x": 195,
+          "height": 30
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 26,
+        "type": "StaticText",
+        "label": "Approved",
+        "ref": "e27"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 384,
+          "width": 129.6666717529297,
+          "x": 40,
+          "height": 30
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 27,
+        "type": "StaticText",
+        "label": "Needs attention",
+        "ref": "e28"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 384,
+          "width": 62,
+          "x": 177.6666717529297,
+          "height": 30
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 28,
+        "type": "StaticText",
+        "label": "Failed",
+        "ref": "e29"
+      },
+      {
+        "enabled": true,
+        "depth": 6,
+        "rect": {
+          "y": 446,
+          "width": 354,
+          "x": 24,
+          "height": 20
+        },
+        "hittable": false,
+        "parentIndex": 10,
+        "index": 29,
+        "type": "StaticText",
+        "label": "Sizes · small and medium",
+        "ref": "e30"
+      },
+      {
+        "type": "StaticText",
+        "hittable": false,
+        "enabled": true,
+        "index": 30,
+        "parentIndex": 10,
+        "label": "Draft · small",
+        "rect": {
+          "y": 478,
+          "width": 89.66666412353516,
+          "x": 24,
+          "height": 20
+        },
+        "depth": 6,
+        "ref": "e31"
+      },
+      {
+        "type": "StaticText",
+        "hittable": false,
+        "enabled": true,
+        "index": 31,
+        "parentIndex": 10,
+        "label": "Draft · medium",
+        "rect": {
+          "y": 510,
+          "width": 122.66667175292969,
+          "x": 24,
+          "height": 28
+        },
+        "depth": 6,
+        "ref": "e32"
+      },
+      {
+        "type": "StaticText",
+        "hittable": false,
+        "enabled": true,
+        "index": 32,
+        "parentIndex": 10,
+        "label": "Needs attention before the next scheduled release",
+        "rect": {
+          "y": 550,
+          "width": 354,
+          "x": 24,
+          "height": 48
+        },
+        "depth": 6,
+        "ref": "e33"
+      },
+      {
+        "type": "StaticText",
+        "hittable": false,
+        "enabled": true,
+        "index": 33,
+        "parentIndex": 10,
+        "label": "Decorative embedding · owner provides the meaning",
+        "rect": {
+          "y": 614,
+          "width": 354,
+          "x": 24,
+          "height": 40
+        },
+        "depth": 6,
+        "ref": "e34"
+      },
+      {
+        "type": "Button",
+        "hittable": false,
+        "enabled": true,
+        "index": 34,
+        "parentIndex": 10,
+        "label": "Inbox, 3 unread messages",
+        "rect": {
+          "y": 666,
+          "width": 354,
+          "x": 24,
+          "height": 54
+        },
+        "depth": 6,
+        "ref": "e35"
+      },
+      {
+        "type": "StaticText",
+        "hittable": false,
+        "enabled": true,
+        "index": 35,
+        "parentIndex": 10,
+        "label": "Consumer className + style override",
+        "rect": {
+          "y": 736,
+          "width": 354,
+          "x": 24,
+          "height": 20
+        },
+        "depth": 6,
+        "ref": "e36"
+      },
+      {
+        "type": "StaticText",
+        "hittable": false,
+        "enabled": true,
+        "index": 36,
+        "parentIndex": 10,
+        "label": "Custom status",
+        "rect": {
+          "y": 768,
+          "width": 142,
+          "x": 24,
+          "height": 40
+        },
+        "depth": 6,
+        "ref": "e37"
+      },
+      {
+        "type": "Image",
+        "hittable": false,
+        "enabled": true,
+        "index": 37,
+        "parentIndex": 9,
+        "identifier": "AdditionalDimmingOverlay",
+        "rect": {
+          "y": -166,
+          "width": 642,
+          "x": -120,
+          "height": 332
+        },
+        "depth": 5,
+        "ref": "e38"
+      },
+      {
+        "type": "Other",
+        "enabled": true,
+        "hittable": false,
+        "index": 38,
+        "parentIndex": 9,
+        "label": "Vertical scroll bar, 2 pages",
+        "value": "100%",
+        "rect": {
+          "y": 116,
+          "width": 30,
+          "x": 369,
+          "height": 696
+        },
+        "depth": 5,
+        "ref": "e39"
+      },
+      {
+        "type": "Other",
+        "enabled": true,
+        "hittable": false,
+        "index": 39,
+        "parentIndex": 9,
+        "label": "Horizontal scroll bar, 1 page",
+        "value": "0%",
+        "rect": {
+          "y": 841,
+          "width": 278,
+          "x": 62,
+          "height": 30
+        },
+        "depth": 5,
+        "ref": "e40"
+      }
+    ],
+    "truncated": false,
+    "appName": "dev.learnui.gallery",
+    "appBundleId": "dev.learnui.gallery",
+    "visibility": {
+      "partial": true,
+      "visibleNodeCount": 40,
+      "totalNodeCount": 40,
+      "reasons": [
+        "scroll-hidden-above"
+      ]
+    },
+    "snapshotQuality": {
+      "state": "healthy",
+      "backend": "tree"
+    },
+    "snapshotDiagnostics": {
+      "stats": {
+        "count": 32,
+        "p50Ms": 186,
+        "p95Ms": 2123,
+        "maxMs": 17932,
+        "slowThresholdMs": 1500,
+        "platform": "ios",
+        "backends": {
+          "xctest": 32
+        }
+      }
+    },
+    "refsGeneration": 968319
+  }
+}

@@ -1,0 +1,3 @@
+$ pnpm run build
+$ pnpm run clean && bob build && node scripts/copy-assets.mjs
+$ node scripts/clean.mjs

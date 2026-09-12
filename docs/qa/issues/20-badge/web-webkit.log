@@ -1,0 +1,9 @@
+$ vitest run --project webkit
+
+ RUN  v4.1.11 <worktree>/apps/web-storybook
+
+
+ Test Files  4 passed (4)
+      Tests  13 passed (13)
+   Start at  13:03:14
+   Duration  45.44s (transform 0ms, setup 42.21s, import 24.54s, tests 17.82s, environment 0ms)

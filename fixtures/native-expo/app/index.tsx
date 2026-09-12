@@ -1,4 +1,4 @@
-import { Card, Divider, Spinner } from "@learnui/native";
+import { Badge, Card, Divider, Spinner } from "@learnui/native";
 import { Text, View } from "react-native";
 
 export default function FixtureHomeScreen() {
@@ -28,10 +28,17 @@ export default function FixtureHomeScreen() {
           Branded control
         </Text>
         <View className="mt-5 gap-4">
-      <Card.Root variant="elevated" className="p-7 border-[var(--learnui-color-accent)]">
-        <Card.Header><Card.Title>Consumer Card</Card.Title><Card.Description>Tarball composition</Card.Description></Card.Header>
-        <Card.Body><Text>Consumer body</Text></Card.Body><Card.Footer><Text>Consumer footer</Text></Card.Footer>
-      </Card.Root>
+          <Badge>Pending review</Badge>
+          <Badge color="success" variant="solid" size="sm">Approved</Badge>
+          <Badge color="warning" variant="outline" className="px-5" style={{ borderRadius: 6 }}>Requires review</Badge>
+          <View accessible accessibilityLabel="Inbox, 3 unread messages">
+            <Badge isDecorative>3 unread</Badge>
+          </View>
+
+          <Card.Root variant="elevated" className="p-7 border-[var(--learnui-color-accent)]">
+            <Card.Header><Card.Title>Consumer Card</Card.Title><Card.Description>Tarball composition</Card.Description></Card.Header>
+            <Card.Body><Text>Consumer body</Text></Card.Body><Card.Footer><Text>Consumer footer</Text></Card.Footer>
+          </Card.Root>
           <Divider />
           <Divider
             className="border-[--learnui-color-accent]"
