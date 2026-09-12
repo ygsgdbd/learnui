@@ -1,0 +1,182 @@
+$ node scripts/smoke-native-consumer.mjs
+$ pnpm run clean && bob build && node scripts/copy-assets.mjs
+$ node scripts/clean.mjs
+ℹ [module] Cleaning up previous build at lib/module
+ℹ [module] Compiling 6 files in src with babel
+ℹ [typescript] Cleaning up previous build at lib/typescript
+ℹ [typescript] Generating type definitions with tsc
+✔ [module] Wrote files to lib/module
+✔ [typescript] Wrote definition files to lib/typescript
+$ pnpm run build
+$ pnpm run clean && bob build && node scripts/copy-assets.mjs
+$ node scripts/clean.mjs
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 11, reused 3, downloaded 0, added 0
+Progress: resolved 15, reused 13, downloaded 0, added 0
+Progress: resolved 16, reused 14, downloaded 0, added 0
+Progress: resolved 19, reused 17, downloaded 1, added 0
+Progress: resolved 21, reused 19, downloaded 1, added 0
+Progress: resolved 23, reused 21, downloaded 1, added 0
+Progress: resolved 24, reused 22, downloaded 1, added 0
+Progress: resolved 59, reused 30, downloaded 1, added 0
+Progress: resolved 73, reused 48, downloaded 1, added 0
+Progress: resolved 77, reused 59, downloaded 1, added 0
+Progress: resolved 110, reused 77, downloaded 1, added 0
+Progress: resolved 136, reused 122, downloaded 1, added 0
+Progress: resolved 146, reused 140, downloaded 1, added 0
+Progress: resolved 152, reused 149, downloaded 1, added 0
+Progress: resolved 171, reused 163, downloaded 1, added 0
+Progress: resolved 176, reused 174, downloaded 1, added 0
+Progress: resolved 180, reused 175, downloaded 1, added 0
+Progress: resolved 222, reused 211, downloaded 1, added 0
+Progress: resolved 240, reused 225, downloaded 1, added 0
+Progress: resolved 251, reused 233, downloaded 1, added 0
+Progress: resolved 258, reused 237, downloaded 1, added 0
+Progress: resolved 273, reused 252, downloaded 1, added 0
+Progress: resolved 282, reused 260, downloaded 1, added 0
+Progress: resolved 306, reused 281, downloaded 1, added 0
+Progress: resolved 321, reused 300, downloaded 1, added 0
+Progress: resolved 348, reused 326, downloaded 1, added 0
+Progress: resolved 376, reused 343, downloaded 1, added 0
+Progress: resolved 399, reused 369, downloaded 1, added 0
+Progress: resolved 416, reused 385, downloaded 1, added 0
+Progress: resolved 418, reused 387, downloaded 1, added 0
+Progress: resolved 446, reused 415, downloaded 1, added 0
+Progress: resolved 461, reused 429, downloaded 1, added 0
+Progress: resolved 479, reused 447, downloaded 1, added 0
+Progress: resolved 486, reused 455, downloaded 1, added 0
+Progress: resolved 537, reused 505, downloaded 1, added 0
+Progress: resolved 553, reused 512, downloaded 1, added 0
+Progress: resolved 556, reused 513, downloaded 1, added 0
+Progress: resolved 558, reused 517, downloaded 1, added 0
+Progress: resolved 581, reused 535, downloaded 1, added 0
+Progress: resolved 594, reused 552, downloaded 1, added 0
+Progress: resolved 601, reused 559, downloaded 1, added 0
+Progress: resolved 608, reused 567, downloaded 1, added 0
+Progress: resolved 609, reused 567, downloaded 1, added 0
+Progress: resolved 634, reused 593, downloaded 1, added 0
+Progress: resolved 636, reused 595, downloaded 1, added 0
+[WARN] 1 deprecated subdependencies found: uuid@7.0.3
+Packages: +596
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 636, reused 595, downloaded 1, added 1
+Progress: resolved 636, reused 595, downloaded 1, added 62
+Progress: resolved 636, reused 595, downloaded 1, added 84
+Progress: resolved 636, reused 595, downloaded 1, added 159
+Progress: resolved 636, reused 595, downloaded 1, added 239
+Progress: resolved 636, reused 595, downloaded 1, added 279
+Progress: resolved 636, reused 595, downloaded 1, added 363
+Progress: resolved 636, reused 595, downloaded 1, added 404
+Progress: resolved 636, reused 595, downloaded 1, added 427
+Progress: resolved 636, reused 595, downloaded 1, added 455
+Progress: resolved 636, reused 595, downloaded 1, added 505
+Progress: resolved 636, reused 595, downloaded 1, added 533
+Progress: resolved 636, reused 595, downloaded 1, added 544
+Progress: resolved 636, reused 595, downloaded 1, added 550
+Progress: resolved 636, reused 595, downloaded 1, added 556
+Progress: resolved 636, reused 595, downloaded 1, added 557
+Progress: resolved 636, reused 595, downloaded 1, added 580
+Progress: resolved 636, reused 595, downloaded 1, added 595
+Progress: resolved 636, reused 595, downloaded 1, added 596
+Progress: resolved 636, reused 595, downloaded 1, added 596, done
+
+dependencies:
++ @expo/metro-config 57.0.12
++ @expo/metro-runtime 57.0.15
++ @learnui/native 0.0.0
++ expo 57.0.21 (57.0.22 is available)
++ expo-constants 57.0.17 (57.0.18 is available)
++ expo-linking 57.0.9 (57.0.10 is available)
++ expo-router 57.0.20 (57.0.21 is available)
++ metro 0.87.0
++ metro-cache 0.87.0
++ metro-transform-worker 0.87.0
++ react 19.2.3 (19.3.0 is available)
++ react-dom 19.2.3 (19.3.0 is available)
++ react-native 0.86.2 (0.87.1 is available)
++ react-native-gesture-handler 2.32.0 (3.3.0 is available)
++ react-native-reanimated 4.5.1 (4.6.0 is available)
++ react-native-safe-area-context 5.7.0 (5.9.1 is available)
++ react-native-screens 4.26.2 (4.27.0 is available)
++ react-native-web 0.21.2
++ react-native-worklets 0.10.1 (0.12.1 is available)
++ tailwindcss 4.3.3
++ uniwind 1.12.0
+
+devDependencies:
++ @react-native/metro-config 0.86.2 (0.87.1 is available)
++ @types/react 19.2.18 (19.3.0 is available)
++ typescript 6.0.3 (7.0.2 is available)
+
+Done in 1m 49.9s using pnpm v11.9.0
+$ tsc -p tsconfig.json --noEmit
+Bytecode makes the app startup faster, disabling bytecode is highly discouraged and should only be used for debugging purposes.
+Starting Metro Bundler
+
+| (node:70357) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:70357) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+iOS Bundled 17696ms node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/entry.js (1322 modules)
+
+› Assets (23):
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/arrow_down.png (9.5KB)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/error.png (469B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/file.png (138B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/forward.png (188B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/pkg.png (364B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/react-navigation/elements/back-icon-mask.png (653B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/react-navigation/elements/back-icon.png (4 variations | 566B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/react-navigation/elements/clear-icon.png (4 variations | 425B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/react-navigation/elements/close-icon.png (4 variations | 235B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/react-navigation/elements/search-icon.png (3 variations | 582B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/sitemap.png (465B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/unmatched.png (4.8KB)
+
+› ios bundles (1):
+_expo/static/js/ios/entry-a0f68f1ab28cd2cf8ecb5bdd49e473fc.js (4.3MB)
+
+› web bundles (1):
+_expo/static/css/global-d41d8cd98f00b204e9800998ecf8427e.css (0B)
+
+› Files (1):
+metadata.json (1.6KB)
+
+Exported: dist/ios
+Bytecode makes the app startup faster, disabling bytecode is highly discouraged and should only be used for debugging purposes.
+Starting Metro Bundler
+
+| (node:70895) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:70895) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+Android Bundled 11034ms node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/entry.js (1457 modules)
+
+› Assets (27):
+node_modules/.pnpm/@expo-google-fonts+material-symbols@0.4.47/node_modules/@expo-google-fonts/material-symbols/400Regular/MaterialSymbols_400Regular.ttf (967KB)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/arrow_down.png (9.5KB)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/arrow_right.xml (307B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/checkmark.xml (312B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/error.png (469B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/file.png (138B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/forward.png (188B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/pkg.png (364B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/react-navigation/elements/back-icon-mask.png (653B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/react-navigation/elements/back-icon.png (4 variations | 152B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/react-navigation/elements/clear-icon.png (4 variations | 425B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/react-navigation/elements/close-icon.png (4 variations | 235B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/react-navigation/elements/search-icon.png (4 variations | 599B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/sitemap.png (465B)
+node_modules/.pnpm/expo-router@57.0.20_ef8c7b0304ca28d0342ec7d2e6aba081/node_modules/expo-router/assets/unmatched.png (4.8KB)
+
+› android bundles (1):
+_expo/static/js/android/entry-e745a7d06d85bfc995dda0b36f61cc2e.js (4.9MB)
+
+› web bundles (1):
+_expo/static/css/global-d41d8cd98f00b204e9800998ecf8427e.css (0B)
+
+› Files (1):
+metadata.json (1.8KB)
+
+Exported: dist/android
+Native consumer smoke passed with learnui-native-0.0.0.tgz

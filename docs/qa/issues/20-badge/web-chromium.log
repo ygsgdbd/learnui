@@ -1,0 +1,9 @@
+$ vitest run --project chromium
+
+ RUN  v4.1.11 <worktree>/apps/web-storybook
+
+
+ Test Files  4 passed (4)
+      Tests  13 passed (13)
+   Start at  12:57:48
+   Duration  31.36s (transform 0ms, setup 45.77s, import 19.52s, tests 7.34s, environment 0ms)

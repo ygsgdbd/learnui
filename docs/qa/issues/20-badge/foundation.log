@@ -1,0 +1,9 @@
+$ vitest run --dir tests
+
+ RUN  v4.1.11 <worktree>
+
+
+ Test Files  3 passed (3)
+      Tests  12 passed (12)
+   Start at  12:37:09
+   Duration  12.21s (transform 7.81s, setup 0ms, import 12.89s, tests 785ms, environment 0ms)

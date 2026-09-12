@@ -15,6 +15,7 @@ const variants: BadgeVariant[] = ["solid", "soft", "outline"];
 export default function BadgeScreen() {
   return (
     <ScrollView
+      contentInsetAdjustmentBehavior="automatic"
       className="flex-1 bg-[var(--learnui-color-canvas)]"
       contentContainerClassName="gap-4 px-6 py-8"
     >

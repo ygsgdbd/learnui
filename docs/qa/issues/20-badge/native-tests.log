@@ -1,0 +1,10 @@
+$ jest --runInBand
+PASS src/__tests__/badge.test.tsx (6.654 s)
+PASS src/__tests__/spinner.test.tsx
+PASS src/__tests__/divider.test.tsx
+
+Test Suites: 3 passed, 3 total
+Tests:       32 passed, 32 total
+Snapshots:   0 total
+Time:        12.322 s, estimated 41 s
+Ran all test suites.
