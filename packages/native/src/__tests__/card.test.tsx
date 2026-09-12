@@ -55,7 +55,7 @@ test("surface follows live reduced transparency and keeps consumer classes last"
   const remove = jest.fn();
   const query = jest.spyOn(AccessibilityInfo, "isReduceTransparencyEnabled").mockResolvedValue(false);
   const subscribe = jest.spyOn(AccessibilityInfo, "addEventListener").mockImplementation((_event, listener) => {
-    onChange = listener as (enabled: boolean) => void;
+    onChange = listener as unknown as (enabled: boolean) => void;
     return { remove };
   });
   const screen = await render(<Card.Root testID="card" />);

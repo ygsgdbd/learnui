@@ -28,8 +28,10 @@ try {
       await page.goto(url);
       await page.locator(".learnui-card").first().waitFor();
       for (const theme of ["light", "dark"]) {
+        await page.emulateMedia({ contrast: "more", reducedMotion: "reduce", forcedColors: "none" });
+        await page.reload();
+        await page.locator(".learnui-card").first().waitFor();
         await page.evaluate(theme => { document.documentElement.dataset.theme = theme; }, theme);
-        await page.emulateMedia({ contrast: "more", reducedMotion: "reduce" });
         if (await page.evaluate(() => matchMedia("(prefers-contrast: more)").matches)) {
           await page.waitForFunction(() => {
             const node = document.querySelector(".learnui-card");
