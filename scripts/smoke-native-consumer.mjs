@@ -95,6 +95,33 @@ function assertMatches(contents, pattern, label) {
   }
 }
 
+// Require a compiled Uniwind registry entry, not a class literal in component source.
+function assertCompiledClass(contents, className, expected, label) {
+  const quoted = JSON.stringify(className).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const start = contents.match(new RegExp(`${quoted}\\s*:\\s*\\[`));
+  let rule = "";
+  if (start) {
+    const offset = start.index + start[0].length - 1;
+    let depth = 0;
+    let quote = "";
+    for (let index = offset; index < contents.length; index += 1) {
+      const char = contents[index];
+      if (quote) {
+        if (char === "\\") index += 1;
+        else if (char === quote) quote = "";
+      } else if (char === '"' || char === "'" || char === "`") quote = char;
+      else if (char === "[") depth += 1;
+      else if (char === "]" && --depth === 0) {
+        rule = contents.slice(offset, index + 1);
+        break;
+      }
+    }
+  }
+  if (!rule || !expected.every((part) => rule.includes(part))) {
+    throw new Error(`${label} is missing a compiled ${className} rule with ${expected.join(", ")}`);
+  }
+}
+
 function readExportOutput(directory) {
   return readdirSync(directory, { withFileTypes: true }).map((entry) => {
     const path = join(directory, entry.name);
@@ -162,8 +189,18 @@ try {
 
   for (const platform of ["ios", "android"]) {
     const exportOutput = readExportOutput(join(consumerDir, "dist", platform));
-    assertIncludes(exportOutput, "text-[--lui-badge-solid-foreground]", `${platform} Badge solid styles`);
-    assertIncludes(exportOutput, "bg-[--learnui-color-foreground]/10", `${platform} Badge default styles`);
+    assertCompiledClass(exportOutput, "text-[var(--lui-badge-solid-foreground)]",
+      ["color", 'vars["--lui-badge-solid-foreground"]'], `${platform} Badge solid foreground`);
+    assertCompiledClass(exportOutput, "bg-[var(--learnui-color-success)]",
+      ["backgroundColor", 'vars["--learnui-color-success"]'], `${platform} Badge solid background`);
+    assertCompiledClass(exportOutput, "font-[family-name:var(--learnui-font-sans)]",
+      ["fontFamily", 'vars["--learnui-font-sans"]'], `${platform} Badge font token`);
+    assertCompiledClass(exportOutput, "px-5",
+      ["paddingHorizontal", "* 5"], `${platform} Badge consumer class override`);
+    assertCompiledClass(exportOutput, "text-sm",
+      ["fontSize", 'vars["--text-sm"]'], `${platform} Badge default size`);
+    assertCompiledClass(exportOutput, "bg-[var(--learnui-color-foreground)]/10",
+      ["backgroundColor", 'vars["--learnui-color-foreground"]', "10%"], `${platform} Badge default background`);
     assertIncludes(exportOutput, "Pending review", `${platform} Badge text`);
     assertMatches(exportOutput, /borderRadius:\s*6/, `${platform} Badge style override`);
     assertIncludes(exportOutput, "px-5", `${platform} Badge class override`);

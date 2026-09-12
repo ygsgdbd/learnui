@@ -41,16 +41,16 @@ describe("Badge", () => {
     expect(badge.props.className).toContain("px-6");
     expect(badge.props.className).toContain("text-sm");
     expect(badge.props.className).not.toContain("px-2.5");
-    expect(badge.props.className).not.toContain("rounded-[--learnui-radius-control]");
+    expect(badge.props.className).not.toContain("rounded-[var(--learnui-radius-control)]");
     expect(badge.props.style).toBe(style);
   });
 
   test.each([
-    ["solid", "accent", "sm", "bg-[--learnui-color-accent]", "text-xs"],
-    ["soft", "success", "md", "bg-[--learnui-color-success]/10", "text-sm"],
-    ["outline", "warning", "sm", "border-[--learnui-color-warning]", "text-xs"],
-    ["solid", "destructive", "md", "bg-[--learnui-color-destructive]", "text-sm"],
-    ["solid", "neutral", "md", "bg-[--learnui-color-foreground]", "text-sm"]
+    ["solid", "accent", "sm", "bg-[var(--learnui-color-accent)]", "text-xs"],
+    ["soft", "success", "md", "bg-[var(--learnui-color-success)]/10", "text-sm"],
+    ["outline", "warning", "sm", "border-[var(--learnui-color-warning)]", "text-xs"],
+    ["solid", "destructive", "md", "bg-[var(--learnui-color-destructive)]", "text-sm"],
+    ["solid", "neutral", "md", "bg-[var(--learnui-color-foreground)]", "text-sm"]
   ] as const)("renders %s %s %s with readable text", async (variant, color, size, colorClass, sizeClass) => {
     const screen = await render(<Badge variant={variant} color={color} size={size}>Status</Badge>);
     const badge = screen.getByText("Status");
@@ -62,7 +62,20 @@ describe("Badge", () => {
 
   test("uses a contrast-safe foreground for the light success solid status", async () => {
     const screen = await render(<Badge color="success" variant="solid">Approved</Badge>);
-    expect(screen.getByText("Approved").props.className).toContain("text-[--lui-badge-success-solid-foreground]");
+    expect(screen.getByText("Approved").props.className).toContain("text-[var(--lui-badge-success-solid-foreground)]");
+  });
+
+  test("keeps the public font family and weight independently overridable", async () => {
+    const screen = await render(<Badge>Default font</Badge>);
+    expect(screen.getByText("Default font").props.className).toContain("font-[family-name:var(--learnui-font-sans)]");
+    expect(screen.getByText("Default font").props.className).toContain("font-semibold");
+
+    await screen.rerender(<Badge className="font-mono font-normal">Consumer font</Badge>);
+    const classes = screen.getByText("Consumer font").props.className;
+    expect(classes).toContain("font-mono");
+    expect(classes).toContain("font-normal");
+    expect(classes).not.toContain("font-[family-name:var(--learnui-font-sans)]");
+    expect(classes).not.toContain("font-semibold");
   });
 
 });
