@@ -56,7 +56,7 @@ test("surface follows live reduced transparency and keeps consumer classes last"
   const query = jest.spyOn(AccessibilityInfo, "isReduceTransparencyEnabled").mockResolvedValue(false);
   const subscribe = jest.spyOn(AccessibilityInfo, "addEventListener").mockImplementation((_event, listener) => {
     onChange = listener as unknown as (enabled: boolean) => void;
-    return { remove };
+    return { remove } as unknown as ReturnType<typeof AccessibilityInfo.addEventListener>;
   });
   const screen = await render(<Card.Root testID="card" />);
   expect(screen.getByTestId("card").props.className).toContain("bg-[var(--learnui-color-surface)]");
