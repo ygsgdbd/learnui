@@ -244,6 +244,8 @@ try {
     "Consumer production build is missing the Spinner consumer override"
   );
 
+  assertCssRuleIncludes(builtCss, ".learnui-card", ["display:flex", "flex-direction:column"], "Missing Card styles");
+  assertCssRuleIncludes(builtCss, ".learnui-consumer-card-override", ["padding:28px"], "Missing Card override");
   console.log(`@learnui/web consumer smoke passed: ${relative(repoRoot, consumerDir)}`);
 } finally {
   rmSync(workRoot, {
