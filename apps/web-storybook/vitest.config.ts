@@ -44,6 +44,21 @@ export default defineConfig({
             ]
           }
         }
+      },
+      {
+        optimizeDeps: {
+          include: ["react", "react-dom", "react-dom/client", "react/jsx-runtime"]
+        },
+        test: {
+          name: "badge-forced-colors",
+          include: ["src/badge.forced-colors.test.tsx"],
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: playwright({ contextOptions: { forcedColors: "active" } }),
+            instances: [{ browser: "chromium" }]
+          }
+        }
       }
     ]
   }

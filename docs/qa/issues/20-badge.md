@@ -59,3 +59,22 @@ Evidence: `20-badge/ios-system-dark.png`, `ios-light.png`, `ios-ownership-overri
 ## Release-only evidence
 
 Physical iOS and Android devices, VoiceOver/TalkBack, VoiceOver/Safari, NVDA/Chrome, human visual-baseline approval, real OS high-contrast preferences, and production-like frame pacing are **unverified**. Simulator screenshots, accessibility trees, bundle exports and mocked component tests cannot replace those checks.
+
+## Component merge gate versus release candidate
+
+ADR-0009 and the Gate cadence section of `docs/qa/V1_ACCEPTANCE.md` separate relevant-PR checks from release-candidate sign-off. Issue #20 requires component contracts, public hosts, external consumers and related automated/build checks; it does not require a release-candidate signature. The unverified physical-device, assistive-technology, human baseline and performance checks above remain required under [#27](https://github.com/ygsgdbd/learnui/issues/27), which stays open. They are not reported as passed or waived by merging this component.
+
+| Issue #20 criterion | Evidence |
+| --- | --- |
+| Public single root, non-interactive API | Web span / Native Text; public exports and typechecks; semantic tests |
+| Complete variants, colors, sizes | Storybook axes and Native Gallery; browser/RNTL assertions |
+| Text meaning and decorative owner | Browser focus/owner assertions, RNTL hidden child assertions; runtime observations above |
+| Platform refs and consumer style priority | Public-entry tests, compiled external consumer rules and runtime override examples |
+| Public-entry hosts and three themes | Storybook five stories, Gallery page; theme tests and runtime controls |
+| Browser and Native component contracts | Four browser configurations and Native component suite logs |
+| Workspace-external tarballs | Web/Native fixture logs with default, variant and consumer styles |
+| Build, typecheck, hosts and fixtures | Recorded package/host checks, both production exports and installed development builds |
+
+### Final independent review
+
+Standards: no actionable violations. Spec: one missing browser forced-colors gate was found and closed by the dedicated Chromium project, which checks all 15 variant/color combinations for readable text, visible borders and no tab stop. It runs through the default Storybook test command. Real-OS high contrast remains under #27.
