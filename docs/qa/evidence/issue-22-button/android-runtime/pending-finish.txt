@@ -1,0 +1,4 @@
+Tapped role=button label="Finish saving" (540, 1122)
+settled after 3684ms: +1 -1 (~26 unchanged)
+- @e17 [text] "Save activations: 1 · pending — repeat presses blocked"
++ @e17~s180571 [text] "Save activations: 1 · ready"

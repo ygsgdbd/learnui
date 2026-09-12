@@ -1,0 +1,24 @@
+Tapped @e13 (540, 960)
+settled after 2896ms: +0 -0 (~27 unchanged)
+unchanged interactive (20):
+= @e1~s180566 [scroll-area]
+= @e2~s180566 [button] "Navigate up"
+= @e3~s180566 [scroll-area]
+= @e4~s180566 [text] "Button"
+= @e5~s180566 [text] "Preview: system · resolved: light"
+= @e6~s180566 [radiobutton] "System"
+= @e7~s180566 [text] "System"
+= @e8~s180566 [radiobutton] "Light"
+= @e9~s180566 [text] "Light"
+= @e10~s180566 [radiobutton] "Dark"
+= @e11~s180566 [text] "Dark"
+= @e12~s180566 [text] "Pending · stable action name and one focus target"
+= @e13~s180566 [button] "busy"
+= @e14~s180566 [text] "Save lesson"
+= @e15~s180566 [button] "Finish saving"
+= @e16~s180566 [text] "Finish saving"
+= @e17~s180566 [text] "Save activations: 1 · pending — repeat presses blocked"
+= @e18~s180566 [text] "Rapid press and system reduced motion"
+= @e19~s180566 [button] "Rapid press"
+= @e20~s180566 [text] "Rapid press"
+… more interactive elements not shown, use snapshot -i

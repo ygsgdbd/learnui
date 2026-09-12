@@ -1,0 +1,88 @@
+{
+  "consumer": "/private/var/folders/9b/wsf5f1js65b6s1bf8jz0p3380000gn/T/learnui-web-consumer-50262/consumer",
+  "tarballSha256": "df7ad7a347a22e7c64d96fb28c195972a9a10026835e02c0577ff2ebd34a6eb4",
+  "htmlSha256": "b797f896ae0dd5bd39bf30230378a5c44bcc2e2f7e0aaa24089ea4932c8899f5",
+  "browsers": [
+    {
+      "browser": "chromium",
+      "version": "151.0.7922.34",
+      "down": {
+        "transform": "matrix(0.98, 0, 0, 0.98, 0, 0)",
+        "opacity": "0.88",
+        "pressed": true
+      },
+      "pointerEnterSpaceCount": 3,
+      "semantics": {
+        "busy": "true",
+        "disabled": false,
+        "focused": true
+      },
+      "sameRoot": true,
+      "override": {
+        "radius": "22px",
+        "padding": "30px"
+      },
+      "reduced": {
+        "transform": "none",
+        "opacity": "0.88"
+      },
+      "cardAndBadgePresent": true,
+      "pageErrors": [],
+      "status": "PASS"
+    },
+    {
+      "browser": "firefox",
+      "version": "153.0",
+      "down": {
+        "transform": "matrix(0.98, 0, 0, 0.98, 0, 0)",
+        "opacity": "0.88",
+        "pressed": true
+      },
+      "pointerEnterSpaceCount": 3,
+      "semantics": {
+        "busy": "true",
+        "disabled": false,
+        "focused": true
+      },
+      "sameRoot": true,
+      "override": {
+        "radius": "22px",
+        "padding": "30px"
+      },
+      "reduced": {
+        "transform": "none",
+        "opacity": "0.88"
+      },
+      "cardAndBadgePresent": true,
+      "pageErrors": [],
+      "status": "PASS"
+    },
+    {
+      "browser": "webkit",
+      "version": "26.5",
+      "down": {
+        "transform": "matrix(0.98, 0, 0, 0.98, 0, 0)",
+        "opacity": "0.88",
+        "pressed": true
+      },
+      "pointerEnterSpaceCount": 3,
+      "semantics": {
+        "busy": "true",
+        "disabled": false,
+        "focused": true
+      },
+      "sameRoot": true,
+      "override": {
+        "radius": "22px",
+        "padding": "30px"
+      },
+      "reduced": {
+        "transform": "none",
+        "opacity": "0.88"
+      },
+      "cardAndBadgePresent": true,
+      "pageErrors": [],
+      "status": "PASS"
+    }
+  ]
+}

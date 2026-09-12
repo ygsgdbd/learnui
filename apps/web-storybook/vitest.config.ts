@@ -24,7 +24,7 @@ export default defineConfig({
     projects: [
       {
         optimizeDeps: {
-          include: ["storybook/test"]
+          include: ["storybook/test", "react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"]
         },
         plugins: [storybookTest({ configDir })],
         test: {
@@ -42,6 +42,21 @@ export default defineConfig({
               { browser: "firefox", name: "firefox", provider: targetScaleProvider() },
               { browser: "webkit", name: "webkit", provider: targetScaleProvider() }
             ]
+          }
+        }
+      },
+      {
+        optimizeDeps: {
+          include: ["react", "react-dom", "react-dom/client", "react/jsx-runtime"]
+        },
+        test: {
+          name: "badge-forced-colors",
+          include: ["src/badge.forced-colors.test.tsx"],
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: playwright({ contextOptions: { forcedColors: "active" } }),
+            instances: [{ browser: "chromium" }]
           }
         }
       }

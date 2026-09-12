@@ -1,0 +1,6 @@
+Tapped role=button label="Save lesson" (540, 960)
+settled after 4950ms: +2 -2 (~25 unchanged)
+- @e13 [button] "Save lesson"
++ @e13~s180564 [button] "busy"
+- @e17 [text] "Save activations: 0 · ready"
++ @e17~s180564 [text] "Save activations: 1 · pending — repeat presses blocked"

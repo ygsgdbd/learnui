@@ -1,0 +1,9 @@
+$ vitest run --project firefox
+
+ RUN  v4.1.11 <worktree>/apps/web-storybook
+
+
+ Test Files  4 passed (4)
+      Tests  13 passed (13)
+   Start at  13:00:43
+   Duration  98.64s (transform 0ms, setup 78.89s, import 28.46s, tests 22.43s, environment 0ms)

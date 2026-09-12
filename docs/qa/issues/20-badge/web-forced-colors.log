@@ -1,0 +1,8 @@
+RUN  v4.1.11 <worktree>/apps/web-storybook
+
+2:10:56 PM [vite] (client) Re-optimizing dependencies because vite config has changed
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  14:10:55
+   Duration  2.04s (transform 0ms, setup 0ms, import 304ms, tests 21ms, environment 0ms)

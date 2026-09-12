@@ -1,0 +1,353 @@
+{
+  "success": true,
+  "data": {
+    "nodes": [
+      {
+        "index": 0,
+        "type": "android.widget.ScrollView",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 2400
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 0,
+        "ref": "e1"
+      },
+      {
+        "index": 1,
+        "type": "android.widget.RadioButton",
+        "label": "System",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 557,
+          "width": 304,
+          "height": 116
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 1,
+        "parentIndex": 0,
+        "ref": "e2"
+      },
+      {
+        "index": 2,
+        "type": "android.widget.TextView",
+        "label": "System",
+        "value": "System",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 152,
+          "y": 589,
+          "width": 125,
+          "height": 51
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 2,
+        "parentIndex": 1,
+        "ref": "e3"
+      },
+      {
+        "index": 3,
+        "type": "android.widget.RadioButton",
+        "label": "Light",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 388,
+          "y": 557,
+          "width": 304,
+          "height": 116
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 1,
+        "parentIndex": 0,
+        "ref": "e4"
+      },
+      {
+        "index": 4,
+        "type": "android.widget.TextView",
+        "label": "Light",
+        "value": "Light",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 498,
+          "y": 589,
+          "width": 84,
+          "height": 51
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 2,
+        "parentIndex": 3,
+        "ref": "e5"
+      },
+      {
+        "index": 5,
+        "type": "android.widget.RadioButton",
+        "label": "Dark",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 713,
+          "y": 557,
+          "width": 304,
+          "height": 116
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 1,
+        "parentIndex": 0,
+        "ref": "e6"
+      },
+      {
+        "index": 6,
+        "type": "android.widget.TextView",
+        "label": "Dark",
+        "value": "Dark",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 826,
+          "y": 589,
+          "width": 77,
+          "height": 51
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 2,
+        "parentIndex": 5,
+        "ref": "e7"
+      },
+      {
+        "index": 7,
+        "type": "android.view.View",
+        "label": "Button",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 852,
+          "width": 954,
+          "height": 115
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 1,
+        "parentIndex": 0,
+        "ref": "e8"
+      },
+      {
+        "index": 8,
+        "type": "android.widget.TextView",
+        "label": "Button",
+        "value": "Button",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 107,
+          "y": 878,
+          "width": 866,
+          "height": 63
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 2,
+        "parentIndex": 7,
+        "ref": "e9"
+      },
+      {
+        "index": 9,
+        "type": "android.view.View",
+        "label": "Badge",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 1009,
+          "width": 954,
+          "height": 116
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 1,
+        "parentIndex": 0,
+        "ref": "e10"
+      },
+      {
+        "index": 10,
+        "type": "android.widget.TextView",
+        "label": "Badge",
+        "value": "Badge",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 107,
+          "y": 1035,
+          "width": 866,
+          "height": 63
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 2,
+        "parentIndex": 9,
+        "ref": "e11"
+      },
+      {
+        "index": 11,
+        "type": "android.view.View",
+        "label": "Divider",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 1167,
+          "width": 954,
+          "height": 115
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 1,
+        "parentIndex": 0,
+        "ref": "e12"
+      },
+      {
+        "index": 12,
+        "type": "android.widget.TextView",
+        "label": "Divider",
+        "value": "Divider",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 107,
+          "y": 1193,
+          "width": 866,
+          "height": 63
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 2,
+        "parentIndex": 11,
+        "ref": "e13"
+      },
+      {
+        "index": 13,
+        "type": "android.view.View",
+        "label": "Card",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 1324,
+          "width": 954,
+          "height": 116
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 1,
+        "parentIndex": 0,
+        "ref": "e14"
+      },
+      {
+        "index": 14,
+        "type": "android.widget.TextView",
+        "label": "Card",
+        "value": "Card",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 107,
+          "y": 1350,
+          "width": 866,
+          "height": 63
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 2,
+        "parentIndex": 13,
+        "ref": "e15"
+      },
+      {
+        "index": 15,
+        "type": "android.view.View",
+        "label": "Spinner",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 63,
+          "y": 1482,
+          "width": 954,
+          "height": 115
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "hittable": true,
+        "depth": 1,
+        "parentIndex": 0,
+        "ref": "e16"
+      },
+      {
+        "index": 16,
+        "type": "android.widget.TextView",
+        "label": "Spinner",
+        "value": "Spinner",
+        "bundleId": "dev.learnui.gallery",
+        "rect": {
+          "x": 107,
+          "y": 1508,
+          "width": 866,
+          "height": 63
+        },
+        "enabled": true,
+        "visibleToUser": true,
+        "depth": 2,
+        "parentIndex": 15,
+        "ref": "e17"
+      }
+    ],
+    "truncated": false,
+    "appName": "dev.learnui.gallery",
+    "appBundleId": "dev.learnui.gallery",
+    "visibility": {
+      "partial": false,
+      "visibleNodeCount": 17,
+      "totalNodeCount": 17,
+      "reasons": []
+    },
+    "androidSnapshot": {
+      "backend": "android-helper",
+      "helperVersion": "0.20.10",
+      "helperApiVersion": "2",
+      "helperTransport": "persistent-session",
+      "helperSessionReused": true,
+      "installReason": "current",
+      "waitForIdleTimeoutMs": 500,
+      "waitForIdleQuietMs": 100,
+      "timeoutMs": 2000,
+      "maxDepth": 128,
+      "maxNodes": 5000,
+      "rootPresent": true,
+      "captureMode": "interactive-windows",
+      "windowCount": 2,
+      "nodeCount": 76,
+      "helperTruncated": false,
+      "elapsedMs": 24
+    },
+    "snapshotDiagnostics": {
+      "stats": {
+        "count": 64,
+        "p50Ms": 896,
+        "p95Ms": 3366,
+        "maxMs": 12939,
+        "slowThresholdMs": 1500,
+        "platform": "android",
+        "backends": {
+          "android": 64
+        }
+      },
+      "warning": "Warning: android snapshots are slow in this run: p95 3151ms over 63 captures. Possible causes: device load, app or dev server stuck, helper fallback, or stale daemon."
+    },
+    "refsGeneration": 180603
+  }
+}

@@ -1,4 +1,11 @@
 export {
+  Badge,
+  type BadgeColor,
+  type BadgeProps,
+  type BadgeSize,
+  type BadgeVariant
+} from "./badge";
+export {
   Divider,
   type DividerOrientation,
   type DividerProps,
@@ -12,3 +19,4 @@ export {
 } from "./spinner";
 
 export { Button, type ButtonProps, type ButtonSize, type ButtonVariant } from "./button";
+export { Card, type CardVariant, type CardRootProps, type CardViewProps, type CardTitleProps, type CardDescriptionProps } from "./card";

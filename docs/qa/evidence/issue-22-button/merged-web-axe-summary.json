@@ -1,0 +1,42 @@
+[
+  {
+    "project": "chromium",
+    "tests": 24,
+    "passed": 24,
+    "axeReports": 24,
+    "violations": 0,
+    "incomplete": 0
+  },
+  {
+    "project": "chromium-reduced-motion",
+    "tests": 24,
+    "passed": 24,
+    "axeReports": 24,
+    "violations": 0,
+    "incomplete": 0
+  },
+  {
+    "project": "firefox",
+    "tests": 24,
+    "passed": 24,
+    "axeReports": 24,
+    "violations": 0,
+    "incomplete": 0
+  },
+  {
+    "project": "webkit",
+    "tests": 24,
+    "passed": 24,
+    "axeReports": 24,
+    "violations": 0,
+    "incomplete": 0
+  },
+  {
+    "project": "badge-forced-colors",
+    "tests": 1,
+    "passed": 1,
+    "axeReports": 0,
+    "violations": 0,
+    "incomplete": 0
+  }
+]

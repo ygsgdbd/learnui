@@ -32,7 +32,15 @@ press down 立即开始反馈，目标 scale 0.98，150ms；reduced motion 不�
 
 以 `ceb0d83...HEAD` 分别执行 Standards / Spec 复审。两轴均发现 Native 内部 Text 未消费公共 `--learnui-font-sans`，已显式应用字体变量 utility 并保留字重，公共入口测试 RED → GREEN。实际 tarball consumer 双平台 registry 已验证生成 `fontFamily` 对该 token 的引用，fixture 的 Avenir Next 覆盖保留；两轴复核关闭该 finding。
 
-字体修复后 Native 全量 **38/38**、Button **16/16**、pack/Publint、全仓 typecheck、真实 Native tarball 外部安装与双平台 export 通过。对应日志 `/tmp/learnui-button-integration-native.log`、`/tmp/learnui-button-integration-typecheck.log`、`/tmp/learnui-button-font-tarball.log`。[最终自动化摘录](evidence/issue-22-button/integration-verification.txt)。iOS 原 development build 重新加载字体修复后的 JS，Button 正常显示且无字体报错，见[截图](evidence/issue-22-button/ios-font-final.png)和[AX](evidence/issue-22-button/ios-font-final.txt)；此次增量复查不重复签署真人读屏或性能。初次运行源码标识保留为 [source-initial-sha256.txt](evidence/issue-22-button/source-initial-sha256.txt)，当前字体修复源码使用 `source-sha256.txt`。
+字体修复后 Native 全量 **38/38**、Button **16/16**、pack/Publint、全仓 typecheck、真实 Native tarball 外部安装与双平台 export 通过。对应日志 `/tmp/learnui-button-integration-native.log`、`/tmp/learnui-button-integration-typecheck.log`、`/tmp/learnui-button-font-tarball.log`。[最终自动化摘录](evidence/issue-22-button/integration-verification.txt)。iOS 原 development build 重新加载字体修复后的 JS，Button 正常显示且无字体报错，见[截图](evidence/issue-22-button/ios-font-final.png)和[AX](evidence/issue-22-button/ios-font-final.txt)；此次增量复查不重复签署真人读屏或性能。初次运行源码标识保留为 [source-initial-sha256.txt](evidence/issue-22-button/source-initial-sha256.txt)，字体增量运行源码保留为 [source-font-sha256.txt](evidence/issue-22-button/source-font-sha256.txt)，主分支整合后的源码使用 `source-sha256.txt`。
+
+## Card / Badge 主分支整合
+
+已本地整合 `origin/main` 的 Badge merge `24c2ad5f86499a60f58c2737118785feacb7883e`（包含 Card merge `18c4ffe`）。按意图合并双端 exports、Gallery 入口、两个真实 consumer 示例与 smoke 检查；三组件功能均保留。Native 使用主分支 `assertCompiledClass` 统一解析实际生成 registry，Button 六项断言完整迁移。独立只读复核未发现误删、遗漏或减弱断言。
+
+整合后：Web **4 × 24 + forced-colors 1 = 97/97**；96 份 axe 报告 **0 violations、0 incomplete**；Native **59/59**；Foundation **12/12**。双端 package builds、pack/Publint、全仓 typecheck、Storybook static build、工作区外真实 Web/Native tarball consumer、Gallery 双平台 production export 和 public import 扫描通过。Card 三浏览器高对比/主题/200%文字重排回归通过。最终外部 Web tarball 在 Chromium/Firefox/WebKit 实际 pointer/Enter/Space、pending focus/name/busy、disabled、22px/30px覆盖、动态 reduced-motion 和 Card/Badge 示例共存复验通过，无页面异常；[行为与产物哈希](evidence/issue-22-button/merged-external-browser.json)。[整合验证摘录](evidence/issue-22-button/merged-verification.txt)与[完整 axe 统计](evidence/issue-22-button/merged-web-axe-summary.json)。CI 工作流尚属 #26，本 PR 无远程 checks，以上是实际本地验证结果，不声称 CI 已运行。
+
+最终整合版仍使用已编译 development binary，由重启后的本 worktree Metro 加载整合源码：iOS [首页五入口](evidence/issue-22-button/ios-merged-home.txt)与 [Button](evidence/issue-22-button/ios-merged.png)，Android [首页五入口](evidence/issue-22-button/android-runtime/integrated-home.png)与 [Button](evidence/issue-22-button/android-runtime/integrated-button.png)均实际复查通过。源码对应本次合并提交内容及 `source-sha256.txt`，未再次改动原生依赖。Android API36、density420，三尺寸实际AX高度换算均不少于44dp；动画三项设置恢复为1，见[读回结果](evidence/issue-22-button/android-runtime/animation-restored.json)。
 
 ## 自动化与 package/bundle
 
@@ -71,7 +79,10 @@ press down 立即开始反馈，目标 scale 0.98，150ms；reduced motion 不�
 
 - AVD `Medium_Phone_API_36.0`，serial `emulator-5554`。
 - JBR25因Prefab子进程native-access warning失败；所谓JDK23路径实际指向26，不能当作兼容版本。临时下载官方Temurin21.0.12.1+1后真实Gradle build成功（455tasks，约27分钟）。不是Expo Go。
-- **安装/启动/全部Android页面操作 UNVERIFIED**：模拟器因内存不足离线，多轮默认/低资源/快照恢复后系统包管理服务仍未就绪，`Service package: not found`。详见 [Android记录](evidence/issue-22-button/android-acceptance.md)。不以编译成功代替运行。
+- 首轮因内存不足离线、package service未就绪而安装失败，历史排障保留在[首次 Android 记录](evidence/issue-22-button/android-acceptance.md)。
+- 本轮内存恢复后原AVD成功启动，复用同一APK实际 `adb install` Success，启动并进入Button；**compile/install/launch 已 VERIFIED**。矩阵运行对应字体修复提交 `25e1a25`，使用本 worktree Metro8089加载JS。
+- 实际验证：五variants、三sizes、system/light/dark预览、disabled状态及5次点击阻断、pending五次重复保持保存计数1、rapid20次计数0→20、命名图标、系统减少动画开启后仍可激活且恢复设置无崩溃。AX保留Save lesson子文本且无Spinner节点，不能据此声称真人TalkBack口播已验证。
+- [运行补验与环境记录](evidence/issue-22-button/android-runtime/android-runtime-resume.md)、[快速点击](evidence/issue-22-button/android-runtime/rapid20.txt)、[pending](evidence/issue-22-button/android-runtime/pending-repeat.txt)、[减少动画](evidence/issue-22-button/android-runtime/reduced-all-on-ax.json)。
 
 ## 运行中发现并修复的缺陷
 
@@ -88,9 +99,9 @@ press down 立即开始反馈，目标 scale 0.98，150ms；reduced motion 不�
 
 ## 留待 #27 的 RC 门槛（unverified）
 
-- 支持范围内的物理iPhone/Android phone、iPad/Android tablet验收。
+- 支持范围内的物理 iPhone / Android phone 验收；iPad / Android tablet 的 RC 验收可用 Simulator / Emulator，本次仍未签署。
 - VoiceOver/Safari、NVDA/Chrome、真实iOS VoiceOver/Android TalkBack口播、焦点顺序及无重复焦点的人类确认。
 - 最大字体/显示大小的完整验收，真实键盘/触摸体验、人类批准的视觉baseline diff。
 - production-like release/profile的帧节奏和流畅度；开发模式、高负载模拟器、Jest动画目标与截图都不能证明性能。
 
-以上真人读屏、人工视觉基线批准、真机及 production-like 性能验收依 ADR-0009 和矩阵 Gate cadence 留待 [#27](https://github.com/ygsgdbd/learnui/issues/27)，不是自动阻塞组件 PR 的理由。Android development build 的 compile/install/launch 属于每个相关 PR 的独立门槛，不能转移到 RC；安装、启动未验证期间组件合入门槛仍未满足。未发布 npm、未声明 V1 可发布。
+以上真人读屏、人工视觉基线批准、真机及 production-like 性能验收依 ADR-0009 和矩阵 Gate cadence 留待 [#27](https://github.com/ygsgdbd/learnui/issues/27)，不是自动阻塞组件 PR 的理由。Android development build 的 compile/install/launch 属于每个相关 PR 的独立门槛，本轮已补齐，未转移到 RC。未发布 npm、未声明 V1 可发布。

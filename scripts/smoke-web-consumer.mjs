@@ -257,6 +257,16 @@ try {
     "Consumer production build is missing the Button consumer override"
   );
 
+  assertCssRuleIncludes(builtCss, ".learnui-badge", ["display:inline-block"],
+    "Consumer production build is missing default Badge styles");
+  assertCssRuleIncludes(builtCss, ".learnui-badge--solid", ["background-color:var(--lui-badge-color)"],
+    "Consumer production build is missing solid Badge styles");
+  assertCssRuleIncludes(builtCss, ".learnui-consumer-badge-override", ["border-radius:6px", "padding-inline:12px"],
+    "Consumer production build is missing Badge consumer overrides");
+
+
+  assertCssRuleIncludes(builtCss, ".learnui-card", ["display:flex", "flex-direction:column"], "Missing Card styles");
+  assertCssRuleIncludes(builtCss, ".learnui-consumer-card-override", ["padding:28px"], "Missing Card override");
   console.log(`@learnui/web consumer smoke passed: ${relative(repoRoot, consumerDir)}`);
 } finally {
   if (process.env.LEARNUI_KEEP_CONSUMER === "1") console.log(`Retained consumer: ${consumerDir}`);

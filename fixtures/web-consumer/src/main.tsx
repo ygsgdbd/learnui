@@ -1,5 +1,5 @@
 import * as LearnUI from "@learnui/web";
-import { Button, Divider, Spinner } from "@learnui/web";
+import { Badge, Button, Card, Divider, Spinner } from "@learnui/web";
 import "@learnui/web/styles";
 import React, { useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
@@ -23,6 +23,15 @@ function App() {
         <Button aria-label="Add fixture">+</Button>
         <Button className="learnui-consumer-button-override" variant="outline" size="lg">Override fixture</Button>
       </section>
+      <Badge>Pending review</Badge>
+      <Badge color="success" variant="solid" size="sm">Approved</Badge>
+      <Badge className="learnui-consumer-badge-override" color="warning" variant="outline">Requires review</Badge>
+      <button aria-label="Inbox, 3 unread messages"><Badge isDecorative>3 unread</Badge> Inbox</button>
+
+      <Card.Root variant="elevated" className="learnui-consumer-card-override">
+        <Card.Header><Card.Title>Consumer Card</Card.Title><Card.Description>Tarball composition</Card.Description></Card.Header>
+        <Card.Body><p>Consumer body</p></Card.Body><Card.Footer><p>Consumer footer</p></Card.Footer>
+      </Card.Root>
       <span className="learnui-consumer-control">Branded control</span>
       <div className="learnui-consumer-divider-stack">
         <span>Default Divider</span>
